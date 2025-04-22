@@ -1,0 +1,32 @@
+.elm-employees-level {
+  height: 18px;
+  width: 46px;
+}
+
+.elm-employees-level .elm-employees-level-wrapper {
+  height: 18px;
+}
+
+.elm-employees-level .middle-wrapper {
+  border: 1px solid;
+  border-color: #7d8592;
+  border-radius: 4px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+  width: 46px;
+}
+
+.elm-employees-level .middle {
+  color: #7d8592;
+  font-family: "Nunito Sans", Helvetica;
+  font-size: 12px;
+  font-weight: 600;
+  left: 4px;
+  letter-spacing: 0;
+  line-height: 12px;
+  position: absolute;
+  text-align: center;
+  top: 1px;
+  white-space: nowrap;
+}

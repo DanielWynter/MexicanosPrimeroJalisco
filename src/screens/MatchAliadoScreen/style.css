@@ -1,0 +1,28 @@
+.match-aliado-screen {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .match-aliado-screen .match-aliado-2 {
+    background-color: #ffffff;
+    height: 1080px;
+    overflow: hidden;
+    width: 1920px;
+  }
+  
+  .match-aliado-screen .group-18 {
+    height: 1106px;
+    position: relative;
+    width: 1861px;
+  }
+  
+  .match-aliado-screen .dashboard-2 {
+    height: 1080px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1861px;
+  }

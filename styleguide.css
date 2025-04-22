@@ -1,0 +1,109 @@
+:root {
+  --absolutewhite: rgba(255, 255, 255, 1);
+  --body-bold-font-family: "Inter", Helvetica;
+  --body-bold-font-size: 16px;
+  --body-bold-font-style: normal;
+  --body-bold-font-weight: 700;
+  --body-bold-letter-spacing: 0px;
+  --body-bold-line-height: 30px;
+  --body-regular-font-family: "Inter", Helvetica;
+  --body-regular-font-size: 16px;
+  --body-regular-font-style: normal;
+  --body-regular-font-weight: 400;
+  --body-regular-letter-spacing: 0px;
+  --body-regular-line-height: 30px;
+  --color-2: rgba(27, 29, 33, 1);
+  --dark-10: rgba(26, 26, 26, 1);
+  --dark-30: rgba(77, 77, 77, 1);
+  --greygrey-10: rgba(246, 250, 253, 1);
+  --greygrey-30: rgba(234, 238, 244, 1);
+  --greygrey-70: rgba(126, 146, 162, 1);
+  --heading-h5-bold-font-family: "Inter", Helvetica;
+  --heading-h5-bold-font-size: 18px;
+  --heading-h5-bold-font-style: normal;
+  --heading-h5-bold-font-weight: 700;
+  --heading-h5-bold-letter-spacing: 0px;
+  --heading-h5-bold-line-height: 30px;
+  --light-94: rgba(237, 239, 243, 1);
+  --overlay: rgba(88, 88, 88, 0.47);
+  --primaryblue: rgba(33, 52, 93, 1);
+  --primarynavy: rgba(9, 44, 76, 1);
+  --primarywhite: rgba(255, 255, 255, 1);
+  --rgb255-255-255: rgba(255, 255, 255, 1);
+  --small-medium-font-family: "Inter", Helvetica;
+  --small-medium-font-size: 14px;
+  --small-medium-font-style: normal;
+  --small-medium-font-weight: 500;
+  --small-medium-letter-spacing: 0px;
+  --small-medium-line-height: 30px;
+  --system-colors-colors-blue: rgba(0, 122, 255, 1);
+  --system-colors-miscellaneous-floating-tab-text-selected: var(
+    --system-colors-colors-blue
+  );
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-system-colors-mode="light">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-system-colors-mode="light"] {
+  --system-colors-colors-blue: rgba(0, 122, 255, 1);
+  --system-colors-miscellaneous-floating-tab-text-selected: var(
+    --system-colors-colors-blue
+  );
+}
+
+[data-system-colors-mode="dark"] {
+  --system-colors-colors-blue: rgba(10, 132, 255, 1);
+  --system-colors-miscellaneous-floating-tab-text-selected: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+}
+
+[data-system-colors-mode="dark-elevated"] {
+  --system-colors-colors-blue: rgba(10, 132, 255, 1);
+  --system-colors-miscellaneous-floating-tab-text-selected: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+}
+
+[data-system-colors-mode="IC-light"] {
+  --system-colors-colors-blue: rgba(0, 64, 221, 1);
+  --system-colors-miscellaneous-floating-tab-text-selected: var(
+    --system-colors-colors-blue
+  );
+}
+
+[data-system-colors-mode="IC-dark"] {
+  --system-colors-colors-blue: rgba(64, 156, 255, 1);
+  --system-colors-miscellaneous-floating-tab-text-selected: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+}
+
+[data-system-colors-mode="IC-dark-elevated"] {
+  --system-colors-colors-blue: rgba(64, 156, 255, 1);
+  --system-colors-miscellaneous-floating-tab-text-selected: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+}

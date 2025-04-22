@@ -1,0 +1,1 @@
+export { VuesaxOutlineArrowCircleDown } from "./VuesaxOutlineArrowCircleDown";

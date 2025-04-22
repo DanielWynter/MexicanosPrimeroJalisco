@@ -1,0 +1,1 @@
+export { FormularioAliado } from "./FormularioAliado";

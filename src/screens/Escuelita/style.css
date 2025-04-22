@@ -1,0 +1,35 @@
+.escuelita {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .escuelita .group-wrapper-6 {
+    background-color: #ffffff;
+    height: 1080px;
+    overflow: hidden;
+    width: 1920px;
+  }
+  
+  .escuelita .group-11 {
+    height: 1106px;
+    width: 1917px;
+  }
+  
+  .escuelita .image-wrapper {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/perfil@2x.png);
+    background-size: 100% 100%;
+    height: 1080px;
+    position: relative;
+  }
+  
+  .escuelita .image-10 {
+    height: 280px;
+    left: 237px;
+    object-fit: cover;
+    position: absolute;
+    top: 713px;
+    width: 432px;
+  }

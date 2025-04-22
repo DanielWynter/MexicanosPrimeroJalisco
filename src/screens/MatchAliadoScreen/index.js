@@ -1,0 +1,1 @@
+export { MatchAliadoScreen } from "./MatchAliadoScreen";

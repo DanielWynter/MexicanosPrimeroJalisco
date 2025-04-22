@@ -1,0 +1,1 @@
+export { VuesaxOutlineCalendar } from "./VuesaxOutlineCalendar";

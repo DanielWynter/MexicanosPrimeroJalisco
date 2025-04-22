@@ -1,0 +1,1828 @@
+.proyectos {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .proyectos .group-wrapper-9 {
+    background-color: #ffffff;
+    height: 1080px;
+    width: 1920px;
+  }
+  
+  .proyectos .group-15 {
+    height: 1080px;
+  }
+  
+  .proyectos .overlap-61 {
+    height: 1080px;
+    position: relative;
+    width: 1920px;
+  }
+  
+  .proyectos .cms-sistema-interno-2 {
+    background-color: #f6f9f4;
+    height: 1080px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1920px;
+  }
+  
+  .proyectos .overlap-62 {
+    height: 674px;
+    left: 176px;
+    position: absolute;
+    top: 144px;
+    width: 1683px;
+  }
+  
+  .proyectos .overlap-63 {
+    height: 674px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1683px;
+  }
+  
+  .proyectos .line-24 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 47px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-25 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 117px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-26 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 187px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-27 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 257px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-28 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 327px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-29 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 397px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-30 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 467px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-31 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 537px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-32 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 607px;
+    width: 1626px;
+  }
+  
+  .proyectos .line-33 {
+    height: 1px;
+    left: 57px;
+    object-fit: cover;
+    position: absolute;
+    top: 670px;
+    width: 1626px;
+  }
+  
+  .proyectos .frame-10 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    left: 1260px;
+    position: absolute;
+    top: 55px;
+    width: 234px;
+  }
+  
+  .proyectos .frame-11 {
+    flex: 0 0 auto;
+    position: relative;
+  }
+  
+  .proyectos .frame-12 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 8px;
+    position: relative;
+  }
+  
+  .proyectos .call {
+    height: 16px !important;
+    position: relative !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .text-wrapper-93 {
+    color: #b9b8bd;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    line-height: normal;
+    margin-top: -1.00px;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .proyectos .frame-13 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    left: 1260px;
+    position: absolute;
+    top: 145px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-14 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    left: 1261px;
+    position: absolute;
+    top: 211px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-15 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    left: 1261px;
+    position: absolute;
+    top: 284px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-16 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    left: 1262px;
+    position: absolute;
+    top: 421px;
+    width: 211px;
+  }
+  
+  .proyectos .frame-17 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    left: 1263px;
+    position: absolute;
+    top: 497px;
+    width: 234px;
+  }
+  
+  .proyectos .frame-18 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    left: 1260px;
+    position: absolute;
+    top: 629px;
+    width: 208px;
+  }
+  
+  .proyectos .line-34 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 1626px;
+  }
+  
+  .proyectos .frame-19 {
+    align-items: center;
+    background-color: #3fc47c14;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1459px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 67px;
+    width: 96px;
+  }
+  
+  .proyectos .text-wrapper-94 {
+    color: #3fc47c;
+    font-family: "ABeeZee", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.36px;
+    line-height: 18px;
+    margin-top: -1.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .frame-20 {
+    align-items: center;
+    background-color: #3fc47c14;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1461px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 207px;
+    width: 96px;
+  }
+  
+  .proyectos .text-wrapper-95 {
+    color: #3fc47c;
+    font-family: "Montserrat", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.36px;
+    line-height: 18px;
+    margin-top: -1.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .frame-21 {
+    align-items: center;
+    background-color: #3fc47c14;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1459px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 420px;
+    width: 96px;
+  }
+  
+  .proyectos .frame-22 {
+    align-items: center;
+    background-color: #3fc47c14;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1460px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 627px;
+    width: 96px;
+  }
+  
+  .proyectos .frame-23 {
+    align-items: center;
+    background-color: #ff3a4414;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1461px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 279px;
+    width: 96px;
+  }
+  
+  .proyectos .text-wrapper-96 {
+    color: #ff3a44;
+    font-family: "Montserrat", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.36px;
+    line-height: 18px;
+    margin-top: -1.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .frame-24 {
+    align-items: center;
+    background-color: #ff3a4414;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1459px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 487px;
+    width: 96px;
+  }
+  
+  .proyectos .frame-25 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 556px;
+    position: absolute;
+    top: 74px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-26 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .proyectos .text-wrapper-97 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    line-height: normal;
+    margin-top: -1.00px;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .proyectos .frame-27 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 553px;
+    position: absolute;
+    top: 140px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-28 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    height: 22px;
+    left: 556px;
+    position: absolute;
+    top: 206px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-29 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 560px;
+    position: absolute;
+    top: 275px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-30 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 556px;
+    position: absolute;
+    top: 351px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-31 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 558px;
+    position: absolute;
+    top: 423px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-32 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 556px;
+    position: absolute;
+    top: 490px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-33 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 556px;
+    position: absolute;
+    top: 565px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-34 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 553px;
+    position: absolute;
+    top: 632px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-35 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 757px;
+    position: absolute;
+    top: 60px;
+    width: 218px;
+  }
+  
+  .proyectos .rectangle-23 {
+    background-color: #d9d9d9;
+    border-radius: 100px;
+    height: 42px;
+    position: relative;
+    width: 42px;
+  }
+  
+  .proyectos .frame-36 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 757px;
+    position: absolute;
+    top: 122px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-37 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 757px;
+    position: absolute;
+    top: 198px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-38 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 757px;
+    position: absolute;
+    top: 260px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-39 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 757px;
+    position: absolute;
+    top: 338px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-40 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 757px;
+    position: absolute;
+    top: 410px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-41 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 757px;
+    position: absolute;
+    top: 476px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-42 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 757px;
+    position: absolute;
+    top: 548px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-43 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 750px;
+    position: absolute;
+    top: 620px;
+    width: 218px;
+  }
+  
+  .proyectos .code-3 {
+    height: 20px !important;
+    left: 1220px !important;
+    position: absolute !important;
+    top: 11px !important;
+    width: 28px !important;
+  }
+  
+  .proyectos .line-35 {
+    height: 672px;
+    left: 293px;
+    object-fit: cover;
+    position: absolute;
+    top: 2px;
+    width: 1px;
+  }
+  
+  .proyectos .line-36 {
+    height: 669px;
+    left: 530px;
+    object-fit: cover;
+    position: absolute;
+    top: 5px;
+    width: 1px;
+  }
+  
+  .proyectos .line-37 {
+    height: 672px;
+    left: 738px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 1px;
+  }
+  
+  .proyectos .line-38 {
+    height: 672px;
+    left: 988px;
+    object-fit: cover;
+    position: absolute;
+    top: 2px;
+    width: 1px;
+  }
+  
+  .proyectos .line-39 {
+    height: 669px;
+    left: 1449px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 1px;
+  }
+  
+  .proyectos .line-40 {
+    height: 669px;
+    left: 1247px;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 1px;
+  }
+  
+  .proyectos .frame-44 {
+    align-items: flex-start;
+    background-color: #ff9c3a14;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1459px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 139px;
+    width: 106px;
+  }
+  
+  .proyectos .text-wrapper-98 {
+    color: #ff9c3a;
+    font-family: "Montserrat", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.12px;
+    line-height: 18px;
+    margin-top: -1.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .line-41 {
+    height: 2px;
+    left: 157px;
+    position: absolute;
+    top: 0;
+    width: 127px;
+  }
+  
+  .proyectos .sms-36 {
+    height: 16px !important;
+    left: 1000px !important;
+    position: absolute !important;
+    top: 69px !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .overlap-64 {
+    height: 17px;
+    left: 1050px;
+    position: absolute;
+    top: 72px;
+    width: 162px;
+  }
+  
+  .proyectos .text-wrapper-99 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    height: 17px;
+    left: 0;
+    letter-spacing: -0.28px;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+  }
+  
+  .proyectos .sms-37 {
+    height: 16px !important;
+    left: 1000px !important;
+    position: absolute !important;
+    top: 143px !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .overlap-65 {
+    height: 17px;
+    left: 1050px;
+    position: absolute;
+    top: 146px;
+    width: 162px;
+  }
+  
+  .proyectos .sms-11 {
+    height: 16px !important;
+    left: 1001px !important;
+    position: absolute !important;
+    top: 211px !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .overlap-66 {
+    height: 17px;
+    left: 1051px;
+    position: absolute;
+    top: 214px;
+    width: 162px;
+  }
+  
+  .proyectos .sms-wrapper {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/sms-3.svg);
+    background-size: 100% 100%;
+    height: 16px;
+    left: 1002px;
+    position: absolute;
+    top: 283px;
+    width: 16px;
+  }
+  
+  .proyectos .sms-30 {
+    height: 16px !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .overlap-67 {
+    height: 17px;
+    left: 1052px;
+    position: absolute;
+    top: 286px;
+    width: 162px;
+  }
+  
+  .proyectos .sms-3 {
+    height: 16px !important;
+    left: 1003px !important;
+    position: absolute !important;
+    top: 358px !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .sms-33 {
+    height: 16px !important;
+    left: 1003px !important;
+    position: absolute !important;
+    top: 424px !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .sms-10 {
+    height: 16px !important;
+    left: 1006px !important;
+    position: absolute !important;
+    top: 491px !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .text-wrapper-100 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    height: 17px;
+    left: 1053px;
+    letter-spacing: -0.28px;
+    line-height: normal;
+    position: absolute;
+    top: 361px;
+  }
+  
+  .proyectos .text-wrapper-101 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    height: 17px;
+    left: 1053px;
+    letter-spacing: -0.28px;
+    line-height: normal;
+    position: absolute;
+    top: 427px;
+  }
+  
+  .proyectos .text-wrapper-102 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    height: 17px;
+    left: 1056px;
+    letter-spacing: -0.28px;
+    line-height: normal;
+    position: absolute;
+    top: 494px;
+  }
+  
+  .proyectos .sms-instance {
+    height: 16px !important;
+    left: 1005px !important;
+    position: absolute !important;
+    top: 559px !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .text-wrapper-103 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    height: 17px;
+    left: 1055px;
+    letter-spacing: -0.28px;
+    line-height: normal;
+    position: absolute;
+    top: 562px;
+  }
+  
+  .proyectos .sms-36-instance {
+    height: 16px !important;
+    left: 1007px !important;
+    position: absolute !important;
+    top: 630px !important;
+    width: 16px !important;
+  }
+  
+  .proyectos .text-wrapper-104 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    height: 17px;
+    left: 1057px;
+    letter-spacing: -0.28px;
+    line-height: normal;
+    position: absolute;
+    top: 633px;
+  }
+  
+  .proyectos .frame-45 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    left: 1261px;
+    position: absolute;
+    top: 354px;
+  }
+  
+  .proyectos .frame-46 {
+    align-items: center;
+    display: inline-flex;
+    gap: 8px;
+    left: 1260px;
+    position: absolute;
+    top: 564px;
+  }
+  
+  .proyectos .text-wrapper-105 {
+    color: #b9b8bd;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 305px;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    top: 6px;
+    width: 154px;
+  }
+  
+  .proyectos .text-wrapper-106 {
+    color: #b9b8bd;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 26px;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    top: 11px;
+    width: 119px;
+  }
+  
+  .proyectos .text-wrapper-107 {
+    color: #b9b8bd;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 1026px;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    position: absolute;
+    top: 12px;
+    width: 78px;
+  }
+  
+  .proyectos .text-wrapper-108 {
+    color: #b9b8bd;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 1265px;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    position: absolute;
+    top: 12px;
+    width: 78px;
+  }
+  
+  .proyectos .frame-47 {
+    align-items: center;
+    background-color: #3fc47c14;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1461px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 560px;
+    width: 96px;
+  }
+  
+  .proyectos .overlap-68 {
+    height: 42px;
+    left: 57px;
+    position: absolute;
+    top: 61px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-48 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 218px;
+  }
+  
+  .proyectos .overlap-69 {
+    height: 42px;
+    left: 57px;
+    position: absolute;
+    top: 123px;
+    width: 218px;
+  }
+  
+  .proyectos .overlap-70 {
+    height: 42px;
+    left: 57px;
+    position: absolute;
+    top: 199px;
+    width: 218px;
+  }
+  
+  .proyectos .overlap-71 {
+    height: 42px;
+    left: 57px;
+    position: absolute;
+    top: 261px;
+    width: 218px;
+  }
+  
+  .proyectos .overlap-72 {
+    height: 42px;
+    left: 57px;
+    position: absolute;
+    top: 339px;
+    width: 218px;
+  }
+  
+  .proyectos .overlap-73 {
+    height: 42px;
+    left: 57px;
+    position: absolute;
+    top: 401px;
+    width: 218px;
+  }
+  
+  .proyectos .overlap-74 {
+    height: 42px;
+    left: 57px;
+    position: absolute;
+    top: 477px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-49 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    height: 49px;
+    left: 57px;
+    position: absolute;
+    top: 549px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-50 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 305px;
+    position: absolute;
+    top: 60px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-51 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 305px;
+    position: absolute;
+    top: 122px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-52 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 305px;
+    position: absolute;
+    top: 198px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-53 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 305px;
+    position: absolute;
+    top: 260px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-54 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 305px;
+    position: absolute;
+    top: 338px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-55 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 305px;
+    position: absolute;
+    top: 410px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-56 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 305px;
+    position: absolute;
+    top: 476px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-57 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 305px;
+    position: absolute;
+    top: 552px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-58 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 50px;
+    position: absolute;
+    top: 621px;
+    width: 218px;
+  }
+  
+  .proyectos .frame-59 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 298px;
+    position: absolute;
+    top: 620px;
+    width: 218px;
+  }
+  
+  .proyectos .code-10 {
+    height: 20px !important;
+    left: 254px !important;
+    position: absolute !important;
+    top: 12px !important;
+    width: 28px !important;
+  }
+  
+  .proyectos .text-wrapper-109 {
+    color: #b9b8bd;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 546px;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    top: 13px;
+    width: 62px;
+  }
+  
+  .proyectos .text-wrapper-110 {
+    color: #b9b8bd;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 776px;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    position: absolute;
+    text-align: center;
+    top: 12px;
+    width: 114px;
+  }
+  
+  .proyectos .code-26 {
+    height: 20px !important;
+    left: 495px !important;
+    position: absolute !important;
+    top: 13px !important;
+    width: 28px !important;
+  }
+  
+  .proyectos .code-1 {
+    height: 20px !important;
+    left: 1414px !important;
+    position: absolute !important;
+    top: 15px !important;
+    width: 28px !important;
+  }
+  
+  .proyectos .code-6 {
+    height: 20px !important;
+    left: 890px !important;
+    position: absolute !important;
+    top: 14px !important;
+    width: 28px !important;
+  }
+  
+  .proyectos .code-11 {
+    height: 20px !important;
+    left: 1596px !important;
+    position: absolute !important;
+    top: 14px !important;
+    width: 29px !important;
+  }
+  
+  .proyectos .code-19 {
+    height: 20px !important;
+    left: 710px !important;
+    position: absolute !important;
+    top: 13px !important;
+    width: 28px !important;
+  }
+  
+  .proyectos .fi-more-vertical-wrapper {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 56px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .fi-more-vertical {
+    height: 20px !important;
+    position: relative !important;
+    transform: rotate(90.00deg) !important;
+    width: 20px !important;
+  }
+  
+  .proyectos .fi-more-vertical-4-wrapper {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 126px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .fi-more-vertical-1-wrapper {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 196px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .frame-60 {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 266px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .frame-61 {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 336px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .frame-62 {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 406px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .frame-63 {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 476px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .frame-64 {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 546px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .frame-65 {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 10px;
+    height: 51px;
+    justify-content: center;
+    left: 1582px;
+    padding: 8px;
+    position: absolute;
+    top: 616px;
+    transform: rotate(-90.00deg);
+  }
+  
+  .proyectos .frame-66 {
+    align-items: center;
+    background-color: #ff9c3a14;
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    left: 1459px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 346px;
+    width: 98px;
+  }
+  
+  .proyectos .text-wrapper-111 {
+    color: #000000;
+    font-family: "Inter", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    left: 1465px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 16px;
+  }
+  
+  .proyectos .text-wrapper-112 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 28px;
+    font-weight: 400;
+    left: 187px;
+    letter-spacing: -0.84px;
+    line-height: 42px;
+    position: absolute;
+    top: 37px;
+    width: 167px;
+  }
+  
+  .proyectos .frame-67 {
+    align-items: flex-start;
+    display: flex;
+    gap: 40px;
+    left: 187px;
+    position: absolute;
+    top: 108px;
+    width: 629px;
+  }
+  
+  .proyectos .frame-68 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 4px;
+    position: relative;
+  }
+  
+  .proyectos .fi-list {
+    height: 20px !important;
+    position: relative !important;
+    width: 24px !important;
+  }
+  
+  .proyectos .text-wrapper-113 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    margin-top: -1.00px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .icon-instance-node-2 {
+    height: 20px !important;
+    position: relative !important;
+    width: 20px !important;
+  }
+  
+  .proyectos .text-wrapper-114 {
+    color: #b9b8bd;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    margin-top: -1.00px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .icon-instance-node-3 {
+    height: 24px !important;
+    position: relative !important;
+    width: 24px !important;
+  }
+  
+  .proyectos .text-wrapper-115 {
+    color: #b9b8bd;
+    font-family: "Inter", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 24px;
+    left: 187px;
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    position: absolute;
+    top: 845px;
+    width: 251px;
+  }
+  
+  .proyectos .frame-69 {
+    align-items: flex-start;
+    display: flex;
+    gap: 4px;
+    left: 1400px;
+    position: absolute;
+    top: 842px;
+    width: 402px;
+  }
+  
+  .proyectos .arrow-left-wrapper {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    height: 32px;
+    justify-content: center;
+    opacity: 0.4;
+    padding: 8px 12px;
+    position: relative;
+    width: 32px;
+  }
+  
+  .proyectos .icon-instance-node-4 {
+    height: 14px !important;
+    margin-left: -3.00px !important;
+    margin-right: -3.00px !important;
+    position: relative !important;
+    width: 14px !important;
+  }
+  
+  .proyectos .frame-70 {
+    align-items: center;
+    background-color: #08984f;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    height: 32px;
+    justify-content: center;
+    padding: 8px 12px;
+    position: relative;
+    width: 32px;
+  }
+  
+  .proyectos .text-wrapper-116 {
+    color: #ffffff;
+    font-family: "Montserrat", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.36px;
+    line-height: 18px;
+    margin-top: -2.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .frame-71 {
+    align-items: center;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    height: 32px;
+    justify-content: center;
+    padding: 8px 12px;
+    position: relative;
+    width: 32px;
+  }
+  
+  .proyectos .text-wrapper-117 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.36px;
+    line-height: 18px;
+    margin-top: -2.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .text-wrapper-118 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.36px;
+    line-height: 18px;
+    margin-left: -0.50px;
+    margin-right: -0.50px;
+    margin-top: -2.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .maps-view {
+    align-items: center;
+    background: linear-gradient(
+      90deg,
+      rgba(7, 154, 79, 1) 0%,
+      rgba(37, 96, 79, 1) 100%
+    );
+    border-radius: 15px;
+    display: flex;
+    gap: 8px;
+    left: 1464px;
+    padding: 10px 16px;
+    position: absolute;
+    top: 38px;
+    width: 185px;
+  }
+  
+  .proyectos .text-wrapper-119 {
+    color: #ffffff;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.42px;
+    line-height: 21px;
+    margin-top: -1.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .frame-72 {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    left: 1694px;
+    position: absolute;
+    top: 49px;
+    width: 108px;
+  }
+  
+  .proyectos .line-42 {
+    height: 32px;
+    left: 1672px;
+    object-fit: cover;
+    position: absolute;
+    top: 43px;
+    width: 1px;
+  }
+  
+  .proyectos .maps-view-2 {
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #e8eaee;
+    border-radius: 8px;
+    display: flex;
+    gap: 16px;
+    left: 1651px;
+    padding: 8px 16px;
+    position: absolute;
+    top: 93px;
+    width: 151px;
+  }
+  
+  .proyectos .text-wrapper-120 {
+    color: #121212;
+    font-family: "Montserrat", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.32px;
+    line-height: 24px;
+    margin-top: -1.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .proyectos .search-5 {
+    align-items: center;
+    background-color: #252c2b;
+    border-radius: 22px;
+    display: flex;
+    gap: 12px;
+    height: 44px;
+    justify-content: center;
+    left: 359px;
+    padding: 12px;
+    position: absolute;
+    top: 38px;
+    width: 462px;
+  }
+  
+  .proyectos .text-wrapper-121 {
+    color: #ffffffcc;
+    flex: 1;
+    font-family: "Montserrat", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 20px;
+    margin-top: -1.00px;
+    position: relative;
+  }
+  
+  .proyectos .comment-wrapper {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/comment-3.svg);
+    background-size: 100% 100%;
+    height: 22px;
+    left: 49px;
+    position: absolute;
+    top: 450px;
+    width: 22px;
+  }
+  
+  .proyectos .comment-4 {
+    height: 22px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 22px;
+  }
+  
+  .proyectos .finance-security-wrapper {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/finance-security---bank-2.svg);
+    background-size: 100% 100%;
+    height: 19px;
+    left: 50px;
+    position: absolute;
+    top: 266px;
+    width: 21px;
+  }
+  
+  .proyectos .finance-security-bank-2 {
+    height: 19px !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 21px !important;
+  }
+  
+  .proyectos .finance-security-id-wrapper {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/finance-security---id-card-4.svg);
+    background-size: 100% 100%;
+    height: 18px;
+    left: 51px;
+    position: absolute;
+    top: 327px;
+    width: 18px;
+  }
+  
+  .proyectos .finance-security-id-card-7 {
+    height: 18px !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 18px !important;
+  }
+  
+  .proyectos .line-wrapper {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/line-254.svg);
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 1px;
+    left: 36px;
+    position: absolute;
+    top: 246px;
+    width: 47px;
+  }
+  
+  .proyectos .line-43 {
+    height: 1px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 47px;
+  }
+  
+  .proyectos .overlap-75 {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/line-254.svg);
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 1px;
+    left: 36px;
+    position: absolute;
+    top: 307px;
+    width: 47px;
+  }
+  
+  .proyectos .overlap-76 {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/line-254.svg);
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 1px;
+    left: 36px;
+    position: absolute;
+    top: 366px;
+    width: 47px;
+  }
+  
+  .proyectos .rectangle-24 {
+    height: 98px;
+    left: 23px;
+    position: absolute;
+    top: 27px;
+    width: 91px;
+  }
+  
+  .proyectos .image-14 {
+    height: 64px;
+    left: 28px;
+    object-fit: cover;
+    position: absolute;
+    top: 40px;
+    width: 62px;
+  }
+  
+  .proyectos .social-connection-user-4 {
+    height: 22px !important;
+    left: 49px !important;
+    position: absolute !important;
+    top: 234px !important;
+    width: 19px !important;
+  }
+  
+  .proyectos .notification-4 {
+    height: 23px;
+    left: 49px;
+    position: absolute;
+    top: 166px;
+    width: 20px;
+  }
+  
+  .proyectos .line-44 {
+    height: 1px;
+    left: 36px;
+    object-fit: cover;
+    position: absolute;
+    top: 208px;
+    width: 47px;
+  }

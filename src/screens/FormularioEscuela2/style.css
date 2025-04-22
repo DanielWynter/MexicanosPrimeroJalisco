@@ -1,0 +1,383 @@
+.formulario-escuela-screen {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.formulario-escuela-screen .formulario-escuela-2 {
+  background-color: #ffffff;
+  height: 1080px;
+  overflow: hidden;
+  width: 1920px;
+}
+
+.formulario-escuela-screen .group-8 {
+  height: 1083px;
+  width: 1918px;
+}
+
+.formulario-escuela-screen .modal-edit-deal-wrapper {
+  background-color: #ffffff;
+  height: 1083px;
+}
+
+.formulario-escuela-screen .modal-edit-deal-2 {
+  align-items: flex-start;
+  background-color: var(--primarywhite);
+  border-radius: 12px;
+  box-shadow: 0px 4px 30px #00000040;
+  display: flex;
+  flex-direction: column;
+  height: 850px;
+  left: 680px;
+  overflow: hidden;
+  position: relative;
+  top: 117px;
+  width: 557px;
+}
+
+.formulario-escuela-screen .title-2 {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 14px;
+  padding: 14px 14px 14px 32px;
+  position: relative;
+  width: 100%;
+}
+
+.formulario-escuela-screen .text-wrapper-25 {
+  color: var(--primarynavy);
+  flex: 1;
+  font-family: "Montserrat", Helvetica;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: relative;
+}
+
+.formulario-escuela-screen .button-5 {
+  background-color: unset !important;
+  border: unset !important;
+  border-color: unset !important;
+}
+
+.formulario-escuela-screen .vuesax-bold-close-circle {
+  height: 20px !important;
+  left: 15px !important;
+  position: absolute !important;
+  top: 15px !important;
+  width: 20px !important;
+}
+
+.formulario-escuela-screen .form-edit-deal-form-2 {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  width: 100%;
+}
+
+.formulario-escuela-screen .content-SCROLL-2 {
+  align-self: stretch;
+  flex: 1;
+  flex-grow: 1;
+  overflow-y: scroll;
+  position: relative;
+  width: 100%;
+}
+
+.formulario-escuela-screen .content-SCROLL-2::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+.formulario-escuela-screen .overlap-group-7 {
+  height: 630px;
+  position: relative;
+  width: 557px;
+}
+
+.formulario-escuela-screen .form-2 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  left: 0;
+  padding: 4px 32px 24px;
+  position: absolute;
+  top: 0;
+  width: 557px;
+}
+
+.formulario-escuela-screen .upload-image-2 {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  width: 100%;
+}
+
+.formulario-escuela-screen .label-4 {
+  color: var(--primarynavy);
+  font-family: var(--body-bold-font-family);
+  font-size: var(--body-bold-font-size);
+  font-style: var(--body-bold-font-style);
+  font-weight: var(--body-bold-font-weight);
+  letter-spacing: var(--body-bold-letter-spacing);
+  line-height: var(--body-bold-line-height);
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.formulario-escuela-screen .div-6 {
+  align-items: center;
+  align-self: stretch;
+  background-color: var(--greygrey-10);
+  border: 1px solid;
+  border-color: var(--greygrey-30);
+  border-radius: 8px;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 12px;
+  overflow: hidden;
+  padding: 10px 20px;
+  position: relative;
+  width: 100%;
+}
+
+.formulario-escuela-screen .placeholder-4 {
+  color: var(--greygrey-70);
+  font-family: var(--body-regular-font-family);
+  font-size: var(--body-regular-font-size);
+  font-style: var(--body-regular-font-style);
+  font-weight: var(--body-regular-font-weight);
+  letter-spacing: var(--body-regular-letter-spacing);
+  line-height: var(--body-regular-line-height);
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.formulario-escuela-screen .placeholder-5 {
+  color: var(--greygrey-70);
+  flex: 1;
+  font-family: var(--body-regular-font-family);
+  font-size: var(--body-regular-font-size);
+  font-style: var(--body-regular-font-style);
+  font-weight: var(--body-regular-font-weight);
+  letter-spacing: var(--body-regular-letter-spacing);
+  line-height: var(--body-regular-line-height);
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.formulario-escuela-screen .input-3 {
+  align-self: stretch !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+}
+
+.formulario-escuela-screen .radio-buttons {
+  height: 24px;
+  position: relative;
+  width: 139px;
+}
+
+.formulario-escuela-screen .radio-button-default {
+  border: 1.5px solid;
+  border-color: #808191;
+  border-radius: 18px;
+  height: 24px;
+  left: 80px;
+  position: absolute;
+  top: 0;
+  width: 24px;
+}
+
+.formulario-escuela-screen .text-wrapper-26 {
+  color: #57586c;
+  font-family: "Poppins", Helvetica;
+  font-size: 16px;
+  font-weight: 600;
+  left: 30px;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: absolute;
+  top: 2px;
+  white-space: nowrap;
+}
+
+.formulario-escuela-screen .text-wrapper-27 {
+  color: #57586c;
+  font-family: "Poppins", Helvetica;
+  font-size: 16px;
+  font-weight: 600;
+  left: 113px;
+  letter-spacing: 0;
+  line-height: 20px;
+  position: absolute;
+  top: 2px;
+  white-space: nowrap;
+}
+
+.formulario-escuela-screen .radio-button {
+  border: 1.5px solid;
+  border-color: #21345d;
+  border-radius: 18px;
+  height: 24px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 24px;
+}
+
+.formulario-escuela-screen .rectangle-10 {
+  background-color: #21345d;
+  border-radius: 18px;
+  height: 12px;
+  left: 4px;
+  position: relative;
+  top: 4px;
+  width: 12px;
+}
+
+.formulario-escuela-screen .address-line {
+  align-items: flex-start;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 20px;
+  position: relative;
+  width: 177px;
+}
+
+.formulario-escuela-screen .state-2 {
+  width: 160px !important;
+}
+
+.formulario-escuela-screen .state-3 {
+  flex: unset !important;
+  white-space: nowrap !important;
+  width: fit-content !important;
+}
+
+.formulario-escuela-screen .count {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.formulario-escuela-screen .room-area {
+  flex: 1 !important;
+  flex-grow: 1 !important;
+  width: unset !important;
+}
+
+.formulario-escuela-screen .street {
+  align-items: center;
+  background-color: var(--greygrey-10);
+  border: 1px solid;
+  border-color: var(--greygrey-30);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  left: 32px;
+  overflow: hidden;
+  padding: 10px 20px;
+  position: absolute;
+  top: 116px;
+  width: 493px;
+}
+
+.formulario-escuela-screen .action-3 {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  gap: 70px;
+  height: 71px;
+  padding: 16px 32px 28px;
+  position: relative;
+  width: 100%;
+}
+
+.formulario-escuela-screen .progress-4 {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 12px;
+  margin-bottom: -11.50px;
+  margin-top: -11.50px;
+  position: relative;
+}
+
+.formulario-escuela-screen .text-wrapper-28 {
+  color: var(--primarynavy);
+  font-family: var(--body-bold-font-family);
+  font-size: var(--body-bold-font-size);
+  font-style: var(--body-bold-font-style);
+  font-weight: var(--body-bold-font-weight);
+  letter-spacing: var(--body-bold-letter-spacing);
+  line-height: var(--body-bold-line-height);
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.formulario-escuela-screen .progress-5 {
+  width: 172px !important;
+}
+
+.formulario-escuela-screen .progress-6 {
+  color: #121212 !important;
+}
+
+.formulario-escuela-screen .action-4 {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-bottom: -11.50px;
+  margin-top: -11.50px;
+  position: relative;
+}
+
+.formulario-escuela-screen .button-6 {
+  display: flex !important;
+  margin-left: -59.00px !important;
+  width: 120px !important;
+}
+
+.modal-edit-deal {
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

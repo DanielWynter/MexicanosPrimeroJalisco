@@ -1,0 +1,1 @@
+export { Escuelita } from "./Escuelita";

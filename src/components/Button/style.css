@@ -1,0 +1,104 @@
+.button {
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.button .text-wrapper {
+  font-family: var(--small-medium-font-family);
+  font-size: var(--small-medium-font-size);
+  font-style: var(--small-medium-font-style);
+  font-weight: var(--small-medium-font-weight);
+  letter-spacing: var(--small-medium-letter-spacing);
+  line-height: var(--small-medium-line-height);
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.button .icon {
+  height: 20px !important;
+  position: relative !important;
+  width: 20px !important;
+}
+
+.button .div {
+  font-family: var(--small-medium-font-family);
+  font-size: var(--small-medium-font-size);
+  font-style: var(--small-medium-font-style);
+  font-weight: var(--small-medium-font-weight);
+  letter-spacing: var(--small-medium-letter-spacing);
+  line-height: var(--small-medium-line-height);
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.button .icon-1 {
+  height: 20px !important;
+  left: 15px !important;
+  position: absolute !important;
+  top: 15px !important;
+  width: 20px !important;
+}
+
+.button.white {
+  background-color: var(--primarywhite);
+  border: 1px solid;
+  border-color: var(--greygrey-30);
+}
+
+.button.default {
+  align-items: center;
+  border-radius: 70px;
+  display: inline-flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 10px 24px;
+}
+
+.button.left-icon {
+  align-items: center;
+  border-radius: 70px;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 10px 20px 10px 16px;
+}
+
+.button.icon-only {
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+.button.primary {
+  background-color: var(--primaryblue);
+}
+
+.button.right-icon {
+  align-items: center;
+  border-radius: 70px;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 10px 16px 10px 20px;
+}
+
+.button.white .text-wrapper {
+  color: var(--primarynavy);
+}
+
+.button.primary .text-wrapper {
+  color: var(--primarywhite);
+}
+
+.button.white .div {
+  color: var(--primarynavy);
+}
+
+.button.primary .div {
+  color: var(--primarywhite);
+}

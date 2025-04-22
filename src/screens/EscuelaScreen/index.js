@@ -1,0 +1,1 @@
+export { EscuelaScreen } from "./EscuelaScreen";

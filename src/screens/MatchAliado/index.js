@@ -1,0 +1,1 @@
+export { MatchAliado } from "./MatchAliado";

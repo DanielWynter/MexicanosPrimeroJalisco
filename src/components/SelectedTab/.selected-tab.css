@@ -1,0 +1,32 @@
+.selected-tab {
+  height: 40px;
+  width: 151px;
+}
+
+.selected-tab .overlap-group-wrapper {
+  height: 40px;
+  overflow: hidden;
+}
+
+.selected-tab .overlap-group {
+  background-color: #3f8cff;
+  border-radius: 20px;
+  height: 42px;
+  left: -1px;
+  position: relative;
+  top: -1px;
+  width: 153px;
+}
+
+.selected-tab .projects {
+  color: #ffffff;
+  font-family: "Nunito Sans", Helvetica;
+  font-size: 16px;
+  font-weight: 700;
+  left: 47px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 9px;
+}

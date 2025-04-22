@@ -1,0 +1,1 @@
+export { VuesaxLinearNotificationBing } from "./VuesaxLinearNotificationBing";

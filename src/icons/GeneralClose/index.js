@@ -1,0 +1,1 @@
+export { GeneralClose } from "./GeneralClose";

@@ -1,0 +1,1 @@
+export { SocialConnectionUser } from "./SocialConnectionUser";

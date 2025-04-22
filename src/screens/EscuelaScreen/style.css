@@ -1,0 +1,1181 @@
+.escuela-screen {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .escuela-screen .escuela-2 {
+    background-color: #ffffff;
+    height: 1080px;
+    overflow: hidden;
+    width: 1920px;
+  }
+  
+  .escuela-screen .group-20 {
+    height: 1096px;
+  }
+  
+  .escuela-screen .overlap-128 {
+    height: 1096px;
+    position: relative;
+    width: 1920px;
+  }
+  
+  .escuela-screen .cms-sistema-interno-4 {
+    background-color: #f6f9f4;
+    height: 1096px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1920px;
+  }
+  
+  .escuela-screen .overlap-129 {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/rectangle-1739.png);
+    background-size: 100% 100%;
+    height: 87px;
+    left: 19px;
+    position: absolute;
+    top: 38px;
+    width: 91px;
+  }
+  
+  .escuela-screen .image-20 {
+    height: 59px;
+    left: 7px;
+    object-fit: cover;
+    position: absolute;
+    top: 9px;
+    width: 57px;
+  }
+  
+  .escuela-screen .comment-8 {
+    height: 17px;
+    left: 44px;
+    position: absolute;
+    top: 395px;
+    width: 22px;
+  }
+  
+  .escuela-screen .social-connection-user-8 {
+    height: 19px !important;
+    left: 45px !important;
+    position: absolute !important;
+    top: 216px !important;
+    width: 19px !important;
+  }
+  
+  .escuela-screen .finance-security-bank-1 {
+    height: 19px !important;
+    left: 45px !important;
+    position: absolute !important;
+    top: 275px !important;
+    width: 21px !important;
+  }
+  
+  .escuela-screen .notification-8 {
+    height: 18px;
+    left: 45px;
+    position: absolute;
+    top: 141px;
+    width: 20px;
+  }
+  
+  .escuela-screen .finance-security-id-card-1-instance {
+    height: 18px !important;
+    left: 46px !important;
+    position: absolute !important;
+    top: 336px !important;
+    width: 18px !important;
+  }
+  
+  .escuela-screen .line-103 {
+    height: 1px;
+    left: 32px;
+    object-fit: cover;
+    position: absolute;
+    top: 193px;
+    width: 47px;
+  }
+  
+  .escuela-screen .line-104 {
+    height: 1px;
+    left: 31px;
+    object-fit: cover;
+    position: absolute;
+    top: 255px;
+    width: 47px;
+  }
+  
+  .escuela-screen .line-105 {
+    height: 1px;
+    left: 31px;
+    object-fit: cover;
+    position: absolute;
+    top: 316px;
+    width: 47px;
+  }
+  
+  .escuela-screen .line-106 {
+    height: 1px;
+    left: 31px;
+    object-fit: cover;
+    position: absolute;
+    top: 375px;
+    width: 47px;
+  }
+  
+  .escuela-screen .line-107 {
+    height: 1px;
+    left: 30px;
+    object-fit: cover;
+    position: absolute;
+    top: 432px;
+    width: 47px;
+  }
+  
+  .escuela-screen .overlap-130 {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0px 6px 58px #c3cbd61b;
+    height: 240px;
+    left: 470px;
+    position: absolute;
+    top: 136px;
+    width: 255px;
+  }
+  
+  .escuela-screen .employee-8 {
+    height: 191px;
+    left: 61px;
+    overflow: hidden;
+    position: relative;
+    top: 24px;
+    width: 132px;
+  }
+  
+  .escuela-screen .overlap-131 {
+    height: 76px;
+    left: 28px;
+    position: absolute;
+    top: 0;
+    width: 77px;
+  }
+  
+  .escuela-screen .elm-general-progress-4 {
+    height: 76px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 77px;
+  }
+  
+  .escuela-screen .overlap-group-32 {
+    border: 2px solid;
+    border-color: #7d859234;
+    border-radius: 39.28px / 39.2px;
+    height: 78px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 79px;
+  }
+  
+  .escuela-screen .progress-15 {
+    height: 77px;
+    left: -2px;
+    position: absolute;
+    top: -1px;
+    width: 79px;
+  }
+  
+  .escuela-screen .elm-general-photo-2 {
+    height: 66px;
+    left: 5px;
+    object-fit: cover;
+    position: absolute;
+    top: 5px;
+    width: 66px;
+  }
+  
+  .escuela-screen .text-wrapper-234 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 1px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 96px;
+    width: 131px;
+  }
+  
+  .escuela-screen .text-wrapper-235 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 2px;
+    letter-spacing: 0;
+    line-height: 21px;
+    position: absolute;
+    text-align: center;
+    top: 119px;
+    width: 128px;
+  }
+  
+  .escuela-screen .elm-employees-level-13 {
+    height: 24px !important;
+    left: 37px !important;
+    position: absolute !important;
+    top: 167px !important;
+    width: 61px !important;
+  }
+  
+  .escuela-screen .elm-employees-level-14 {
+    height: 24px !important;
+  }
+  
+  .escuela-screen .elm-employees-level-15 {
+    height: 24px !important;
+    width: 61px !important;
+  }
+  
+  .escuela-screen .elm-employees-level-16 {
+    left: 10px !important;
+    top: 4px !important;
+  }
+  
+  .escuela-screen .overlap-132 {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0px 6px 58px #c3cbd61b;
+    height: 240px;
+    left: 762px;
+    position: absolute;
+    top: 136px;
+    width: 255px;
+  }
+  
+  .escuela-screen .employee-9 {
+    height: 191px;
+    left: 53px;
+    overflow: hidden;
+    position: relative;
+    top: 24px;
+    width: 152px;
+  }
+  
+  .escuela-screen .overlap-133 {
+    height: 76px;
+    left: 37px;
+    position: absolute;
+    top: 0;
+    width: 77px;
+  }
+  
+  .escuela-screen .overlap-group-33 {
+    border: 2px solid;
+    border-color: #7d859234;
+    border-radius: 39.33px / 39.2px;
+    height: 78px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 79px;
+  }
+  
+  .escuela-screen .path-4 {
+    height: 77px;
+    left: -2px;
+    position: absolute;
+    top: -1px;
+    width: 69px;
+  }
+  
+  .escuela-screen .text-wrapper-236 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 1px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 96px;
+    width: 151px;
+  }
+  
+  .escuela-screen .text-wrapper-237 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 11px;
+    letter-spacing: 0;
+    line-height: 21px;
+    position: absolute;
+    text-align: center;
+    top: 119px;
+    width: 128px;
+  }
+  
+  .escuela-screen .elm-employees-level-17 {
+    height: 24px !important;
+    left: 46px !important;
+    position: absolute !important;
+    top: 167px !important;
+    width: 61px !important;
+  }
+  
+  .escuela-screen .elm-employees-level-18 {
+    left: 13px !important;
+    top: 4px !important;
+  }
+  
+  .escuela-screen .overlap-134 {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0px 6px 58px #c3cbd61b;
+    height: 240px;
+    left: 1055px;
+    position: absolute;
+    top: 136px;
+    width: 254px;
+  }
+  
+  .escuela-screen .employee-10 {
+    height: 191px;
+    left: 75px;
+    overflow: hidden;
+    position: relative;
+    top: 24px;
+    width: 107px;
+  }
+  
+  .escuela-screen .overlap-135 {
+    height: 76px;
+    left: 15px;
+    position: absolute;
+    top: 0;
+    width: 77px;
+  }
+  
+  .escuela-screen .overlap-group-34 {
+    border: 2px solid;
+    border-color: #7d859234;
+    border-radius: 39.31px / 39.2px;
+    height: 78px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 79px;
+  }
+  
+  .escuela-screen .text-wrapper-238 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 1px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 96px;
+    width: 106px;
+  }
+  
+  .escuela-screen .text-wrapper-239 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 7px;
+    letter-spacing: 0;
+    line-height: 21px;
+    position: absolute;
+    text-align: center;
+    top: 119px;
+    width: 92px;
+  }
+  
+  .escuela-screen .elm-employees-level-19 {
+    height: 24px !important;
+    left: 24px !important;
+    position: absolute !important;
+    top: 167px !important;
+    width: 61px !important;
+  }
+  
+  .escuela-screen .overlap-136 {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0px 6px 58px #c3cbd61b;
+    height: 240px;
+    left: 1347px;
+    position: absolute;
+    top: 136px;
+    width: 254px;
+  }
+  
+  .escuela-screen .employee-11 {
+    height: 191px;
+    left: 67px;
+    overflow: hidden;
+    position: relative;
+    top: 24px;
+    width: 120px;
+  }
+  
+  .escuela-screen .overlap-137 {
+    height: 76px;
+    left: 21px;
+    position: absolute;
+    top: 0;
+    width: 76px;
+  }
+  
+  .escuela-screen .elm-general-progress-5 {
+    height: 76px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 76px;
+  }
+  
+  .escuela-screen .overlap-group-35 {
+    border: 2px solid;
+    border-color: #7d859234;
+    border-radius: 39.24px / 39.2px;
+    height: 78px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 78px;
+  }
+  
+  .escuela-screen .path-5 {
+    height: 77px;
+    left: -2px;
+    position: absolute;
+    top: -1px;
+    width: 78px;
+  }
+  
+  .escuela-screen .text-wrapper-240 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 7px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 96px;
+    width: 107px;
+  }
+  
+  .escuela-screen .text-wrapper-241 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: 21px;
+    position: absolute;
+    text-align: center;
+    top: 119px;
+    width: 120px;
+  }
+  
+  .escuela-screen .elm-employees-level-20 {
+    height: 24px !important;
+    left: 30px !important;
+    position: absolute !important;
+    top: 167px !important;
+    width: 61px !important;
+  }
+  
+  .escuela-screen .elm-employees-level-21 {
+    left: 11px !important;
+    top: 4px !important;
+  }
+  
+  .escuela-screen .overlap-138 {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0px 6px 58px #c3cbd61b;
+    height: 240px;
+    left: 470px;
+    position: absolute;
+    top: 414px;
+    width: 255px;
+  }
+  
+  .escuela-screen .employee-12 {
+    height: 192px;
+    left: 50px;
+    position: relative;
+    top: 23px;
+    width: 156px;
+  }
+  
+  .escuela-screen .overlap-139 {
+    height: 77px;
+    left: 40px;
+    position: absolute;
+    top: 0;
+    width: 77px;
+  }
+  
+  .escuela-screen .elm-general-progress-6 {
+    height: 77px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 77px;
+  }
+  
+  .escuela-screen .overlap-group-36 {
+    border: 2px solid;
+    border-color: #7d859234;
+    border-radius: 39.34px / 39.4px;
+    height: 79px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 79px;
+  }
+  
+  .escuela-screen .progress-16 {
+    height: 78px;
+    left: -2px;
+    position: absolute;
+    top: -1px;
+    width: 79px;
+  }
+  
+  .escuela-screen .text-wrapper-242 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 1px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 96px;
+    width: 155px;
+  }
+  
+  .escuela-screen .text-wrapper-243 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 14px;
+    letter-spacing: 0;
+    line-height: 21px;
+    position: absolute;
+    text-align: center;
+    top: 119px;
+    width: 128px;
+  }
+  
+  .escuela-screen .elm-employees-level-22 {
+    height: 24px !important;
+    left: 48px !important;
+    position: absolute !important;
+    top: 168px !important;
+    width: 61px !important;
+  }
+  
+  .escuela-screen .overlap-140 {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0px 6px 58px #c3cbd61b;
+    height: 240px;
+    left: 762px;
+    position: absolute;
+    top: 414px;
+    width: 255px;
+  }
+  
+  .escuela-screen .employee-13 {
+    height: 192px;
+    left: 61px;
+    position: relative;
+    top: 23px;
+    width: 135px;
+  }
+  
+  .escuela-screen .overlap-141 {
+    height: 77px;
+    left: 29px;
+    position: absolute;
+    top: 0;
+    width: 77px;
+  }
+  
+  .escuela-screen .overlap-group-37 {
+    border: 2px solid;
+    border-color: #7d859234;
+    border-radius: 39.38px / 39.4px;
+    height: 79px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 79px;
+  }
+  
+  .escuela-screen .path-6 {
+    height: 78px;
+    left: -2px;
+    position: absolute;
+    top: -1px;
+    width: 40px;
+  }
+  
+  .escuela-screen .text-wrapper-244 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 96px;
+    width: 135px;
+  }
+  
+  .escuela-screen .text-wrapper-245 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 21px;
+    letter-spacing: 0;
+    line-height: 21px;
+    position: absolute;
+    text-align: center;
+    top: 119px;
+    width: 93px;
+  }
+  
+  .escuela-screen .elm-employees-level-23 {
+    height: 24px !important;
+    left: 38px !important;
+    position: absolute !important;
+    top: 168px !important;
+    width: 61px !important;
+  }
+  
+  .escuela-screen .overlap-142 {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0px 6px 58px #c3cbd61b;
+    height: 240px;
+    left: 1055px;
+    position: absolute;
+    top: 414px;
+    width: 254px;
+  }
+  
+  .escuela-screen .employee-14 {
+    height: 192px;
+    left: 56px;
+    position: relative;
+    top: 23px;
+    width: 144px;
+  }
+  
+  .escuela-screen .overlap-143 {
+    height: 77px;
+    left: 33px;
+    position: absolute;
+    top: 0;
+    width: 77px;
+  }
+  
+  .escuela-screen .overlap-group-38 {
+    border: 2px solid;
+    border-color: #7d859234;
+    border-radius: 39.31px / 39.4px;
+    height: 79px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 79px;
+  }
+  
+  .escuela-screen .text-wrapper-246 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 1px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 96px;
+    width: 143px;
+  }
+  
+  .escuela-screen .text-wrapper-247 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 7px;
+    letter-spacing: 0;
+    line-height: 21px;
+    position: absolute;
+    text-align: center;
+    top: 119px;
+    width: 128px;
+  }
+  
+  .escuela-screen .elm-employees-level-24 {
+    height: 24px !important;
+    left: 42px !important;
+    position: absolute !important;
+    top: 168px !important;
+    width: 61px !important;
+  }
+  
+  .escuela-screen .overlap-144 {
+    height: 63px;
+    left: 471px;
+    position: absolute;
+    top: 42px;
+    width: 610px;
+  }
+  
+  .escuela-screen .segmented-control {
+    box-shadow: 0px 5px 4px #6c777126;
+    height: 63px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 610px;
+  }
+  
+  .escuela-screen .segmented-control-2 {
+    height: 63px;
+  }
+  
+  .escuela-screen .overlap-145 {
+    background-color: #e7f5eb;
+    border-radius: 24px;
+    height: 65px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 612px;
+  }
+  
+  .escuela-screen .unselected-tab {
+    height: 52px;
+    left: 8px;
+    position: absolute;
+    top: 6px;
+    width: 199px;
+  }
+  
+  .escuela-screen .team-wrapper {
+    height: 52px;
+    position: relative;
+  }
+  
+  .escuela-screen .team-2 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 70px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 14px;
+  }
+  
+  .escuela-screen .selected-tab-instance {
+    height: 52px !important;
+    left: 207px !important;
+    position: absolute !important;
+    top: 6px !important;
+    width: 199px !important;
+  }
+  
+  .escuela-screen .selected-tab-2 {
+    height: 52px !important;
+  }
+  
+  .escuela-screen .selected-tab-3 {
+    background-color: #109c53 !important;
+    height: 54px !important;
+    width: 201px !important;
+  }
+  
+  .escuela-screen .selected-tab-4 {
+    left: 81px !important;
+    top: 15px !important;
+  }
+  
+  .escuela-screen .team-3 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 495px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+  }
+  
+  .escuela-screen .profile-data {
+    height: 1026px;
+    left: 155px;
+    position: absolute;
+    top: 35px;
+    width: 265px;
+  }
+  
+  .escuela-screen .overlap-146 {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0px 6px 58px #c3cbd61b;
+    height: 1028px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 266px;
+  }
+  
+  .escuela-screen .overlap-147 {
+    height: 200px;
+    left: 25px;
+    position: absolute;
+    top: 461px;
+    width: 217px;
+  }
+  
+  .escuela-screen .input-withicon {
+    height: 102px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 217px;
+  }
+  
+  .escuela-screen .input-withicon-right {
+    height: 102px;
+    position: relative;
+  }
+  
+  .escuela-screen .overlap-group-39 {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #d8e0ef;
+    border-radius: 14px;
+    box-shadow: 0px 1px 2px #b7c8e039;
+    height: 50px;
+    left: 0;
+    position: absolute;
+    top: 32px;
+    width: 217px;
+  }
+  
+  .escuela-screen .div-wrapper-2 {
+    height: 24px;
+    left: 174px;
+    position: absolute;
+    top: 12px;
+    width: 24px;
+  }
+  
+  .escuela-screen .img-wrapper-2 {
+    height: 24px;
+    position: relative;
+  }
+  
+  .escuela-screen .location {
+    height: 20px;
+    left: 4px;
+    position: absolute;
+    top: 2px;
+    width: 16px;
+  }
+  
+  .escuela-screen .text-wrapper-248 {
+    color: #7d8592;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 17px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 10px;
+    white-space: nowrap;
+  }
+  
+  .escuela-screen .position {
+    color: #7d8592;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 700;
+    left: 6px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 1px;
+    white-space: nowrap;
+  }
+  
+  .escuela-screen .input-withicon-right-wrapper {
+    height: 102px;
+    left: 0;
+    position: absolute;
+    top: 98px;
+    width: 217px;
+  }
+  
+  .escuela-screen .calendar {
+    height: 20px;
+    left: 3px;
+    position: absolute;
+    top: 1px;
+    width: 18px;
+  }
+  
+  .escuela-screen .icon-3 {
+    height: 44px;
+    left: 205px;
+    position: absolute;
+    top: 17px;
+    width: 44px;
+  }
+  
+  .escuela-screen .icn-general-filter-wrapper {
+    background-color: #f4f9fd;
+    border-radius: 10px;
+    height: 46px;
+    left: -1px;
+    position: relative;
+    top: -1px;
+    width: 46px;
+  }
+  
+  .escuela-screen .icn-general-filter {
+    height: 24px;
+    left: 12px;
+    position: relative;
+    top: 10px;
+    width: 24px;
+  }
+  
+  .escuela-screen .edit {
+    height: 21px;
+    left: 1px;
+    position: absolute;
+    top: 2px;
+    width: 21px;
+  }
+  
+  .escuela-screen .input-wrapper {
+    height: 98px;
+    left: 25px;
+    position: absolute;
+    top: 265px;
+    width: 217px;
+  }
+  
+  .escuela-screen .input-10 {
+    height: 98px;
+    position: relative;
+  }
+  
+  .escuela-screen .overlap-group-40 {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #d8e0ef;
+    border-radius: 14px;
+    box-shadow: 0px 1px 2px #b7c8e039;
+    height: 48px;
+    left: 0;
+    position: absolute;
+    top: 31px;
+    width: 217px;
+  }
+  
+  .escuela-screen .text-wrapper-249 {
+    color: #7d8592;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 17px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 9px;
+    white-space: nowrap;
+  }
+  
+  .escuela-screen .text-wrapper-250 {
+    color: #7d8592;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 700;
+    left: 6px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: -1px;
+    white-space: nowrap;
+  }
+  
+  .escuela-screen .input-11 {
+    height: 98px;
+    left: 25px;
+    position: absolute;
+    top: 363px;
+    width: 217px;
+  }
+  
+  .escuela-screen .elm-general-divider {
+    background-color: #e4e6e8;
+    height: 1px;
+    left: 1px;
+    position: absolute;
+    top: 198px;
+    width: 265px;
+  }
+  
+  .escuela-screen .overlap-148 {
+    height: 72px;
+    left: 25px;
+    position: absolute;
+    top: 25px;
+    width: 72px;
+  }
+  
+  .escuela-screen .elm-general-progress-7 {
+    height: 72px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 72px;
+  }
+  
+  .escuela-screen .overlap-149 {
+    background-image: url(https://cdn.animaapp.com/projects/67f56811c32b493e71bc8ca0/releases/67f70d2c71d63f2aaae2edd1/img/progress-8.svg);
+    background-size: 100% 100%;
+    border: 2px solid;
+    border-color: #7d859234;
+    border-radius: 37px;
+    height: 74px;
+    left: -3px;
+    position: relative;
+    top: -3px;
+    width: 74px;
+  }
+  
+  .escuela-screen .elm-header-photo {
+    height: 68px;
+    left: 2px;
+    object-fit: cover;
+    position: absolute;
+    top: 2px;
+    width: 68px;
+  }
+  
+  .escuela-screen .evan-yates {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 22px;
+    font-weight: 700;
+    left: 25px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 112px;
+  }
+  
+  .escuela-screen .text-wrapper-251 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 18px;
+    font-weight: 700;
+    left: 25px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 226px;
+    white-space: nowrap;
+  }
+  
+  .escuela-screen .input-12 {
+    height: 98px;
+    left: 25px;
+    position: absolute;
+    top: 713px;
+    width: 217px;
+  }
+  
+  .escuela-screen .input-13 {
+    height: 98px;
+    left: 25px;
+    position: absolute;
+    top: 811px;
+    width: 217px;
+  }
+  
+  .escuela-screen .input-14 {
+    height: 98px;
+    left: 25px;
+    position: absolute;
+    top: 909px;
+    width: 217px;
+  }
+  
+  .escuela-screen .text-wrapper-252 {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 18px;
+    font-weight: 700;
+    left: 25px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    top: 674px;
+    white-space: nowrap;
+  }
+  
+  .escuela-screen .UI-UX-designer {
+    color: #0a1629;
+    font-family: "Nunito Sans", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 25px;
+    letter-spacing: 0;
+    line-height: 21px;
+    position: absolute;
+    top: 147px;
+    white-space: nowrap;
+  }
