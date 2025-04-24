@@ -7,6 +7,8 @@ import { FormularioEscuela4 } from "./screens/FormularioEscuela4";
 import { FormularioAliado } from "./screens/FormularioAliado";
 import { Inicio } from "./screens/Inicio";
 import { Register } from "./screens/Register";
+
+
 /*
 import { Chat } from "./screens/Chat";
 import { ChatAliado } from "./screens/ChatAliado";
@@ -101,6 +103,10 @@ const router = createBrowserRouter([
     path: "/formulario-aliado-1",
     element: <FormularioAliado />,
   },
+  {
+    path: "/perfil",
+    element: <ConsultProfile/>, 
+  }
 ]);
 
 export const App = () => {

@@ -9,6 +9,7 @@ import { GeneralBan1 } from "../../icons/GeneralBan1";
 import { SocialConnectionLove1 } from "../../icons/SocialConnectionLove1";
 import "./style.css";
 
+
 export const Inicio = () => {
   const navigate = useNavigate();
 

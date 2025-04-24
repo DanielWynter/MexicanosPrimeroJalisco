@@ -1,5 +1,5 @@
 import db from "../db/knex.js";
-//Looool
+
 
 const registerAllyFormat = async (req, res) => {
   // Destructure ALL fields from the form
