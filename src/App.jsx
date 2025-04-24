@@ -8,10 +8,12 @@ import { FormularioAliado } from "./screens/FormularioAliado";
 import { Inicio } from "./screens/Inicio";
 import { Register } from "./screens/Register";
 
+<<<<<<< HEAD
 
 /*
+=======
+>>>>>>> 75f49b42ab094dc4f334b87ac618840323e01054
 import { Chat } from "./screens/Chat";
-import { ChatAliado } from "./screens/ChatAliado";
 import { ChatScreen } from "./screens/ChatScreen";
 import { Escuela } from "./screens/Escuela";
 import { EscuelaScreen } from "./screens/EscuelaScreen";
@@ -21,8 +23,8 @@ import { Mapado } from "./screens/Mapado";
 import { MatchAliado } from "./screens/MatchAliado";
 import { MatchAliadoScreen } from "./screens/MatchAliadoScreen";
 import { Proyectos } from "./screens/Proyectos";
-import { Usuarios } from "./screens/Usuarios";
-*/
+import { Usuario } from "./screens/Usuario";
+
 
 const router = createBrowserRouter([
   {
@@ -33,14 +35,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
-  /*
+
   {
     path: "/chat",
     element: <Chat />,
-  },
-  {
-    path: "/chatAliado",
-    element: <ChatAliado />,
   },
   {
     path: "/escuela",
@@ -75,14 +73,14 @@ const router = createBrowserRouter([
     element: <Proyectos />,
   },
   {
-    path: "/usuarios",
-    element: <Usuarios />,
+    path: "/usuario",
+    element: <Usuario />,
   },
   {
     path: "/chatScreen",
     element: <ChatScreen />,
   },
-  */
+
   {
     path: "/formulario-escuela-1",
     element: <FormularioEscuela />,

@@ -1,1 +1,0 @@
-export { ChatAliado } from "./ChatAliado";
