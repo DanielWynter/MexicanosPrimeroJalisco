@@ -41,7 +41,7 @@ export const Inicio = () => {
                       <div className="text-container">
                         <div className="frame" />
 
-                        <div className="text-wrapper-2">5,000,0000</div>
+                        <div className="text-wrapper-2">5,000,000</div>
 
                         <div className="paragraph">DONADORES</div>
                       </div>
@@ -151,9 +151,9 @@ export const Inicio = () => {
                   </div>
 
                   <div className="nav-menu">
-                    <div className="text-wrapper-4">Inicio</div>
+                    <div className="text-wrapper-4" onClick={() => navigate("mapado")} style={{ cursor: "pointer" }}>Mapa</div>
 
-                    <div className="text-wrapper-5">Novedades</div>
+                    <div className="text-wrapper-5">Catalogo</div>
 
                     <div className="text-wrapper-6">Nosotros</div>
 
