@@ -7,12 +7,9 @@ import { FormularioEscuela4 } from "./screens/FormularioEscuela4";
 import { FormularioAliado } from "./screens/FormularioAliado";
 import { Inicio } from "./screens/Inicio";
 import { Register } from "./screens/Register";
+import { IniciarSesion } from "./screens/IniciarSesion";
 
-<<<<<<< HEAD
 
-/*
-=======
->>>>>>> 75f49b42ab094dc4f334b87ac618840323e01054
 import { Chat } from "./screens/Chat";
 import { ChatScreen } from "./screens/ChatScreen";
 import { Escuela } from "./screens/Escuela";
@@ -102,9 +99,11 @@ const router = createBrowserRouter([
     element: <FormularioAliado />,
   },
   {
-    path: "/perfil",
-    element: <ConsultProfile/>, 
-  }
+    path: "/iniciarSesion",
+    element: <IniciarSesion />,
+  }, 
+
+
 ]);
 
 export const App = () => {

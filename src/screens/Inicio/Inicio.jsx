@@ -161,7 +161,7 @@ export const Inicio = () => {
                     <div className="text-wrapper-7" onClick={() => navigate("formulario-aliado-1")} style={{ cursor: "pointer" }}>Contacto</div>
 
                     <div className="group-4">
-                      <div className="text-wrapper-8">Legal</div>
+                      <div className="text-wrapper-8" onClick={() => navigate("iniciarSesion")} style={{ cursor: "pointer" }}>Legal</div>
                     </div>
                   </div>
 

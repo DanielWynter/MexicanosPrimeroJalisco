@@ -13,6 +13,9 @@ import registerRepresentative from './endpoints/registerRepresentative.js';
 import registerNaturalPerson from './endpoints/registerNaturalPerson.js';
 import registerAllyFormat from './endpoints/registerAllyFormat.js';
 import registerSchoolComplete from './endpoints/registerSchoolRegistrations.js';
+import iniciarSesion from './endpoints/iniciarSesion.js';
+
+
 
 const app = express();
 const port = 3000;
@@ -63,6 +66,10 @@ app.post('/ally_format', registerAllyFormat);
 
 // Registro
 app.post('/school_registrations', registerSchoolComplete);
+
+// Iniciar sesion
+app.post('/Inicio', iniciarSesion);
+
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
