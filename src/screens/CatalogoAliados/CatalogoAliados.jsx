@@ -4,33 +4,33 @@ import { Sort } from "../../icons/Sort";
 import { useNavigate } from "react-router-dom";
 
 
-export const CatalogoEscuelas = () => {
+export const CatalogoAliados = () => {
   const navigate = useNavigate();
-  const [schools, setSchools] = useState([]);
+  const [allies, setAllies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [supportFilter, setSupportFilter] = useState("");
 
   useEffect(() => {
-    const fetchSchools = async () => {
+    const fetchAllies = async () => {
       try {
         const url = supportFilter
-          ? `http://localhost:5000/catalogo/escuelas?apoyo=${encodeURIComponent(supportFilter)}`
-          : "http://localhost:5000/catalogo/escuelas";
+          ? `http://localhost:5000/catalogo/aliados?apoyo=${encodeURIComponent(supportFilter)}`
+          : "http://localhost:5000/catalogo/aliados";
 
         const res = await fetch(url);
-        if (!res.ok) throw new Error("Error al cargar escuelas");
+        if (!res.ok) throw new Error("Error al cargar aliados");
         const data = await res.json();
-        setSchools(data.users);
+        setAllies(data.users);
       } catch (err) {
         console.error(err);
-        setError("No se pudo cargar el catálogo de escuelas.");
+        setError("No se pudo cargar el catálogo de aliados.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchSchools();
+    fetchAllies();
   }, [supportFilter]);
 
   return (
@@ -48,22 +48,22 @@ export const CatalogoEscuelas = () => {
 
                   <div className="nav-menu">
                     <div className="text-wrapper-4" onClick={() => navigate("/admin/inicio")} style={{cursor:"pointer"}}>Inicio</div>
-                    <div className="text-wrapper-5">Solicitudes</div>
+                    <div className="text-wrapper-5">Proyectos</div>
 
-                    <div className="text-wrapper-6">Proyectos</div>
+                    <div className="text-wrapper-6" onClick={() => navigate("/admin/catalogo/escuelas")} style={{cursor:"pointer"}}>Escuelas</div>
 
-                    <div className="text-wrapper-7" onClick={() => navigate("/admin/catalogo/escuelas")} style={{cursor:"pointer"}}>Mapa</div>
+                    <div className="text-wrapper-7" >Mapa</div>
 
                     <div className="group-4">
-                      <div className="text-wrapper-8" onClick={() => navigate("/admin/catalogo/aliados")} style={{cursor:"pointer"}}>Aliados</div>
+                      <div className="text-wrapper-8" onClick={() => navigate("/admin/catalogo/escuelas")} style={{cursor:"pointer"}}>Solicitudes</div>
                     </div>
                   </div>
-    
+                  
                   <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
                 </div>
       <div className="catalogo-container">
       
-      <h2 className="catalogo-title">Catálogo de Escuelas</h2>
+      <h2 className="catalogo-title">Catálogo de Aliados</h2>
 
       <div className="catalogo-filter-container">
   <div className="catalogo-filter-box">
@@ -90,41 +90,37 @@ export const CatalogoEscuelas = () => {
       </div>
     </div>
 
-      {loading && <p>Cargando escuelas...</p>}
+      {loading && <p>Cargando aliados...</p>}
       {error && <p className="error">{error}</p>}
 
       <div className="catalogo-grid">
         {/* Encabezados */}
         <div className="catalogo-header">
           <div className="catalogo-cell">Nombre</div>
-          <div className="catalogo-cell">Calle</div>
-          <div className="catalogo-cell">Sector</div>
-          <div className="catalogo-cell">Nivel Educativo</div>
+          <div className="catalogo-cell">Dirección</div>
+          <div className="catalogo-cell">Página Web</div>
+          <div className="catalogo-cell">Teléfono</div>
           <div className="catalogo-cell">Necesidades</div>
         </div>
 
         {/* Datos */}
-        {schools.map((school) => (
-          <div className="catalogo-row" key={school.schoolID}>
-            <div className="catalogo-cell">{school.schoolName}</div>
-            <div className="catalogo-cell">
-              {[school.street, school.colony, school.municipality, school.zip]
-                .filter(Boolean) // para quitar campos vacíos
-                .join(", ")}
+        {allies.map((ally) => {
+          const nombre = ally.organizationName || ally.npInstitution || "No especificado";
+          const direccion = ally.organizationAddress || "No especificado";
+          const paginaWeb = ally.organizationWeb || "-";
+          const telefono = ally.npPhone || user.userPhone;
+          
+          return (
+            <div className="catalogo-row" key={ally.moralPersonID || ally.naturalPersonID}>
+              <div className="catalogo-cell">{nombre}</div>
+              <div className="catalogo-cell">{direccion}</div>
+              <div className="catalogo-cell">{paginaWeb}</div>
+              <div className="catalogo-cell">{telefono}</div>
+              <div className="catalogo-cell">{"Aquí pondrás el apoyo si lo recuperas después"}</div>
             </div>
-            <div className="catalogo-cell">{school.schoolSector}</div>
-            <div className="catalogo-cell">
-              {Array.isArray(school.educationLevel)
-                ? school.educationLevel.join(", ")
-                : school.educationLevel || "No especificado"}
-            </div>
-            <div className="catalogo-cell">
-              {Array.isArray(school.externalSupport)
-                ? school.externalSupport.join(", ")
-                : school.externalSupport || "No especificado"}
-            </div>
-          </div>
-        ))}
+          );
+        })}
+
       </div>
     </div>
     </div>

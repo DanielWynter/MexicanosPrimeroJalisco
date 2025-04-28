@@ -13,6 +13,8 @@ import registerRepresentative from './endpoints/registerRepresentative.js';
 import registerNaturalPerson from './endpoints/registerNaturalPerson.js';
 import registerAllyFormat from './endpoints/registerAllyFormat.js';
 import registerSchoolComplete from './endpoints/registerSchoolRegistrations.js';
+import getCatalogoEscuelas from './endpoints/getCatalogoEscuelas.js';
+import getCatalogoAliados from './endpoints/getCatalogoAliados.js';
 
 const app = express();
 const port = 3000;
@@ -63,6 +65,12 @@ app.post('/ally_format', registerAllyFormat);
 
 // Registro
 app.post('/school_registrations', registerSchoolComplete);
+
+// Catalogo de escuelas, administrador
+app.get('/catalogo/escuelas', getCatalogoEscuelas);
+
+// Catalogo de aliados, administrador
+app.get('/catalogo/aliados', getCatalogoAliados);
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);

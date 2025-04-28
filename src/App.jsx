@@ -8,11 +8,6 @@ import { FormularioAliado } from "./screens/FormularioAliado";
 import { Inicio } from "./screens/Inicio";
 import { Register } from "./screens/Register";
 
-<<<<<<< HEAD
-
-/*
-=======
->>>>>>> 75f49b42ab094dc4f334b87ac618840323e01054
 import { Chat } from "./screens/Chat";
 import { ChatScreen } from "./screens/ChatScreen";
 import { Escuela } from "./screens/Escuela";
@@ -24,6 +19,10 @@ import { MatchAliado } from "./screens/MatchAliado";
 import { MatchAliadoScreen } from "./screens/MatchAliadoScreen";
 import { Proyectos } from "./screens/Proyectos";
 import { Usuario } from "./screens/Usuario";
+
+import { AdminStart } from "./screens/AdminStart";
+import { CatalogoEscuelas } from "./screens/CatalogoEscuelas";
+import { CatalogoAliados } from "./screens/CatalogoAliados";
 
 
 const router = createBrowserRouter([
@@ -69,10 +68,6 @@ const router = createBrowserRouter([
     element: <MatchAliadoScreen />,
   },
   {
-    path: "/proyectos",
-    element: <Proyectos />,
-  },
-  {
     path: "/usuario",
     element: <Usuario />,
   },
@@ -104,7 +99,19 @@ const router = createBrowserRouter([
   {
     path: "/perfil",
     element: <ConsultProfile/>, 
-  }
+  },
+  {
+    path: "/admin/inicio",
+    element: <AdminStart />,
+  },
+  {
+    path: "/admin/catalogo/escuelas",
+    element: <CatalogoEscuelas />,
+  },
+  {
+    path: "/admin/catalogo/aliados",
+    element: <CatalogoAliados />,
+  },
 ]);
 
 export const App = () => {
