@@ -100,7 +100,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/IniciarSesion",
-    element: <iniciarSesion />,
+    element: <IniciarSesion />,
   }, 
 
 
