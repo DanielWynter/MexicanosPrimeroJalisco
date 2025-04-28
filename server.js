@@ -68,7 +68,7 @@ app.post('/ally_format', registerAllyFormat);
 app.post('/school_registrations', registerSchoolComplete);
 
 // Iniciar sesion
-app.post('/Inicio', iniciarSesion);
+app.post('/IniciarSesion', iniciarSesion);
 
 
 app.listen(port, () => {

@@ -99,8 +99,8 @@ const router = createBrowserRouter([
     element: <FormularioAliado />,
   },
   {
-    path: "/iniciarSesion",
-    element: <IniciarSesion />,
+    path: "/IniciarSesion",
+    element: <iniciarSesion />,
   }, 
 
 
