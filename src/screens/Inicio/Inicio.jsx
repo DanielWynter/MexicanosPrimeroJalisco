@@ -42,7 +42,7 @@ export const Inicio = () => {
                       <div className="text-container">
                         <div className="frame" />
 
-                        <div className="text-wrapper-2">5,000,0000</div>
+                        <div className="text-wrapper-2">5</div>
 
                         <div className="paragraph">DONADORES</div>
                       </div>
