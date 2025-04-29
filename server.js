@@ -21,6 +21,8 @@ import getCatalogoEscuelas from './endpoints/getCatalogoEscuelas.js';
 import getCatalogoAliados from './endpoints/getCatalogoAliados.js';
 import registerNeed from './endpoints/registerNeed.js';
 import registerAllyOffering from './endpoints/registerAllyOffering.js';
+import forgotPasswordController from './endpoints/forgotPassword.js';
+import changePasswordController from './endpoints/changePassword.js';
 
 
 const app = express();
@@ -54,12 +56,19 @@ app.post('/school_registrations', registerSchoolComplete);
 app.post('/needs', registerNeed);
 app.post('/ally-offerings', registerAllyOffering);
 
+
 // Rutas de consulta
 app.get('/schools', getSchools);
 app.get('/verificar-sesion', verificarSesion);
 
 // Login
 app.post('/login', iniciarSesion); // 👈 LOGIN agregado aquí
+
+//Solicitud de cambio de contraseña
+app.post('/forgotpassword', forgotPasswordController);
+
+//Cambio de contraseña
+app.post('/changepassword', changePasswordController);
 
 // Catalogo de escuelas, administrador
 app.get('/catalogo/escuelas', getCatalogoEscuelas);

@@ -27,6 +27,8 @@ import { CatalogoAliados } from "./screens/CatalogoAliados";
 import { UsersCatalogoEscuelas } from "./screens/UsersCatalogoEscuelas";
 import { UsersCatalogoAliados } from "./screens/UsersCatalogoAliados";
 import { FormularioAliado2 } from "./screens/FormularioAliado2";
+import { ForgotPasswordPage } from "./screens/ForgotPasswordPage";
+import { ResetPassword } from "./screens/ResetPassword";
 
 const router = createBrowserRouter([
   {
@@ -138,6 +140,12 @@ const router = createBrowserRouter([
     path: "/admin/catalogo/aliados",
     element: <CatalogoAliados />,
   },
+  { path: "/forgot-password", 
+    element: <ForgotPasswordPage /> 
+  },
+  { path: "/reset-password", 
+    element: <ResetPassword /> 
+  }
 ]);
 
 export const App = () => {
