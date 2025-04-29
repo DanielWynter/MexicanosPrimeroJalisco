@@ -24,6 +24,8 @@ import getSolicitudesAliados from './endpoints/getSolicitudesAliados.js';
 import aceptarAliado from './endpoints/aceptarAliado.js';
 import getSolicitudesEscuelas from './endpoints/getSolicitudesEscuelas.js';
 import aceptarEscuela from './endpoints/aceptarEscuela.js';
+import createProject from './endpoints/createProject.js';
+import getCatalogoProyectos from './endpoints/getCatalogoProyectos.js';
 
 const app = express();
 const port = 3000;
@@ -71,6 +73,12 @@ app.get('/catalogo/escuelas', getCatalogoEscuelas);
 
 // Catalogo de aliados, administrador
 app.get('/catalogo/aliados', getCatalogoAliados);
+
+// Catalogo de proyectos, administrador
+app.get('/catalogo/proyectos', getCatalogoProyectos);
+
+// Crear proyecto, administrador
+app.post('/projects', createProject);
 
 // Ruta para obtener la información de una escuela por ID
 app.get('/escuelas/:schoolID', async (req, res) => {

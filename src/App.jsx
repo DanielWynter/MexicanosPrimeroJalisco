@@ -28,6 +28,8 @@ import { UsersCatalogoEscuelas } from "./screens/UsersCatalogoEscuelas";
 import { UsersCatalogoAliados } from "./screens/UsersCatalogoAliados";
 import { SolicitudesAliados } from "./screens/SolicitudesAliados";
 import { SolicitudesEscuelas } from "./screens/SolicitudesEscuelas";
+import { CatalogoProyectos } from "./screens/CatalogoProyectos/CatalogoProyectos";
+import { AdminCreateProject } from "./screens/AdminCreateProject/AdminCreateProject";
 
 const router = createBrowserRouter([
   { path: "/", element: <Inicio /> },
@@ -58,8 +60,10 @@ const router = createBrowserRouter([
   { path: "/admin/catalogo/aliados", element: <CatalogoAliados /> },
   { path: "/admin/solicitudes/aliados", element: <SolicitudesAliados /> },
   { path: "/admin/solicitudes/escuelas", element: <SolicitudesEscuelas /> },
-]);
+  { path: "/admin/catalogo/proyectos", element: <CatalogoProyectos />},
+  { path: "/admin/project/create", element: <AdminCreateProject /> },])
 
 export const App = () => {
   return <RouterProvider router={router} />;
 };
+
