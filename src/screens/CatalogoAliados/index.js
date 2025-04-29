@@ -1,0 +1,1 @@
+export { CatalogoAliados } from "./CatalogoAliados";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { Icon10 } from "../../icons/Icon10";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 export const FormularioEscuela = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     schoolName: "",
     schoolSector: "",
@@ -18,8 +19,17 @@ export const FormularioEscuela = () => {
     module: "",
     sustenance: "",
   });
-  const [errorMessage, setErrorMessage] = useState(""); // Para almacenar los mensajes de error
-  const navigate = useNavigate(); 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // 🔥 Para bloquear doble envío
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = localStorage.getItem('token');
+    
+    if (!user || !token || user.userRol !== "school" || !user.schoolID) {
+      navigate("/iniciarSesion");
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,32 +37,66 @@ export const FormularioEscuela = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Limpiar mensaje de error en cada intento de submit
+    setErrorMessage("");
+
+    if (isSubmitting) return; // 🔥 Si ya se está enviando, no dejar hacer nada más
+    setIsSubmitting(true); // 🔥 Marcamos que estamos enviando
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = localStorage.getItem('token');
+
+    if (!user || !user.schoolID || !token) {
+      setErrorMessage("Debes iniciar sesión como escuela para llenar este formulario.");
+      navigate("/iniciarSesion");
+      return;
+    }
+
+    const dataToSend = {
+      ...form,
+    };
 
     try {
       const response = await fetch("http://localhost:3000/format_school", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(dataToSend),
       });
 
       const result = await response.json();
+
       if (response.ok) {
         console.log("Escuela registrada:", result.data);
+
+        // 🔥 Limpiar el formulario para evitar doble envío
+        setForm({
+          schoolName: "",
+          schoolSector: "",
+          educationLevel: "",
+          street: "",
+          colony: "",
+          municipality: "",
+          zip: "",
+          module: "",
+          sustenance: "",
+        });
+
         navigate("/formulario-escuela-2", { 
           state: { 
-            format_school: form // Enviamos los datos del formulario actual
+            format_school: { ...form, schoolID: user.schoolID } 
           } 
-        }); // Redirigir al siguiente paso solo si la respuesta es exitosa
+        });
       } else {
         console.error("Error:", result.message);
-        setErrorMessage(result.message || "No se pudo registrar la escuela."); // Mostrar error si la respuesta no es exitosa
+        setErrorMessage(result.message || "No se pudo registrar la escuela.");
+        setIsSubmitting(false); // 🔥 Permitir reintento si falla
       }
     } catch (error) {
       console.error("Error en la solicitud:", error);
-      setErrorMessage("Hubo un error en la solicitud, por favor intenta nuevamente."); // Mostrar error en caso de problemas de red
+      setErrorMessage("Hubo un error en la solicitud, por favor intenta nuevamente.");
+      setIsSubmitting(false); // 🔥 Permitir reintento si falla
     }
   };
 
@@ -65,7 +109,7 @@ export const FormularioEscuela = () => {
               <div className="title">
                 <div className="text-wrapper-21">ESCUELA</div>
                 <Button
-                  className="button-instance" 
+                  className="button-instance"
                   onClick={() => navigate("/")}
                   icon={<Icon10 className="icon-10" color="#7E92A2" />}
                   style="white"
@@ -138,6 +182,7 @@ export const FormularioEscuela = () => {
                         className="input-text"
                       />
                     </div>
+
                     <Input
                       className="input-instance"
                       icon={<Icon11 className="icon-11" />}
@@ -147,6 +192,7 @@ export const FormularioEscuela = () => {
                       value={form.module}
                       onChange={(e) => setForm({ ...form, module: e.target.value })}
                     />
+
                     <Input
                       className="input-instance"
                       icon={<Icon11 className="icon-11" />}
@@ -159,22 +205,22 @@ export const FormularioEscuela = () => {
                   </div>
                 </div>
 
-                {/* Mostrar mensaje de error si lo hay */}
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
 
                 <div className="action">
-                  <div className="progress"></div>
-
+                  <div className="progress" />
                   <div className="action-2">
                     <Button
                       className="button-4"
                       style="primary"
-                      text="Siguiente"
+                      text={isSubmitting ? "Enviando..." : "Siguiente"}
                       type="default"
-                      onClick={handleSubmit} // Llamamos a handleSubmit al hacer clic
+                      onClick={handleSubmit}
+                      disabled={isSubmitting} // 🔥 Bloquear botón mientras envía
                     />
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

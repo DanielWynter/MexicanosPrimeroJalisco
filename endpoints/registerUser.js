@@ -44,23 +44,26 @@ const registerUser = async (req, res) => {
           await trx.rollback();
           return res.status(400).json({ message: 'El CCT ya está registrado' });
         }
-
-        [school] = await trx('schools')
-          .insert({
-            workCenterKey,
-          })
-          .returning('*');
-
-        await trx('users').where('userID', userID).update({
-          schoolID: school.schoolID
-        });
+      
+        school = await trx('schools')
+          .insert({ workCenterKey })
+          .returning(['schoolID']);
+      
+        if (!school || school.length === 0) {
+          await trx.rollback();
+          return res.status(500).json({ message: 'Error al crear la escuela' });
+        }
+      
+        await trx('users')
+          .where('userID', userID)
+          .update({ schoolID: school[0].schoolID });
       }
 
       if (userRol === 'ally') {
-        [ally] = await trx('ally').insert({}).returning('*');
+        ally = await trx('ally').insert({}).returning(['allyID']);
 
         await trx('users').where('userID', userID).update({
-          allyID: ally.allyID
+          allyID: ally[0].allyID
         });
       }
 
@@ -71,8 +74,8 @@ const registerUser = async (req, res) => {
         message: 'Usuario registrado con éxito',
         data: {
           userID,
-          schoolID: school ? school.schoolID : null,
-          allyID: ally ? ally.allyID : null,
+          schoolID: school ? school[0].schoolID : null,
+          allyID: ally ? ally[0].allyID : null,
           userRol
         }
       });

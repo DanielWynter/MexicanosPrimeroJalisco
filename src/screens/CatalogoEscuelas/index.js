@@ -1,0 +1,1 @@
+export { CatalogoEscuelas } from "./CatalogoEscuelas";

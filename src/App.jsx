@@ -7,7 +7,7 @@ import { FormularioEscuela4 } from "./screens/FormularioEscuela4";
 import { FormularioAliado } from "./screens/FormularioAliado";
 import { Inicio } from "./screens/Inicio";
 import { Register } from "./screens/Register";
-
+import { IniciarSesion } from "./screens/IniciarSesion";
 import { Chat } from "./screens/Chat";
 import { ChatScreen } from "./screens/ChatScreen";
 import { Escuela } from "./screens/Escuela";
@@ -19,7 +19,13 @@ import { MatchAliado } from "./screens/MatchAliado";
 import { MatchAliadoScreen } from "./screens/MatchAliadoScreen";
 import { Proyectos } from "./screens/Proyectos";
 import { Usuario } from "./screens/Usuario";
-
+import { AdminStart } from "./screens/AdminStart";
+import { AllyStart } from "./screens/AllyStart";
+import { SchoolStart } from "./screens/SchoolStart";
+import { CatalogoEscuelas } from "./screens/CatalogoEscuelas";
+import { CatalogoAliados } from "./screens/CatalogoAliados";
+import { UsersCatalogoEscuelas } from "./screens/UsersCatalogoEscuelas";
+import { UsersCatalogoAliados } from "./screens/UsersCatalogoAliados";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +36,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
-
+  {
+    path: "iniciarSesion",
+    element:<IniciarSesion/>
+  },
   {
     path: "/chat",
     element: <Chat />,
@@ -95,6 +104,34 @@ const router = createBrowserRouter([
   {
     path: "/formulario-aliado-1",
     element: <FormularioAliado />,
+  },
+  {
+    path: "/allyStart",
+    element: <AllyStart />,
+  },
+  {
+    path: "/admin/inicio",
+    element: <AdminStart />,
+  },
+  {
+    path: "/schoolStart",
+    element: <SchoolStart />,
+  },
+  {
+    path: "/aliado/catalogo/escuelas",
+    element: <UsersCatalogoEscuelas />,
+  },
+  {
+    path: "/escuela/catalogo/aliados",
+    element: <UsersCatalogoAliados />,
+  },
+  {
+    path: "/admin/catalogo/escuelas",
+    element: <CatalogoEscuelas />,
+  },
+  {
+    path: "/admin/catalogo/aliados",
+    element: <CatalogoAliados />,
   },
 ]);
 

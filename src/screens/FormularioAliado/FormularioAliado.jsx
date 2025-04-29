@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { Icon10 } from "../../icons/Icon10";
@@ -33,35 +33,123 @@ export const FormularioAliado = () => {
     npInstitution: "",
     npReason: "",
   });
-  const [errorMessage, setErrorMessage] = useState(""); // Para almacenar los mensajes de error
+
   const navigate = useNavigate(); 
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = localStorage.getItem('token');
+  
+    if (!user || !token || user.userRol !== "ally" || !user.allyID) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      navigate("/iniciarSesion");
+    }
+  }, [navigate]);
+  
+  const [errorMessage, setErrorMessage] = useState(""); // Para almacenar los mensajes de error
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Limpiar mensaje de error en cada intento de submit
-
+    setErrorMessage("");
+  
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = localStorage.getItem('token');
+  
+    if (!user || !user.allyID) {
+      setErrorMessage("Debes iniciar sesión como aliado para llenar este formulario.");
+      return;
+    }
+  
     try {
-      const response = await fetch("http://localhost:3000/ally_format", {
+      // 🔥 1. Mandar datos de la persona moral
+      await fetch("http://localhost:3000/moral_person", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
-        body: JSON.stringify(formAlly),
+        body: JSON.stringify({
+          orgName: formAlly.orgName,
+          giro: formAlly.giro,
+          orgPurpose: formAlly.orgPurpose,
+          orgAddress: formAlly.orgAddress,
+          orgPhone: formAlly.orgPhone,
+          orgWeb: formAlly.orgWeb,
+        }),
       });
-
-      const result = await response.json();
-      if (response.ok) {
-        console.log("Registrado:", result.data);
-        navigate("/"); // Redirigir al siguiente paso solo si la respuesta es exitosa
-      } else {
-        console.error("Error:", result.message);
-        setErrorMessage(result.message || "No se pudo registrar."); // Mostrar error si la respuesta no es exitosa
-      }
+  
+      // 🔥 2. Mandar datos de escritura pública
+      await fetch("http://localhost:3000/public_scripture", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          psNumber: formAlly.psNumber,
+          psDate: formAlly.psDate,
+          notaryName: formAlly.notaryName,
+          city: formAlly.city,
+        }),
+      });
+  
+      // 🔥 3. Mandar constancia fiscal
+      await fetch("http://localhost:3000/tax_certificate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          rfc: formAlly.rfc,
+          socialReason: formAlly.socialReason,
+          regimen: formAlly.regimen,
+          taxAddress: formAlly.taxAddress,
+        }),
+      });
+  
+      // 🔥 4. Mandar datos del representante
+      await fetch("http://localhost:3000/representative", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          representativeName: formAlly.representativeName,
+          representativeAddress: formAlly.representativeAddress,
+          representativePhone: formAlly.representativePhone,
+          area: formAlly.area,
+        }),
+      });
+  
+      // 🔥 5. Mandar datos de la persona física
+      await fetch("http://localhost:3000/natural_person", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          npName: formAlly.npName,
+          npEmail: formAlly.npEmail,
+          npPhone: formAlly.npPhone,
+          npCURP: formAlly.npCURP,
+          npInstitution: formAlly.npInstitution,
+          npReason: formAlly.npReason,
+        }),
+      });
+  
+      // ✅ Si todo salió bien
+      navigate("/");
+  
     } catch (error) {
-      console.error("Error en la solicitud:", error);
-      setErrorMessage("Hubo un error en la solicitud, por favor intenta nuevamente."); // Mostrar error en caso de problemas de red
+      console.error("Error en el registro:", error);
+      setErrorMessage("Hubo un error en el registro.");
     }
   };
+  
 
   return (
     <div className="formulario-escuela">

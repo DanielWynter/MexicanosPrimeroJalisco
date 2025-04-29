@@ -1,6 +1,30 @@
 import db from "../db/knex.js";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = '93nd29jdjADJ3i2@@!aSDh3ndakllw';
+
+const normalizeText = (text) => {
+  if (typeof text !== 'string') return '';
+  return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
 
 const registerSupervisor = async (req, res) => {
+  // 🔐 Verificar token
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) return res.status(401).json({ message: "Token no proporcionado" });
+
+  const token = authHeader.split(" ")[1];
+  let decoded;
+  try {
+    decoded = jwt.verify(token, JWT_SECRET);
+  } catch (err) {
+    return res.status(401).json({ message: "Token inválido o expirado" });
+  }
+
+  const schoolID = decoded.schoolID;
+  if (!schoolID) return res.status(400).json({ message: "Token inválido: falta schoolID" });
+
+  // 📥 Extraer datos del cuerpo
   const {
     supervisorName,
     supervisorEmail,
@@ -8,10 +32,10 @@ const registerSupervisor = async (req, res) => {
     supervisorJubilation,
     supervisorJubilationYears,
     yearsInZone,
-    zoneChange,
+    zoneChange
   } = req.body;
 
-  // Validación básica
+  // ⚠️ Validación básica
   if (
     !supervisorName ||
     !supervisorEmail ||
@@ -23,37 +47,35 @@ const registerSupervisor = async (req, res) => {
     return res.status(400).json({ message: "Faltan campos requeridos" });
   }
 
-  // Conversión de campos "sí"/"no" a booleano (mejorado para manejar más variantes)
-  const seJubila = ["sí", "si", "yes"].includes(supervisorJubilation.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
-  const cambiaZona = ["sí", "si", "yes"].includes(zoneChange.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
-
-  // Si el supervisor no se jubila, dejar el año en null
+  const seJubila = ["sí", "si", "yes"].includes(normalizeText(supervisorJubilation));
+  const cambiaZona = ["sí", "si", "yes"].includes(normalizeText(zoneChange));
   const añoJubilacion = seJubila ? supervisorJubilationYears || 0 : 0;
 
   try {
     const [newSupervisor] = await db("supervisor")
       .insert({
-        supervisorName: supervisorName,
-        supervisorEmail: supervisorEmail,
-        supervisorNumber: supervisorNumber,
+        supervisorName,
+        supervisorEmail,
+        supervisorNumber,
         supervisorJubilation: seJubila,
         supervisorJubilationYears: añoJubilacion,
-        yearsInZone: yearsInZone,
+        yearsInZone,
         zoneChange: cambiaZona,
+        schoolID
       })
       .returning("*");
 
     return res.status(201).json({
       success: true,
       message: "Supervisor registrado con éxito",
-      data: newSupervisor,
+      data: newSupervisor
     });
   } catch (error) {
     console.error("Error al registrar al supervisor:", error);
     return res.status(500).json({
       success: false,
-      message: "Hubo un error al registrar al supervisor",
-      details: error.message,
+      message: "Error interno al registrar al supervisor",
+      details: error.message
     });
   }
 };

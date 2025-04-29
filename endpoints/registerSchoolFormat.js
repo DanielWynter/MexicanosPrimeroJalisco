@@ -1,4 +1,7 @@
 import db from "../db/knex.js";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = '93nd29jdjADJ3i2@@!aSDh3ndakllw'; // 🔥 Usa la misma clave que usaste para firmar los tokens
 
 const registerSchoolFormat = async (req, res) => {
   const {
@@ -12,6 +15,27 @@ const registerSchoolFormat = async (req, res) => {
     module,
     sustenance,
   } = req.body;
+
+  // 🔥 Leer y verificar el token
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ message: "No se encontró el token de autenticación." });
+  }
+
+  const token = authHeader.split(" ")[1]; // Sacamos el token de "Bearer <token>"
+
+  let decoded;
+  try {
+    decoded = jwt.verify(token, JWT_SECRET);
+  } catch (error) {
+    return res.status(401).json({ message: "Token inválido o expirado." });
+  }
+
+  const schoolID = decoded.schoolID;
+
+  if (!schoolID) {
+    return res.status(401).json({ message: "Token inválido: no tiene schoolID." });
+  }
 
   // Validación básica
   if (
@@ -31,15 +55,16 @@ const registerSchoolFormat = async (req, res) => {
   try {
     const [newFormatSchool] = await db("format_school")
       .insert({
-        schoolName: schoolName,
-        schoolSector: schoolSector,
-        educationLevel: educationLevel,
-        street: street,
-        colony: colony,
-        municipality: municipality,
-        zip: zip,
-        module: module,
-        sustenance: sustenance,
+        schoolID: schoolID, // 👈 ahora sacado del token verificado
+        schoolName,
+        schoolSector,
+        educationLevel,
+        street,
+        colony,
+        municipality,
+        zip,
+        module,
+        sustenance,
       })
       .returning("*");
 

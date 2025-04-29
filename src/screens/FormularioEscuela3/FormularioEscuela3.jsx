@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -8,6 +8,8 @@ export const FormularioEscuela3 = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [accumulatedData, setAccumulatedData] = useState(location.state || {});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   const [estudiantes, setEstudiantes] = useState({
     grupoA: ["", "", "", "", "", ""],
@@ -24,6 +26,13 @@ export const FormularioEscuela3 = () => {
     tableAmmount: "",
   });
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user || !user.schoolID) {
+      navigate("/iniciarSesion"); // Si no hay sesión, redirige
+    }
+  }, []);
+
   const handleEstudianteChange = (grupo, index, value) => {
     setEstudiantes((prev) => ({
       ...prev,
@@ -33,33 +42,49 @@ export const FormularioEscuela3 = () => {
 
   const handleSubmit = async () => {
     try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const token = localStorage.getItem('token');
+  
+      if (!user || !user.schoolID || !token) {
+        alert("Debes iniciar sesión como escuela.");
+        return false;
+      }
+  
+      const dataToSend = {
+        schoolID: user.schoolID,
+        groupAPositions: estudiantes.grupoA.join(","),
+        groupBComplete: estudiantes.grupoB.join(","),
+        groupCComplete: estudiantes.grupoC.join(","),
+        teachers: parseInt(infoDocente.teachers) || 0,
+        specialTeachers: parseInt(infoDocente.specialTeachers) || 0,
+        usaer: infoDocente.usaer === "Sí",
+        usaerTeachers: infoDocente.usaer === "Sí" ? infoDocente.usaerTeachers || "" : "",
+        parentsTable: infoDocente.parentsTable === "Sí",
+        tableAmmount: infoDocente.parentsTable === "Sí" ? parseInt(infoDocente.tableAmmount) || 0 : 0
+      };
+  
       const response = await fetch("http://localhost:3000/groups", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}` // 🔥 mandamos token
         },
-        body: JSON.stringify({
-          groupAPositions: estudiantes.grupoA.join(","), // <-- string
-          groupBComplete: estudiantes.grupoB.join(","),   // <-- string
-          groupCComplete: estudiantes.grupoC.join(","),   // <-- string
-          teachers: parseInt(infoDocente.teachers) || 0,
-          specialTeachers: parseInt(infoDocente.specialTeachers) || 0,
-          usaer: infoDocente.usaer === "Sí",
-          usaerTeachers: infoDocente.usaerTeachers || "",
-          parentsTable: infoDocente.parentsTable === "Sí",
-          tableAmmount: parseInt(infoDocente.tableAmmount) || 0,
-        }),
-        
+        body: JSON.stringify(dataToSend),
       });
   
       if (response.status === 201) {
         return true;
+      } else {
+        console.error("Error en respuesta:", await response.json());
+        return false;
       }
+  
     } catch (error) {
       console.error("Error al registrar los grupos:", error);
       return false;
     }
   };
+    
 
   const handleDocenteChange = (e) => {
     const { name, value } = e.target;
@@ -67,18 +92,36 @@ export const FormularioEscuela3 = () => {
   };
 
   const handleSiguienteClick = async () => {
+    if (isSubmitting) return; // 🔥 prevenir doble envío
+  
+    setIsSubmitting(true); // 🔥 bloquear mientras envía
     const success = await handleSubmit();
+    setIsSubmitting(false); // 🔥 desbloquear cuando termina
   
     if (success) {
+      const user = JSON.parse(localStorage.getItem('user'));
       navigate("/formulario-escuela-4", {
         state: {
           ...accumulatedData,
-          groups: estudiantes,
+          groups: {
+            groupAPositions: estudiantes.grupoA.join(","),
+            groupBComplete: estudiantes.grupoB.join(","),
+            groupCComplete: estudiantes.grupoC.join(","),
+            teachers: parseInt(infoDocente.teachers) || 0,
+            specialTeachers: parseInt(infoDocente.specialTeachers) || 0,
+            usaer: infoDocente.usaer === "Sí",
+            usaerTeachers: infoDocente.usaer === "Sí" ? infoDocente.usaerTeachers || "" : "",
+            parentsTable: infoDocente.parentsTable === "Sí",
+            tableAmmount: infoDocente.parentsTable === "Sí" ? parseInt(infoDocente.tableAmmount) || 0 : 0,
+            schoolID: user.schoolID
+          }
+          
         }
       });
     }
-    
   };
+  
+  
 
   return (
     <div className="formulario-escuela">
@@ -135,7 +178,7 @@ export const FormularioEscuela3 = () => {
                       label
                       text="Número de docentes frente a grupo"
                       text1="Docentes"
-                      value={infoDocente.teachers} // ← ESTE es el que falta
+                      value={infoDocente.teachers}
                       onChange={(e) =>
                         setInfoDocente({ ...infoDocente, teachers: e.target.value })
                       }
@@ -147,7 +190,7 @@ export const FormularioEscuela3 = () => {
                       label
                       text="Número de docentes de asignaturas especiales"
                       text1="Docentes asignaturas especiales"
-                      value={infoDocente.specialTeachers} // ← ESTE es el que falta
+                      value={infoDocente.specialTeachers}
                       onChange={(e) =>
                         setInfoDocente({ ...infoDocente, specialTeachers: e.target.value })
                       }
@@ -201,20 +244,25 @@ export const FormularioEscuela3 = () => {
                         />
                       )}
                     </div>
+
                   </div>
                 </div>
 
                 <div className="action">
                   <div className="progress" />
-                  <div className="action-2" onClick={handleSiguienteClick}>
-                    <Button
-                      className="button-4"
-                      style="primary"
-                      text="Siguiente"
-                      type="default"
-                    />
+                  <div className="action-2">
+                  <Button
+  className="button-4"
+  style="primary"
+  text={isSubmitting ? "Enviando..." : "Siguiente"} // 🔥 cambia el texto mientras envía
+  type="default"
+  onClick={handleSiguienteClick}
+  disabled={isSubmitting} // 🔥 desactiva el botón mientras envía
+/>
+
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

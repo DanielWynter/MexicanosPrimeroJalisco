@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   LoadScript,
   GoogleMap,
@@ -9,15 +10,16 @@ import "./style.css";
 
 const containerStyle = {
   width: "100%",
-  height: "calc(100vh - 150px)", // Todo el alto de la pantalla menos tu barra
+  height: "calc(100vh - 150px)", // Alto de pantalla menos barra
 };
 
 const centerDefault = {
   lat: 20.6597,
-  lng: -103.3496, // Centro default (Guadalajara) mientras carga ubicación real
+  lng: -103.3496, // Guadalajara
 };
 
 export const Mapado = () => {
+  const navigate = useNavigate();
   const searchBoxRef = useRef(null);
   const mapRef = useRef(null);
   const [mapCenter, setMapCenter] = useState(centerDefault);
@@ -57,7 +59,7 @@ export const Mapado = () => {
           service.nearbySearch(
             {
               location: userLocation,
-              radius: 5000, // Radio de 5km
+              radius: 5000,
               type: ["school"],
             },
             (results, status) => {
@@ -83,40 +85,35 @@ export const Mapado = () => {
   return (
     <div className="mapado">
       {/* Barra de navegación */}
-      <div className="overlap-59">
-        <div className="mexicanos-primero-wrapper">
-          <div className="mexicanos-primero-2">
-            Mexicanos Primero
-            <br />
-            Jalisco
-          </div>
-        </div>
+      <div className="centered-menu">
+  <div className="ellipse-4" />
+  <img className="image-2" alt="Logo" src="/img/image-13.png" />
 
-        <div className="nav-menu-2">
-          <div className="text-wrapper-86">Inicio</div>
-          <div className="text-wrapper-87">Novedades</div>
-          <div className="text-wrapper-88">Nosotros</div>
-          <div className="text-wrapper-89">Contacto</div>
-          <div className="group-14">
-            <div className="text-wrapper-90">Legal</div>
-          </div>
-        </div>
+  <div className="logo">
+    <div className="mexicanos-primero">
+      Mexicanos Primero
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jalisco
+    </div>
+  </div>
 
-        <div className="text-wrapper-91">Iniciar Sesión</div>
-        <button className="button-11">
-          <div className="text-wrapper-92">Regístrate</div>
-        </button>
+  <div className="nav-menu">
+    <div className="text-wrapper-4" onClick={() => navigate("/")}>Inicio</div>
+    <div className="text-wrapper-5">Novedades</div>
+    <div className="text-wrapper-6">Nosotros</div>
+    <div className="text-wrapper-7" onClick={() => navigate("formulario-aliado-1")}>Contacto</div>
+    <div className="group-4">
+      <div className="text-wrapper-8">Legal</div>
+    </div>
+  </div>
 
-        <div className="overlap-60">
-          <div className="rectangle-21" />
-          <div className="ellipse-10" />
-          <img
-            className="image-13"
-            alt="Logo Mexicanos Primero Jalisco"
-            src="/img/image-13.png" // usa tu logo de public/img
-          />
-        </div>
-      </div>
+  <div className="text-wrapper-9" onClick={() => navigate("formulario-escuela-1")}>Iniciar Sesión</div>
+
+  <button className="button-2" onClick={() => navigate("register")}>
+    <div className="text-wrapper-10">Regístrate</div>
+  </button>
+</div>
+
 
       {/* Mapa */}
       <div className="mapa">
@@ -139,14 +136,14 @@ export const Mapado = () => {
                 type="text"
                 placeholder="Buscar lugar..."
                 style={{
-                  boxSizing: `border-box`,
-                  border: `1px solid transparent`,
-                  width: `300px`,
-                  height: `40px`,
-                  padding: `0 12px`,
-                  borderRadius: `20px`,
-                  fontSize: `16px`,
-                  outline: `none`,
+                  boxSizing: "border-box",
+                  border: "1px solid transparent",
+                  width: "300px",
+                  height: "40px",
+                  padding: "0 12px",
+                  borderRadius: "20px",
+                  fontSize: "16px",
+                  outline: "none",
                   position: "absolute",
                   top: "20px",
                   left: "50%",
@@ -156,11 +153,9 @@ export const Mapado = () => {
               />
             </StandaloneSearchBox>
 
-            {/* Marcadores de escuelas */}
             {schoolMarkers.map((position, index) => (
               <Marker key={index} position={position} />
             ))}
-
           </GoogleMap>
         </LoadScript>
       </div>

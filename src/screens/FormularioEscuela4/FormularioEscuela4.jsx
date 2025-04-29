@@ -7,7 +7,6 @@ export const FormularioEscuela4 = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Estado para almacenar todos los datos acumulados
   const [allFormData, setAllFormData] = useState({
     format_school: null,
     principal: null,
@@ -15,8 +14,6 @@ export const FormularioEscuela4 = () => {
     groups: null
   });
 
-
-  // Estado para el formulario actual (form4)
   const [form4, setForm4] = useState({
     externalSupport: "",
     externalSupportReceived: "",
@@ -28,8 +25,11 @@ export const FormularioEscuela4 = () => {
     pendingProcedureDetails: ""
   });
 
-  // Recuperar datos de los formularios anteriores al cargar el componente
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user || !user.schoolID) {
+      navigate("/iniciarSesion"); // Proteger acceso si no hay sesión de escuela
+    }
     if (location.state) {
       setAllFormData({
         format_school: location.state.format_school || null,
@@ -38,7 +38,7 @@ export const FormularioEscuela4 = () => {
         groups: location.state.groups || null
       });
     }
-  }, [location.state]);
+  }, [location.state, navigate]);
 
   const handleApoyoChange = (e) => {
     const { name, value } = e.target;
@@ -47,93 +47,85 @@ export const FormularioEscuela4 = () => {
 
   const handleSubmit = async () => {
     try {
-      // Preparar datos del formulario actual (form4) para schoolData
-      const currentFormData = {
-        externalSupport: form4.externalSupport,
-        externalSupportReceived: form4.externalSupport === "Ninguno" ? "" : form4.externalSupportReceived,
-        interestedPerson: form4.interestedPerson === "Sí", // Convert to boolean
-        interestedPersonName: form4.interestedPerson === "Sí" ? form4.interestedPersonName : "",
-        inProgram: form4.inProgram === "Sí", // Convert to boolean
-        inProgramDetails: form4.inProgram === "Sí" ? form4.inProgramDetails : "",
-        pendingProcedure: form4.tramitePendiente === "Sí", // Convert to boolean
-        pendingProcedureDetails: form4.tramitePendiente === "Sí" ? form4.pendingProcedureDetails : ""
-      };
-
-      // Verificar que tenemos todos los datos necesarios
-      if (!allFormData.format_school || !allFormData.principal || !allFormData.supervisor || !allFormData.groups) {
-        throw new Error("Faltan datos de formularios anteriores");
+      const user = JSON.parse(localStorage.getItem('user'));
+      const token = localStorage.getItem('token');
+  
+      if (!user || !user.schoolID || !token) {
+        alert("Debes iniciar sesión como escuela para registrar esta información.");
+        return false;
       }
-
-      // Preparar el objeto completo para enviar
-      const completeData = {
-        format_school: allFormData.format_school,
-        principal: allFormData.principal,
-        supervisor: allFormData.supervisor,
-        groups: allFormData.groups,
-        schoolData: currentFormData
+  
+      const currentFormData = {
+        schoolID: user.schoolID,
+        externalSupport: form4.externalSupport,
+        externalSupportReceived: form4.externalSupport !== "Ninguno" ? form4.externalSupportReceived : "",
+        interestedPerson: form4.interestedPerson === "Sí",
+        interestedPersonName: form4.interestedPerson === "Sí" ? form4.interestedPersonName : "",
+        inProgram: form4.inProgram === "Sí",
+        inProgramDetails: form4.inProgram === "Sí" ? form4.inProgramDetails : "",
+        pendingProcedure: form4.pendingProcedure === "Sí",
+        pendingProcedureDetails: form4.pendingProcedure === "Sí" ? form4.pendingProcedureDetails : ""
       };
-
-      // Enviar todos los datos al backend
-      const response = await fetch("http://localhost:3000/school_registrations", {
+  
+      const response = await fetch("http://localhost:3000/school_data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`  // 👈 IMPORTANTE agregar Authorization aquí
         },
-        body: JSON.stringify(completeData),
+        body: JSON.stringify({ schoolData: currentFormData })
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Error en el servidor");
       }
-
+  
       const result = await response.json();
       console.log("Registro completo exitoso:", result);
+  
       navigate("/", {
         state: {
-          registrationId: result.data.registration.registrationID || // Usar el ID del registro
-            result.data.ids.formatSchoolID // O cualquier otro ID que necesites
+          registrationId: result.data.registration?.registrationID || result.data.ids?.formatSchoolID
         }
       });
-
+  
     } catch (error) {
       console.error("Error en el registro completo:", error);
       alert(`Error al enviar el formulario: ${error.message}`);
     }
   };
 
-
   const handleSiguienteClick = async () => {
-    // Only validate fields that are always required
-    if (!form4.externalSupport || !form4.interestedPerson || !form4.inProgram || !form4.tramitePendiente) {
+    if (!form4.externalSupport || !form4.interestedPerson || !form4.inProgram || !form4.pendingProcedure) {
       alert("Por favor complete todos los campos requeridos");
       return;
     }
-
-    // Conditional validation
+  
     if (form4.externalSupport !== "Ninguno" && !form4.externalSupportReceived) {
       alert("Por favor especifique qué apoyo externo recibió");
       return;
     }
-
+  
     if (form4.interestedPerson === "Sí" && !form4.interestedPersonName) {
-      alert("Por favor especifique qué persona estaría interesada");
+      alert("Por favor especifique quién estaría interesado");
       return;
     }
-
+  
     if (form4.inProgram === "Sí" && !form4.inProgramDetails) {
-      alert("Por favor especifique a qué inProgram pertenece");
+      alert("Por favor especifique a qué programa pertenece");
       return;
     }
-
-    if (form4.tramitePendiente === "Sí" && !form4.pendingProcedureDetails) {
+  
+    if (form4.pendingProcedure === "Sí" && !form4.pendingProcedureDetails) {
       alert("Por favor especifique qué trámite está pendiente");
       return;
     }
-
+  
     await handleSubmit();
   };
-
+  
+  
 
   return (
     <div className="formulario-escuela">
@@ -155,6 +147,7 @@ export const FormularioEscuela4 = () => {
                 <div className="content-SCROLL">
                   <div className="form">
 
+                    {/* Apoyo externo */}
                     <div className="div-5">
                       <label>Apoyo externo en los últimos dos ciclos escolares</label>
                       <select
@@ -171,29 +164,21 @@ export const FormularioEscuela4 = () => {
                         <option value="OSC">Organizaciones de la sociedad civil</option>
                         <option value="Empresa">Empresa</option>
                       </select>
-                      {(
-                        form4.externalSupport === "Gobierno municipal" ||
-                        form4.externalSupport === "Gobierno estatal" ||
-                        form4.externalSupport === "Gobierno federal" ||
-                        form4.externalSupport === "Instituciones educativas" ||
-                        form4.externalSupport === "OSC" ||
-                        form4.externalSupport === "Empresa"
-                      ) && (
-                          <input
-                            type="text"
-                            name="externalSupportReceived"
-                            value={form4.externalSupportReceived}
-                            onChange={handleApoyoChange}
-                            placeholder="¿Qué apoyo?"
-                            className="input-text"
-                          />
-                        )}
-
+                      {form4.externalSupport !== "Ninguno" && (
+                        <input
+                          type="text"
+                          name="externalSupportReceived"
+                          value={form4.externalSupportReceived}
+                          onChange={handleApoyoChange}
+                          placeholder="¿Qué apoyo?"
+                          className="input-text"
+                        />
+                      )}
                     </div>
 
+                    {/* Persona interesada */}
                     <div className="div-5">
-                      <label>¿Conoces a otra persona o instancia cercana a la escuela que aún no la ha apoyado, pero
-                        que crees que le pudiera estar interesada en ser aliado en este proyecto?</label>
+                      <label>¿Conoces a alguien interesado?</label>
                       <select
                         name="interestedPerson"
                         value={form4.interestedPerson}
@@ -215,8 +200,9 @@ export const FormularioEscuela4 = () => {
                       )}
                     </div>
 
+                    {/* Programa educativo */}
                     <div className="div-5">
-                      <label>¿La escuela forma parte actualmente de algún inProgram?</label>
+                      <label>¿La escuela forma parte de algún programa?</label>
                       <select
                         name="inProgram"
                         value={form4.inProgram}
@@ -238,19 +224,19 @@ export const FormularioEscuela4 = () => {
                       )}
                     </div>
 
+                    {/* Trámite pendiente */}
                     <div className="div-5">
-                      <label>En el último ciclo escolar, ¿han realizado algún trámite/oficio al gobierno que esté
-                        pendiente de resolver?¿Cuál? (poner nivel de gobierno, instancia y folio de oficio)</label>
+                      <label>¿Han realizado algún trámite pendiente?</label>
                       <select
-                        name="tramitePendiente"
-                        value={form4.tramitePendiente}
+                        name="pendingProcedure"
+                        value={form4.pendingProcedure}
                         onChange={handleApoyoChange}
                         className="input-text"
                       >
                         <option value="No">No</option>
                         <option value="Sí">Sí</option>
                       </select>
-                      {form4.tramitePendiente === "Sí" && (
+                      {form4.pendingProcedure === "Sí" && (
                         <input
                           type="text"
                           name="pendingProcedureDetails"
@@ -265,18 +251,18 @@ export const FormularioEscuela4 = () => {
                   </div>
                 </div>
 
-
                 <div className="action">
                   <div className="progress" />
                   <div className="action-2" onClick={handleSiguienteClick}>
                     <Button
                       className="button-4"
                       style="primary"
-                      text="Síguiente"
+                      text="Siguiente"
                       type="default"
                     />
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

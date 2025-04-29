@@ -1,44 +1,40 @@
 import db from "../db/knex.js";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = '93nd29jdjADJ3i2@@!aSDh3ndakllw';
 
 const registerSchoolData = async (req, res) => {
-    const {
-      externalSupport,
-      externalSupportReceived,
-      interestedPerson,
-      interestedPersonName,
-      inProgram,
-      inProgramDetails,
-      pendingProcedure,
-      pendingProcedureDetails,
-    } = req.body;
-  
-    try {
-      const [newSchoolData] = await db("school_data")
-        .insert({
-          externalSupport,  // Las posiciones para el grupo A
-          externalSupportReceived,   // Si el grupo B está completo
-          interestedPerson,   // Si el grupo C está completo
-          interestedPersonName,                // Número de docentes frente a grupo
-          inProgram,         // Número de docentes para asignaturas especiales
-          inProgramDetails,                   // Si tienen USAER
-          pendingProcedure,           // Docentes de USAER
-          pendingProcedureDetails,            // Si tienen mesa de padres
-        })
-        .returning("*");
-  
-      return res.status(201).json({
-        success: true,
-        message: "Datos registrados con éxito",
-        data: newSchoolData,
-      });
-    } catch (error) {
-      console.error("Error al registrar los datos:", error);
-      return res.status(500).json({
-        success: false,
-        message: "Hubo un error al registrar los datos",
-        details: error.message,
-      });
+  const { schoolData } = req.body;
+
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) return res.status(401).json({ message: "Token no proporcionado." });
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const schoolID = decoded.schoolID;
+
+    if (!schoolID) {
+      return res.status(400).json({ message: "El token no contiene schoolID válido." });
     }
-  };  
+
+    const [schoolDataInserted] = await db("school_data")
+      .insert({ ...schoolData, schoolID })
+      .returning("*");
+
+    return res.status(201).json({
+      success: true,
+      message: "Datos finales registrados con éxito",
+      data: schoolDataInserted
+    });
+
+  } catch (error) {
+    console.error("Error al registrar school_data:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Error interno",
+      details: error.message
+    });
+  }
+};
 
 export default registerSchoolData;

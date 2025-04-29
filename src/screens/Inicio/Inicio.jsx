@@ -152,19 +152,24 @@ export const Inicio = () => {
 
                   <div className="nav-menu">
                     <div className="text-wrapper-4" onClick={() => navigate("mapado")} style={{ cursor: "pointer" }}>Mapa</div>
-
-                    <div className="text-wrapper-5">Catalogo</div>
-
-                    <div className="text-wrapper-6">Nosotros</div>
-
-                    <div className="text-wrapper-7" onClick={() => navigate("formulario-aliado-1")} style={{ cursor: "pointer" }}>Contacto</div>
-
                     <div className="group-4">
-                      <div className="text-wrapper-8">Legal</div>
+                    <div
+  className="text-wrapper-8"
+  style={{ cursor: "pointer" }}
+  onClick={() =>
+    window.open(
+      "https://mexicanosprimerojalisco.org/pdf/aviso-privacidad-2023.pdf",
+      "_blank"
+    )
+  }
+>
+  Legal
+</div>
+
                     </div>
                   </div>
 
-                  <div className="text-wrapper-9" onClick={() => navigate("formulario-escuela-1")} style={{ cursor: "pointer" }}>Iniciar Sesión</div>
+                  <div className="text-wrapper-9" onClick={() => navigate("iniciarSesion")} style={{ cursor: "pointer" }}>Iniciar Sesión</div>
 
 
                   <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Regístrate</div> </button>
@@ -205,7 +210,7 @@ export const Inicio = () => {
                   />
 
                   <button className="field-wrapper">
-                    <div className="field">Navegar</div>
+                    <div className="field" onClick={() => navigate("iniciarSesion")} style={{ cursor: "pointer" }}>Inicia sesión</div>
                   </button>
 
                   <div className="sub-headings">MEXICANOS</div>
@@ -346,7 +351,7 @@ export const Inicio = () => {
                   />
 
                   <button className="button-3">
-                    <div className="text-wrapper-10">Registrate</div>
+                  <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Regístrate</div> </button>
                   </button>
 
                   <img

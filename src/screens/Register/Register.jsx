@@ -20,13 +20,11 @@ export const Register = () => {
     setError("");
     setMessage("");
   
-    // Validar que los campos esenciales no estén vacíos
     if (!userEmail || !userPassword || !userRol) {
       setError("Por favor, llena todos los campos.");
       return;
     }
   
-    // Validar que el CCT esté presente solo si el rol es "school"
     if (userRol === "school" && !workCenterKey) {
       setError("Por favor, ingresa el CCT de la escuela.");
       return;
@@ -34,10 +32,10 @@ export const Register = () => {
   
     try {
       const data = {
-        userEmail: userEmail,
-        userPassword: userPassword,
-        userRol: userRol,
-        workCenterKey: userRol === "school" ? workCenterKey : null, // Solo enviamos el CCT si el rol es 'school'
+        userEmail,
+        userPassword,
+        userRol,
+        ...(userRol === "school" && { workCenterKey }), // Solo si es escuela
       };
   
       const response = await fetch("http://localhost:3000/users", {
@@ -46,17 +44,18 @@ export const Register = () => {
         body: JSON.stringify(data),
       });
   
+      const result = await response.json(); // <- aquí parseamos la respuesta una sola vez
+  
       if (response.ok) {
         setMessage("¡Usuario registrado con éxito! Espera que tu perfil se autorice para continuar.");
       } else {
-        const errorResult = await response.json();
-        setError(errorResult.error || "Hubo un error al registrar el usuario.");
+        setError(result.message || "Hubo un error al registrar el usuario.");
       }
     } catch (error) {
       console.error("Error al registrar el usuario:", error);
       setError("Hubo un error al intentar registrar el usuario.");
     }
-  };  
+  };
 
   return (
     <div className="register-container">

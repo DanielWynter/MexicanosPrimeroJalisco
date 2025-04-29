@@ -1,28 +1,93 @@
 .match-aliado-screen {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .match-aliado-screen .match-aliado-2 {
-    background-color: #ffffff;
-    height: 1080px;
-    overflow: hidden;
-    width: 1920px;
-  }
-  
-  .match-aliado-screen .group-18 {
-    height: 1106px;
-    position: relative;
-    width: 1861px;
-  }
-  
-  .match-aliado-screen .dashboard-2 {
-    height: 1080px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 1861px;
-  }
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.match-aliado-screen .match-aliado-2 {
+  position: relative;
+  background-color: #ffffff;
+  height: 1080px;
+  overflow-y: auto; /* Para que puedas hacer scroll si hay muchas escuelas */
+  width: 1920px;
+}
+
+.match-aliado-screen .group-18 {
+  height: 1106px;
+  position: relative;
+  width: 1861px;
+}
+
+.match-aliado-screen .dashboard-2 {
+  height: 1080px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1861px;
+  z-index: 1;
+}
+
+/* Aquí agrego el estilo para las tarjetas encima del dashboard */
+.match-aliado-screen .school-card {
+  position: relative;
+  z-index: 2;
+  background: white;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.school-card h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.school-card p {
+  font-size: 16px;
+  color: #555;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  text-align: center;
+}
+
+.button-match {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button-close {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

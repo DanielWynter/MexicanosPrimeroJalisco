@@ -1,9 +1,8 @@
-import { useState } from "react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { Icon10 } from "../../icons/Icon10";
-import { useNavigate, useLocation } from "react-router-dom"; // Asegúrate de importar useNavigate
+import { useNavigate, useLocation } from "react-router-dom";
 import "./style.css";
 
 export const FormularioEscuela2 = () => {
@@ -11,58 +10,133 @@ export const FormularioEscuela2 = () => {
     principalName: "",
     principalEmail: "",
     principalNumber: "",
-    principalJubilation: "",
+    principalJubilation: "no", // 👈 Aquí
     jubilationYears: "",
     yearsInSchool: "",
-    schoolChange: ""
+    schoolChange: "no" // 👈 Aquí
   });
   
   const [supervisor, setSupervisor] = useState({
     supervisorName: "",
     supervisorEmail: "",
     supervisorNumber: "",
-    supervisorJubilation: "",
+    supervisorJubilation: "no", // 👈 Aquí
     supervisorJubilationYears: "",
     yearsInZone: "",
-    zoneChange: ""
+    zoneChange: "no" // 👈 Aquí
   });
+  
 
-  const navigate = useNavigate(); // Aquí es donde debes definirlo
+  const navigate = useNavigate();
   const location = useLocation();
   const [accumulatedData, setAccumulatedData] = useState(location.state || {});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user || !user.schoolID) {
+      navigate("/iniciarSesion"); // Proteger la pantalla si no hay sesión
+    }
+  }, []);
 
   const registrarDatos = async () => {
-    const responses = await Promise.all([
-      fetch("http://localhost:3000/principal", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(principal),
-      }),
-      fetch("http://localhost:3000/supervisor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(supervisor),
-      }),
-    ]);
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = localStorage.getItem('token');
   
-    return responses.every((response) => response.ok);
-  };
-
-  const handleSiguienteClick = async () => {
-    const success = await registrarDatos();
+    if (!user || !user.schoolID || !token) {
+      alert("Debes iniciar sesión como escuela para registrar esta información.");
+      return false;
+    }
   
-    if (success) {
-      navigate("/formulario-escuela-3", {
-        state: {
-          ...accumulatedData,
-          principal: principal, // Datos del principal
-          supervisor: supervisor // Datos del supervisor
-        }
+    const principalData = {
+      principalName: principal.principalName,
+      principalEmail: principal.principalEmail,
+      principalNumber: principal.principalNumber,
+      principalJubilation: principal.principalJubilation || "no", // 🔥 default "no"
+      jubilationYears: principal.jubilationYears || "0",
+      yearsInSchool: principal.yearsInSchool || "0",
+      schoolChange: principal.schoolChange || "no" // 🔥 default "no"
+    };
+  
+    const supervisorData = {
+      supervisorName: supervisor.supervisorName,
+      supervisorEmail: supervisor.supervisorEmail,
+      supervisorNumber: supervisor.supervisorNumber,
+      supervisorJubilation: supervisor.supervisorJubilation || "no", // 🔥 default "no"
+      supervisorJubilationYears: supervisor.supervisorJubilationYears || "0",
+      yearsInZone: supervisor.yearsInZone || "0",
+      zoneChange: supervisor.zoneChange || "no" // 🔥 default "no"
+    };
+  
+    try {
+      // 🔥 Primero registrar principal
+      const principalResponse = await fetch("http://localhost:3000/principal", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(principalData)
       });
-    } else {
-      alert("Hubo un error al registrar los datos. Intenta nuevamente.");
+  
+      if (!principalResponse.ok) {
+        const errorData = await principalResponse.json();
+        throw new Error(errorData.message || "Error registrando director.");
+      }
+  
+      // 🔥 Luego registrar supervisor
+      const supervisorResponse = await fetch("http://localhost:3000/supervisor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(supervisorData)
+      });
+  
+      if (!supervisorResponse.ok) {
+        const errorData = await supervisorResponse.json();
+        throw new Error(errorData.message || "Error registrando supervisor.");
+      }
+  
+      return true; // ✅ Todo bien
+    } catch (error) {
+      console.error("Error registrando datos:", error);
+      alert(error.message);
+      return false;
+    }
+  };  
+  
+  const handleSiguienteClick = async () => {
+    if (isSubmitting) return;
+  
+    setIsSubmitting(true); // 🔥 Bloqueamos el botón
+  
+    try {
+      const success = await registrarDatos();
+  
+      if (success) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        navigate("/formulario-escuela-3", {
+          state: {
+            ...accumulatedData,
+            principal: { ...principal, schoolID: user.schoolID },
+            supervisor: { ...supervisor, schoolID: user.schoolID },
+          }
+        });
+      } else {
+        alert("Hubo un error al registrar los datos. Intenta nuevamente.");
+      }
+    } catch (error) {
+      console.error("Error inesperado:", error);
+      alert("Error inesperado. Intenta nuevamente.");
+    } finally {
+      setIsSubmitting(false); // 🔥 Siempre desbloquear el botón
     }
   };
+  
+  
 
   return (
     <div className="formulario-escuela-screen">
@@ -72,16 +146,10 @@ export const FormularioEscuela2 = () => {
             <div className="modal-edit-deal-2">
               <div className="title-2">
                 <div className="text-wrapper-25">DIRECTOR/A</div>
-
                 <Button
-                  className="button-5" 
+                  className="button-5"
                   onClick={() => navigate("/")}
-                  icon={
-                    <Icon10
-                      className="vuesax-bold-close-circle"
-                      color="#7E92A2"
-                    />
-                  }
+                  icon={<Icon10 className="vuesax-bold-close-circle" color="#7E92A2" />}
                   style="white"
                   type="icon-only"
                 />
@@ -90,6 +158,7 @@ export const FormularioEscuela2 = () => {
               <div className="form-edit-deal-form-2">
                 <div className="content-SCROLL-2">
                   <div className="overlap-group-7">
+                    {/* FORMULARIO DEL DIRECTOR */}
                     <div className="form-2">
                       <div className="upload-image-2">
                         <div className="label-4">Datos del principal</div>
@@ -134,6 +203,7 @@ export const FormularioEscuela2 = () => {
                         />
                       </div>
 
+                      {/* JUBILACIÓN DEL PRINCIPAL */}
                       <div className="label-4">¿Está próximo a jubilarse?</div>
                       <div className="radio-buttons">
                         <label className="radio-option">
@@ -180,20 +250,19 @@ export const FormularioEscuela2 = () => {
                         </div>
                       )}
 
-                      <div className="count">
-                        <Input
-                          className="room-area"
-                          label
-                          text="Cuantos años lleva en ese puesto en la escuela?"
-                          value={principal.yearsInSchool}
-                          onChange={(e) =>
-                            setPrincipal({ ...principal, yearsInSchool: e.target.value })
-                          }
-                          text1="Años"
-                          visible2={false}
-                          visible3={false}
-                        />
-                      </div>
+                      {/* MÁS CAMPOS DEL PRINCIPAL */}
+                      <Input
+                        className="room-area"
+                        label
+                        text="Cuantos años lleva en ese puesto en la escuela?"
+                        value={principal.yearsInSchool}
+                        onChange={(e) =>
+                          setPrincipal({ ...principal, yearsInSchool: e.target.value })
+                        }
+                        text1="Años"
+                        visible2={false}
+                        visible3={false}
+                      />
 
                       <div className="label-4">¿Ha solicitado cambio de escuela?</div>
                       <div className="radio-buttons">
@@ -217,27 +286,28 @@ export const FormularioEscuela2 = () => {
                             value="no"
                             checked={principal.schoolChange === "no"}
                             onChange={(e) =>
-                              setPrincipal({ ...principal, schoolChange: e.target.value})
+                              setPrincipal({ ...principal, schoolChange: e.target.value })
                             }
                           />
                           No
                         </label>
                       </div>
 
+                      {/* FORMULARIO DEL SUPERVISOR */}
                       <div className="label-4">Datos del supervisor</div>
 
                       <Input
-                          className="count"
-                          label
-                          text="Nombre del supervisor"
-                          value={supervisor.supervisorName}
-                          onChange={(e) =>
-                            setSupervisor({ ...supervisor, supervisorName: e.target.value })
-                          }
-                          text1="Supervisor"
-                          visible2={false}
-                          visible3={false}
-                        />
+                        className="count"
+                        label
+                        text="Nombre del supervisor"
+                        value={supervisor.supervisorName}
+                        onChange={(e) =>
+                          setSupervisor({ ...supervisor, supervisorName: e.target.value })
+                        }
+                        text1="Supervisor"
+                        visible2={false}
+                        visible3={false}
+                      />
 
                       <Input
                         className="count"
@@ -265,6 +335,7 @@ export const FormularioEscuela2 = () => {
                         visible3={false}
                       />
 
+                      {/* JUBILACIÓN DEL SUPERVISOR */}
                       <div className="label-4">¿Está próximo a jubilarse?</div>
                       <div className="radio-buttons">
                         <label className="radio-option">
@@ -311,20 +382,19 @@ export const FormularioEscuela2 = () => {
                         </div>
                       )}
 
-                      <div className="count">
-                        <Input
-                          className="room-area"
-                          label
-                          text="Cuantos años lleva en ese puesto en esa zona?"
-                          value={supervisor.yearsInZone}
-                          onChange={(e) =>
-                            setSupervisor({ ...supervisor, yearsInZone: e.target.value })
-                          }
-                          text1="Años"
-                          visible2={false}
-                          visible3={false}
-                        />
-                      </div>
+                      {/* MÁS CAMPOS DEL SUPERVISOR */}
+                      <Input
+                        className="room-area"
+                        label
+                        text="Cuantos años lleva en ese puesto en esa zona?"
+                        value={supervisor.yearsInZone}
+                        onChange={(e) =>
+                          setSupervisor({ ...supervisor, yearsInZone: e.target.value })
+                        }
+                        text1="Años"
+                        visible2={false}
+                        visible3={false}
+                      />
 
                       <div className="label-4">¿Ha solicitado cambio de zona?</div>
                       <div className="radio-buttons">
@@ -348,26 +418,31 @@ export const FormularioEscuela2 = () => {
                             value="no"
                             checked={supervisor.zoneChange === "no"}
                             onChange={(e) =>
-                              setSupervisor({ ...supervisor, zoneChange: e.target.value})
+                              setSupervisor({ ...supervisor, zoneChange: e.target.value })
                             }
                           />
                           No
                         </label>
                       </div>
+
                     </div>
                   </div>
                 </div>
 
                 <div className="action-3">
-                  <div className="action-4" onClick={handleSiguienteClick}>
-                    <Button
-                      className="button-6"
-                      style="primary"
-                      text="Siguiente"
-                      type="default"
-                    />
-                  </div>
+                <div className="action-4">
+  <Button
+    className="button-6"
+    style="primary"
+    text={isSubmitting ? "Enviando..." : "Siguiente"}
+    type="default"
+    onClick={handleSiguienteClick} // ✅ aquí sí
+    disabled={isSubmitting}
+  />
+</div>
+
                 </div>
+                
               </div>
             </div>
           </div>
