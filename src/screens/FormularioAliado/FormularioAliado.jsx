@@ -142,7 +142,7 @@ export const FormularioAliado = () => {
       });
   
       // ✅ Si todo salió bien
-      navigate("/");
+      navigate("/Formulario-aliado-2"); // Redirigir a la página de aliado
   
     } catch (error) {
       console.error("Error en el registro:", error);
@@ -167,7 +167,6 @@ export const FormularioAliado = () => {
                   type="icon-only"
                 />
               </div>
-
               <div className="form-edit-deal-form">
                 <div className="content-SCROLL">
                   <div className="form">

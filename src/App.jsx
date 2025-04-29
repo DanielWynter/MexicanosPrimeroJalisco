@@ -26,6 +26,7 @@ import { CatalogoEscuelas } from "./screens/CatalogoEscuelas";
 import { CatalogoAliados } from "./screens/CatalogoAliados";
 import { UsersCatalogoEscuelas } from "./screens/UsersCatalogoEscuelas";
 import { UsersCatalogoAliados } from "./screens/UsersCatalogoAliados";
+import { FormularioAliado2 } from "./screens/FormularioAliado2";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
   {
     path: "/formulario-aliado-1",
     element: <FormularioAliado />,
+  },
+  {
+    path: "/formulario-aliado-2",
+    element: <FormularioAliado2 />,
   },
   {
     path: "/allyStart",

@@ -19,6 +19,8 @@ import iniciarSesion from './endpoints/iniciarSesion.js'; // 👈 IMPORTAR tu en
 import verificarSesion from './endpoints/verificarSesion.js'; // Ajusta el path si es necesario
 import getCatalogoEscuelas from './endpoints/getCatalogoEscuelas.js';
 import getCatalogoAliados from './endpoints/getCatalogoAliados.js';
+import registerNeed from './endpoints/registerNeed.js';
+import registerAllyOffering from './endpoints/registerAllyOffering.js';
 
 
 const app = express();
@@ -49,6 +51,8 @@ app.post('/representative', registerRepresentative);
 app.post('/natural_person', registerNaturalPerson);
 app.post('/ally_format', registerAllyFormat);
 app.post('/school_registrations', registerSchoolComplete);
+app.post('/needs', registerNeed);
+app.post('/ally-offerings', registerAllyOffering);
 
 // Rutas de consulta
 app.get('/schools', getSchools);
