@@ -19,7 +19,13 @@ export const UsersCatalogoAliados = () => {
           ? `http://localhost:3000/catalogo/aliados?apoyo=${encodeURIComponent(supportFilter)}`
           : "http://localhost:3000/catalogo/aliados";
 
-        const res = await fetch(url);
+          const token = localStorage.getItem("token");
+          const res = await fetch(url, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          
         if (!res.ok) throw new Error("Error al cargar aliados");
         const data = await res.json();
         setAllies(data.users);
@@ -112,7 +118,7 @@ export const UsersCatalogoAliados = () => {
               const nombre = ally.organizationName || ally.npInstitution || "No especificado";
               const direccion = ally.organizationAddress || "No especificado";
               const paginaWeb = ally.organizationWeb || "-";
-              const telefono = ally.npPhone || user.userPhone;
+              const telefono = ally.npPhone || "-";
               
               return (
                 <div

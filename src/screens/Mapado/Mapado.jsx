@@ -99,9 +99,6 @@ export const Mapado = () => {
 
   <div className="nav-menu">
     <div className="text-wrapper-4" onClick={() => navigate("/")}>Inicio</div>
-    <div className="text-wrapper-5">Novedades</div>
-    <div className="text-wrapper-6">Nosotros</div>
-    <div className="text-wrapper-7" onClick={() => navigate("formulario-aliado-1")}>Contacto</div>
     <div className="group-4">
       <div className="text-wrapper-8">Legal</div>
     </div>

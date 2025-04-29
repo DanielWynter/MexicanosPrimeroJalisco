@@ -20,7 +20,13 @@ export const UsersCatalogoEscuelas = () => {
           ? `http://localhost:3000/catalogo/escuelas?apoyo=${encodeURIComponent(supportFilter)}`
           : "http://localhost:3000/catalogo/escuelas";
 
-        const res = await fetch(url);
+          const token = localStorage.getItem("token");
+          const res = await fetch(url, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          
         if (!res.ok) throw new Error("Error al cargar escuelas");
         const data = await res.json();
         setSchools(data.users);

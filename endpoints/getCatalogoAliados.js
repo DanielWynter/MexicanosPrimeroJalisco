@@ -1,12 +1,30 @@
-
 import db from "../db/knex.js"; 
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = '93nd29jdjADJ3i2@@!aSDh3ndakllw';
 
 const getCatalogoAliados = async (req, res) => {
   const { apoyo } = req.query;
 
   try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) return res.status(401).json({ message: "Token no proporcionado" });
+
+    let decoded;
+    try {
+      decoded = jwt.verify(token, JWT_SECRET);
+    } catch (err) {
+      return res.status(401).json({ message: "Token inválido" });
+    }
+
+    const schoolID = decoded.schoolID;
+
+    if (!schoolID) {
+      return res.status(403).json({ message: "No autorizado: no es una escuela" });
+    }
+
+    // Ahora sí hacemos el query
     let query = db("users as user")
-      //.join("ally_format as ally", "user.allyID", "ally.allyID")
       .join("moral_person as mp", "user.allyID", "mp.allyID")
       .join("natural_person as np", "user.allyID", "np.allyID")
       .select(
@@ -15,15 +33,15 @@ const getCatalogoAliados = async (req, res) => {
         "mp.orgName as organizationName",
         "mp.orgAddress as organizationAddress",
         "mp.orgWeb as organizationWeb",
-        //"ally.support as support",
         "np.npInstitution",
         "np.npPhone",
         "user.userEmail"
       )
-      .whereNotNull("user.allyID")
-    /*if (apoyo) {
+      .whereNotNull("user.allyID");
+
+    if (apoyo) {
       query = query.whereRaw("LOWER(ally.support::text) LIKE ?", [`%${apoyo.toLowerCase()}%`]);
-    } */
+    }
 
     const ally = await query;
 
@@ -38,3 +56,4 @@ const getCatalogoAliados = async (req, res) => {
 };
 
 export default getCatalogoAliados;
+
