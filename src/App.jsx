@@ -26,6 +26,8 @@ import { CatalogoEscuelas } from "./screens/CatalogoEscuelas";
 import { CatalogoAliados } from "./screens/CatalogoAliados";
 import { UsersCatalogoEscuelas } from "./screens/UsersCatalogoEscuelas";
 import { UsersCatalogoAliados } from "./screens/UsersCatalogoAliados";
+import { CatalogoProyectos } from "./screens/CatalogoProyectos/CatalogoProyectos";
+import { AdminCreateProject } from "./screens/AdminCreateProject/AdminCreateProject";
 
 const router = createBrowserRouter([
   {
@@ -132,6 +134,14 @@ const router = createBrowserRouter([
   {
     path: "/admin/catalogo/aliados",
     element: <CatalogoAliados />,
+  },
+  {
+    path: "/admin/catalogo/proyectos",
+    element: <CatalogoProyectos />,
+  },
+  {
+    path: "/admin/project/create",
+    element: <AdminCreateProject />,
   },
 ]);
 
