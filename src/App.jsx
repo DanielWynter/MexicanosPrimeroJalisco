@@ -17,12 +17,16 @@ import { EscuelitaAliada } from "./screens/EscuelitaAliada";
 import { Mapado } from "./screens/Mapado";
 import { MatchAliado } from "./screens/MatchAliado";
 import { MatchAliadoScreen } from "./screens/MatchAliadoScreen";
-import { Proyectos } from "./screens/Proyectos";
+
 import { Usuario } from "./screens/Usuario";
 
 import { AdminStart } from "./screens/AdminStart";
+import { SchoolStart } from "./screens/SchoolStart";
+import { AllyStart } from "./screens/AllyStart";
 import { CatalogoEscuelas } from "./screens/CatalogoEscuelas";
 import { CatalogoAliados } from "./screens/CatalogoAliados";
+import { UsersCatalogoEscuelas } from "./screens/UsersCatalogoEscuelas";
+import { UsersCatalogoAliados } from "./screens/UsersCatalogoAliados";
 
 
 const router = createBrowserRouter([
@@ -111,6 +115,22 @@ const router = createBrowserRouter([
   {
     path: "/admin/catalogo/aliados",
     element: <CatalogoAliados />,
+  },
+  {
+    path: "/aliado/inicio",
+    element: <AllyStart />,
+  },
+  {
+    path: "/escuela/inicio",
+    element: <SchoolStart />,
+  },
+  {
+    path: "/aliado/catalogo/escuelas",
+    element: <UsersCatalogoEscuelas />,
+  },
+  {
+    path: "/escuela/catalogo/aliados",
+    element: <UsersCatalogoAliados />,
   },
 ]);
 

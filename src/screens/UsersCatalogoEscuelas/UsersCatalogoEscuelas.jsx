@@ -4,41 +4,12 @@ import { Sort } from "../../icons/Sort";
 import { useNavigate } from "react-router-dom";
 
 
-export const CatalogoEscuelas = () => {
+export const UsersCatalogoEscuelas = () => {
   const navigate = useNavigate();
   const [schools, setSchools] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [supportFilter, setSupportFilter] = useState("");
-  const [usuarioAEliminar, setUsuarioAEliminar] = useState(null);
-  const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
-
-  const handleDeleteClick = (usuarioAEliminar) => {
-    setUsuarioAEliminar(usuarioAEliminar);
-    setMostrarConfirmacion(true);
-    console.log(usuarioAEliminar.schoolID);
-  };
-
-  const confirmarEliminacion = async () => {
-    try {
-      await fetch(`http://localhost:5000/escuelas/${usuarioAEliminar.schoolID}`, {
-        method: "DELETE",
-      });
-
-      // Actualizar lista en el frontend eliminando el usuario borrado
-      setSchools((prev) =>
-        prev.filter((a) =>
-          a.schoolID !== usuarioAEliminar.schoolID 
-        )
-      );
-
-      setMostrarConfirmacion(false);
-      setUsuarioAEliminar(null);
-    } catch (error) {
-      console.error("Error al eliminar usuario:", error);
-    }
-  };
-
 
   useEffect(() => {
     const fetchSchools = async () => {
@@ -76,16 +47,12 @@ export const CatalogoEscuelas = () => {
                   </div>
 
                   <div className="nav-menu">
-                    <div className="text-wrapper-4" onClick={() => navigate("/")} style={{cursor:"pointer"}}>Inicio</div>
-                    <div className="text-wrapper-5">Solicitudes</div>
+                    <div className="text-wrapper-4" onClick={() => navigate("/aliado/inicio")} style={{cursor:"pointer"}}>Inicio</div>
 
                     <div className="text-wrapper-6">Proyectos</div>
 
                     <div className="text-wrapper-7" onClick={() => navigate("/mapado")} style={{cursor:"pointer"}}>Mapa</div>
 
-                    <div className="group-4">
-                      <div className="text-wrapper-8" onClick={() => navigate("/admin/catalogo/aliados")} style={{cursor:"pointer"}}>Aliados</div>
-                    </div>
                   </div>
     
                   <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
@@ -127,51 +94,33 @@ export const CatalogoEscuelas = () => {
       {/* Encabezados */}
       <div className="catalogo-cell header">Nombre</div>
       <div className="catalogo-cell header">Dirección</div>
+      <div className="catalogo-cell header">Sector</div>
       <div className="catalogo-cell header">Nivel Educativo</div>
       <div className="catalogo-cell header">Necesidades</div>
-      <div className="catalogo-cell header">Eliminar</div>
-
-      {/* Cada escuela */}
+    
+      {/* Datos */}
       {schools.map((school) => (
-        <React.Fragment key={school.schoolID}>
-          <div className="catalogo-cell">{school.schoolName}</div>
-          <div className="catalogo-cell">
-            {[school.street, school.colony, school.municipality, school.zip]
-              .filter(Boolean)
-              .join(", ")}
-          </div>
-          <div className="catalogo-cell">
-            {Array.isArray(school.educationLevel)
-              ? school.educationLevel.join(", ")
-              : school.educationLevel || "No especificado"}
-          </div>
-          <div className="catalogo-cell">
-            {Array.isArray(school.externalSupport)
-              ? school.externalSupport.join(", ")
-              : school.externalSupport || "No especificado"}
-          </div>
-          <div className="catalogo-cell">
-            <button onClick={() => handleDeleteClick(school)} className="delete-button">
-              <Sort />
-            </button>
-          </div>
-        </React.Fragment>
-      ))}
-    </div>
-
-      {/* Modal de confirmación */}
-      {mostrarConfirmacion && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <h2>Eliminar usuario</h2>
-              <p>¿Seguro que quieres eliminar a {usuarioAEliminar.schoolName}?</p>
-              <div className="modal-actions">
-                <button onClick={confirmarEliminacion} className="btn-confirmar">Sí</button>
-                <button onClick={() => setMostrarConfirmacion(false)} className="btn-cancelar">No</button>
-              </div>
+          <div className="catalogo-row" key={school.schoolID}>
+            <div className="catalogo-cell">{school.schoolName}</div>
+            <div className="catalogo-cell">
+              {[school.street, school.colony, school.municipality, school.zip]
+                .filter(Boolean) // para quitar campos vacíos
+                .join(", ")}
+            </div>
+            <div className="catalogo-cell">{school.schoolSector}</div>
+            <div className="catalogo-cell">
+              {Array.isArray(school.educationLevel)
+                ? school.educationLevel.join(", ")
+                : school.educationLevel || "No especificado"}
+            </div>
+            <div className="catalogo-cell">
+              {Array.isArray(school.externalSupport)
+                ? school.externalSupport.join(", ")
+                : school.externalSupport || "No especificado"}
             </div>
           </div>
-        )}
+        ))}
+    </div>
     </div>
     </div>
   );

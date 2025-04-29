@@ -5,9 +5,10 @@ const getCatalogoAliados = async (req, res) => {
   const { apoyo } = req.query;
 
   try {
-    let query = db("ally_format as ally")
-      .join("moral_person as mp", "ally.moralPersonID", "mp.moralPersonID")
-      .join("natural_person as np", "ally.naturalPersonID", "np.naturalPersonID")
+    let query = db("users as user")
+      //.join("ally_format as ally", "user.allyID", "ally.allyID")
+      .join("moral_person as mp", "user.allyID", "mp.allyID")
+      .join("natural_person as np", "user.allyID", "np.allyID")
       .select(
         "mp.moralPersonID as moralPersonID",
         "np.naturalPersonID as naturalPersonID",
@@ -16,12 +17,13 @@ const getCatalogoAliados = async (req, res) => {
         "mp.orgWeb as organizationWeb",
         //"ally.support as support",
         "np.npInstitution",
-        "np.npPhone"
+        "np.npPhone",
+        "user.userEmail"
       )
-      //.where("sr.status", "completed");
-    if (apoyo) {
+      .whereNotNull("user.allyID")
+    /*if (apoyo) {
       query = query.whereRaw("LOWER(ally.support::text) LIKE ?", [`%${apoyo.toLowerCase()}%`]);
-    }
+    } */
 
     const ally = await query;
 

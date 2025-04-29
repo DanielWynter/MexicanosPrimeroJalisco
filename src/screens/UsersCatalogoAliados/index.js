@@ -1,0 +1,1 @@
+export { UsersCatalogoAliados } from "./UsersCatalogoAliados";

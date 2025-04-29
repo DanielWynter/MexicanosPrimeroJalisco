@@ -4,40 +4,12 @@ import { Sort } from "../../icons/Sort";
 import { useNavigate } from "react-router-dom";
 
 
-export const CatalogoAliados = () => {
+export const UsersCatalogoAliados = () => {
   const navigate = useNavigate();
   const [allies, setAllies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [supportFilter, setSupportFilter] = useState("");
-  const [usuarioAEliminar, setUsuarioAEliminar] = useState(null);
-  const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
-
-  const handleDeleteClick = (usuarioAEliminar) => {
-    setUsuarioAEliminar(usuarioAEliminar);
-    setMostrarConfirmacion(true);
-    console.log(usuarioAEliminar.schoolID);
-  };
-
-  const confirmarEliminacion = async () => {
-    try {
-      await fetch(`http://localhost:5000/aliados/${usuarioAEliminar.allyID}`, {
-        method: "DELETE",
-      });
-
-      // Actualizar lista en el frontend eliminando el usuario borrado
-      setAllies((prev) =>
-        prev.filter((a) =>
-          a.allyID !== usuarioAEliminar.allyID 
-        )
-      );
-
-      setMostrarConfirmacion(false);
-      setUsuarioAEliminar(null);
-    } catch (error) {
-      console.error("Error al eliminar usuario:", error);
-    }
-  };
 
   useEffect(() => {
     const fetchAllies = async () => {
@@ -75,16 +47,11 @@ export const CatalogoAliados = () => {
                   </div>
 
                   <div className="nav-menu">
-                    <div className="text-wrapper-4" onClick={() => navigate("/")} style={{cursor:"pointer"}}>Inicio</div>
+                    <div className="text-wrapper-4" onClick={() => navigate("/escuela/inicio")} style={{cursor:"pointer"}}>Inicio</div>
                     <div className="text-wrapper-5">Proyectos</div>
-
-                    <div className="text-wrapper-6" onClick={() => navigate("/admin/catalogo/escuelas")} style={{cursor:"pointer"}}>Escuelas</div>
 
                     <div className="text-wrapper-7" onClick={() => navigate("/mapado")} style={{cursor:"pointer"}}>Mapa</div>
 
-                    <div className="group-4">
-                      <div className="text-wrapper-8" onClick={() => navigate("/admin/catalogo/escuelas")} style={{cursor:"pointer"}}>Solicitudes</div>
-                    </div>
                   </div>
                   
                   <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
@@ -126,9 +93,9 @@ export const CatalogoAliados = () => {
         <div className="catalogo-header">
           <div className="catalogo-cell">Nombre</div>
           <div className="catalogo-cell">Dirección</div>
+          <div className="catalogo-cell">Página Web</div>
           <div className="catalogo-cell">Teléfono</div>
           <div className="catalogo-cell">Necesidades</div>
-          <div className="catalogo-cell">Eliminar</div>
         </div>
 
         {/* Datos */}
@@ -142,30 +109,12 @@ export const CatalogoAliados = () => {
             <div className="catalogo-row" key={ally.moralPersonID || ally.naturalPersonID}>
               <div className="catalogo-cell">{nombre}</div>
               <div className="catalogo-cell">{direccion}</div>
+              <div className="catalogo-cellWebPage">{paginaWeb}</div>
               <div className="catalogo-cell">{telefono}</div>
               <div className="catalogo-cell">{"Aquí pondrás el apoyo si lo recuperas después"}</div>
-              <div className="catalogo-cell">
-                <button onClick={() => handleDeleteClick(ally)}>
-                  <Sort />
-                </button>
-              </div>
             </div>
           );
         })}
-
-        {/* Modal de confirmación */}
-      {mostrarConfirmacion && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <h2>Eliminar usuario</h2>
-              <p>¿Seguro que quieres eliminar a {usuarioAEliminar.schoolName}?</p>
-              <div className="modal-actions">
-                <button onClick={confirmarEliminacion} className="btn-confirmar">Sí</button>
-                <button onClick={() => setMostrarConfirmacion(false)} className="btn-cancelar">No</button>
-              </div>
-            </div>
-          </div>
-        )}
 
       </div>
     </div>

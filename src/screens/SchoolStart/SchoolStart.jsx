@@ -152,11 +152,11 @@ export const SchoolStart = () => {
                   </div>
 
                   <div className="nav-menu">
-                    <div className="text-wrapper-4">Proyectos</div>
+                    <div className="text-wrapper-4" >Proyectos</div>
 
-                    <div className="text-wrapper-5">Mapa</div>
+                    <div className="text-wrapper-5" onClick={() => navigate("/mapado")} style={{ cursor: "pointer" }}>Mapa</div>
 
-                    <div className="text-wrapper-6">Aliados</div>
+                    <div className="text-wrapper-6" onClick={() => navigate("/escuela/catalogo/aliados")} style={{ cursor: "pointer" }}>Aliados</div>
 
                   </div>
 
