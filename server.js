@@ -19,7 +19,11 @@ import iniciarSesion from './endpoints/iniciarSesion.js'; // 👈 IMPORTAR tu en
 import verificarSesion from './endpoints/verificarSesion.js'; // Ajusta el path si es necesario
 import getCatalogoEscuelas from './endpoints/getCatalogoEscuelas.js';
 import getCatalogoAliados from './endpoints/getCatalogoAliados.js';
-
+// NUEVOS IMPORTS
+import getSolicitudesAliados from './endpoints/getSolicitudesAliados.js';
+import aceptarAliado from './endpoints/aceptarAliado.js';
+import getSolicitudesEscuelas from './endpoints/getSolicitudesEscuelas.js';
+import aceptarEscuela from './endpoints/aceptarEscuela.js';
 
 const app = express();
 const port = 3000;
@@ -49,6 +53,11 @@ app.post('/representative', registerRepresentative);
 app.post('/natural_person', registerNaturalPerson);
 app.post('/ally_format', registerAllyFormat);
 app.post('/school_registrations', registerSchoolComplete);
+app.get('/solicitudes/aliados', getSolicitudesAliados); // ✅ Obtener aliados pendientes
+app.put('/admin/aceptar-aliado/:userID', aceptarAliado); // ✅ Aceptar aliado (cambia estado a "activo")
+app.get('/solicitudes/escuelas', getSolicitudesEscuelas);
+app.put('/admin/aceptar-escuela/:userID', aceptarEscuela);
+
 
 // Rutas de consulta
 app.get('/schools', getSchools);

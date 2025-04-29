@@ -84,7 +84,7 @@ export const CatalogoAliados = () => {
           <div className="nav-link">Proyectos</div>
           <div className="nav-link" onClick={() => navigate("/admin/catalogo/escuelas")}>Escuelas</div>
           <div className="nav-link" onClick={() => navigate("/mapado")}>Mapa</div>
-          <div className="nav-link" onClick={() => navigate("/admin/catalogo/escuelas")}>Solicitudes</div>
+          <div className="nav-link" onClick={() => navigate("/admin/solicitudes/aliados")}>Solicitudes</div>
         </div>
 
         <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}>

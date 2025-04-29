@@ -1,0 +1,51 @@
+/* Estilos exclusivos para SolicitudesAliados */
+.solicitudes-container {
+    padding: 2rem;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  .solicitudes-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  .solicitudes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 150px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .solicitudes-header,
+  .solicitudes-row {
+    display: contents;
+  }
+  
+  .solicitudes-cell {
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .solicitudes-cell.header {
+    font-weight: bold;
+    background-color: #e0e0e0;
+  }
+  
+  .btn-confirmar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-confirmar:hover {
+    background-color: #0056b3;
+  }
+  

@@ -26,116 +26,40 @@ import { CatalogoEscuelas } from "./screens/CatalogoEscuelas";
 import { CatalogoAliados } from "./screens/CatalogoAliados";
 import { UsersCatalogoEscuelas } from "./screens/UsersCatalogoEscuelas";
 import { UsersCatalogoAliados } from "./screens/UsersCatalogoAliados";
+import { SolicitudesAliados } from "./screens/SolicitudesAliados";
+import { SolicitudesEscuelas } from "./screens/SolicitudesEscuelas";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Inicio />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "iniciarSesion",
-    element:<IniciarSesion/>
-  },
-  {
-    path: "/chat",
-    element: <Chat />,
-  },
-  {
-    path: "/escuela",
-    element: <Escuela />,
-  },
-  {
-    path: "/escuelaScreen",
-    element: <EscuelaScreen />,
-  },
-  {
-    path: "/escuelita",
-    element: <Escuelita />,
-  },
-  {
-    path: "/escuelitaAliada",
-    element: <EscuelitaAliada />,
-  },
-  {
-    path: "/mapado",
-    element: <Mapado />,
-  },
-  {
-    path: "/matchAliado",
-    element: <MatchAliado />,
-  },
-  {
-    path: "/matchAliadoScreen",
-    element: <MatchAliadoScreen />,
-  },
-  {
-    path: "/proyectos",
-    element: <Proyectos />,
-  },
-  {
-    path: "/usuario",
-    element: <Usuario />,
-  },
-  {
-    path: "/chatScreen",
-    element: <ChatScreen />,
-  },
-
-  {
-    path: "/formulario-escuela-1",
-    element: <FormularioEscuela />,
-  },
-  {
-    path: "/formulario-escuela-2",
-    element: <FormularioEscuela2 />,
-  },
-  {
-    path: "/formulario-escuela-3",
-    element: <FormularioEscuela3 />,
-  },
-  {
-    path: "/formulario-escuela-4",
-    element: <FormularioEscuela4 />,
-  },
-  {
-    path: "/formulario-aliado-1",
-    element: <FormularioAliado />,
-  },
-  {
-    path: "/allyStart",
-    element: <AllyStart />,
-  },
-  {
-    path: "/admin/inicio",
-    element: <AdminStart />,
-  },
-  {
-    path: "/schoolStart",
-    element: <SchoolStart />,
-  },
-  {
-    path: "/aliado/catalogo/escuelas",
-    element: <UsersCatalogoEscuelas />,
-  },
-  {
-    path: "/escuela/catalogo/aliados",
-    element: <UsersCatalogoAliados />,
-  },
-  {
-    path: "/admin/catalogo/escuelas",
-    element: <CatalogoEscuelas />,
-  },
-  {
-    path: "/admin/catalogo/aliados",
-    element: <CatalogoAliados />,
-  },
+  { path: "/", element: <Inicio /> },
+  { path: "/register", element: <Register /> },
+  { path: "iniciarSesion", element: <IniciarSesion /> },
+  { path: "/chat", element: <Chat /> },
+  { path: "/escuela", element: <Escuela /> },
+  { path: "/escuelaScreen", element: <EscuelaScreen /> },
+  { path: "/escuelita", element: <Escuelita /> },
+  { path: "/escuelitaAliada", element: <EscuelitaAliada /> },
+  { path: "/mapado", element: <Mapado /> },
+  { path: "/matchAliado", element: <MatchAliado /> },
+  { path: "/matchAliadoScreen", element: <MatchAliadoScreen /> },
+  { path: "/proyectos", element: <Proyectos /> },
+  { path: "/usuario", element: <Usuario /> },
+  { path: "/chatScreen", element: <ChatScreen /> },
+  { path: "/formulario-escuela-1", element: <FormularioEscuela /> },
+  { path: "/formulario-escuela-2", element: <FormularioEscuela2 /> },
+  { path: "/formulario-escuela-3", element: <FormularioEscuela3 /> },
+  { path: "/formulario-escuela-4", element: <FormularioEscuela4 /> },
+  { path: "/formulario-aliado-1", element: <FormularioAliado /> },
+  { path: "/allyStart", element: <AllyStart /> },
+  { path: "/admin/inicio", element: <AdminStart /> },
+  { path: "/schoolStart", element: <SchoolStart /> },
+  { path: "/aliado/catalogo/escuelas", element: <UsersCatalogoEscuelas /> },
+  { path: "/escuela/catalogo/aliados", element: <UsersCatalogoAliados /> },
+  { path: "/admin/catalogo/escuelas", element: <CatalogoEscuelas /> },
+  { path: "/admin/catalogo/aliados", element: <CatalogoAliados /> },
+  { path: "/admin/solicitudes/aliados", element: <SolicitudesAliados /> },
+  { path: "/admin/solicitudes/escuelas", element: <SolicitudesEscuelas /> },
 ]);
 
 export const App = () => {
   return <RouterProvider router={router} />;
 };
-//

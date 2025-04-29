@@ -1,0 +1,1 @@
+export { SolicitudesEscuelas } from "./SolicitudesEscuelas";

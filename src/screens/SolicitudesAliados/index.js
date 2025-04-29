@@ -1,0 +1,1 @@
+export { SolicitudesAliados } from "./SolicitudesAliados";

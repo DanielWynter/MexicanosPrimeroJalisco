@@ -1,0 +1,75 @@
+.create-project-form {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem 3rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .create-project-form h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .create-project-form form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .create-project-form form input[type="text"],
+  .create-project-form form input[type="date"],
+  .create-project-form form select,
+  .create-project-form form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .create-project-form form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .create-project-form form button {
+    margin-top: 2rem;
+    padding: 12px 24px;
+    background: linear-gradient(180deg, #01a54f, #275a4f);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .create-project-form form button:hover {
+    background: linear-gradient(180deg, #019548, #1f4e46);
+  }
+  
+  .create-project-form p {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 500;
+    color: #007b00;
+  }
+  
+  /* Espaciado entre fechas dinámicas */
+  .create-project-form form > div > div {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
