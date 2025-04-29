@@ -153,8 +153,8 @@ export const AdminStart = () => {
                     <div className="nav-link" onClick={() => navigate("/")}>Solicitudes</div>
                     <div className="nav-link">Proyectos</div>
                     <div className="nav-link" onClick={() => navigate("/admin/catalogo/aliados")}>Aliados</div>
-                    <div className="nav-link" onClick={() => navigate("/mapado")}>Escuelas</div>
-                    <div className="nav-link" onClick={() => navigate("/admin/catalogo/escuelas")}>Mapa</div>
+                    <div className="nav-link" onClick={() => navigate("/admin/catalogo/escuelas")}>Escuelas</div>
+                    <div className="nav-link" onClick={() => navigate("/mapado")}>Mapa</div>
                   </div>
 
                   <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}>
