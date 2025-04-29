@@ -5,8 +5,9 @@ const getCatalogoEscuelas = async (req, res) => {
 
   try {
     let query = db("schools as s")
-      .join("format_school as fs", "s.schoolID", "fs.schoolID")  // Cambié el join a schoolID
-      //.join("school_data as sd", "s.schoolID", "sd.schoolID")    // Cambié el join a schoolID
+      .join("format_school as fs", "s.schoolID", "fs.schoolID")  
+      .join("principal as p", "s.schoolID", "p.schoolID")  
+      //.join("school_data as sd", "s.schoolID", "sd.schoolID")    
       .select(
         "s.schoolID",
         "fs.schoolName",
@@ -16,6 +17,8 @@ const getCatalogoEscuelas = async (req, res) => {
         "fs.zip",
         "fs.schoolSector",
         "fs.educationLevel",
+        "p.principalName",
+        "p.principalEmail",
         //"sd.externalSupport"
       )
       .whereNotNull("s.schoolID");  // Ahora directamente en la tabla 'schools'

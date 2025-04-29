@@ -10,6 +10,8 @@ export const UsersCatalogoEscuelas = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [supportFilter, setSupportFilter] = useState("");
+  const [selectedSchool, setSelectedSchool] = useState(null);
+
 
   useEffect(() => {
     const fetchSchools = async () => {
@@ -32,6 +34,14 @@ export const UsersCatalogoEscuelas = () => {
 
     fetchSchools();
   }, [supportFilter]);
+
+  const handleCardClick = (school) => {
+    setSelectedSchool(school);
+    };
+    
+  const closeModal = () => {
+    setSelectedSchool(null);
+    };
 
   return (
     <div>
@@ -61,67 +71,88 @@ export const UsersCatalogoEscuelas = () => {
         
         <h2 className="catalogo-title">Catálogo de Escuelas</h2>
 
-    <div className="catalogo-filter-container">
-      <div className="catalogo-filter-box">
-        <select
-          value={supportFilter}
-          onChange={(e) => setSupportFilter(e.target.value)}
-          className="catalogo-filter"
-        >
-          <option value="">Filtro</option>
-          <option value="Material didáctico">Material didáctico</option>
-          <option value="Infraestructura">Infraestructura</option>
-          <option value="Tecnológico">Tecnológico</option>
-          <option value="Mobiliario">Mobiliario</option>
-          <option value="Educación física">Educación física</option>
-          <option value="Literarios">Literarios</option>
-          <option value="Psicólogo">Psicólogo</option>
-          <option value="Formación docente">Formación docente</option>
-          <option value="Sexualidad">Sexualidad</option>
-        </select>
-      </div>
-
-      <div className="catalogo-filter-icon">
-        <Sort />
-      </div>
-
-    </div>
-
-    {loading && <p>Cargando escuelas...</p>}
-    {error && <p className="error">{error}</p>}
-
-    <div className="catalogo-grid">
-      {/* Encabezados */}
-      <div className="catalogo-cell header">Nombre</div>
-      <div className="catalogo-cell header">Dirección</div>
-      <div className="catalogo-cell header">Sector</div>
-      <div className="catalogo-cell header">Nivel Educativo</div>
-      <div className="catalogo-cell header">Necesidades</div>
-    
-      {/* Datos */}
-      {schools.map((school) => (
-          <div className="catalogo-row" key={school.schoolID}>
-            <div className="catalogo-cell">{school.schoolName}</div>
-            <div className="catalogo-cell">
-              {[school.street, school.colony, school.municipality, school.zip]
-                .filter(Boolean) // para quitar campos vacíos
-                .join(", ")}
+          <div className="catalogo-filter-container">
+            <div className="catalogo-filter-box">
+              <select
+                value={supportFilter}
+                onChange={(e) => setSupportFilter(e.target.value)}
+                className="catalogo-filter"
+              >
+                <option value="">Filtro</option>
+                <option value="Material didáctico">Material didáctico</option>
+                <option value="Infraestructura">Infraestructura</option>
+                <option value="Tecnológico">Tecnológico</option>
+                <option value="Mobiliario">Mobiliario</option>
+                <option value="Educación física">Educación física</option>
+                <option value="Literarios">Literarios</option>
+                <option value="Psicólogo">Psicólogo</option>
+                <option value="Formación docente">Formación docente</option>
+                <option value="Sexualidad">Sexualidad</option>
+              </select>
             </div>
-            <div className="catalogo-cell">{school.schoolSector}</div>
-            <div className="catalogo-cell">
-              {Array.isArray(school.educationLevel)
-                ? school.educationLevel.join(", ")
-                : school.educationLevel || "No especificado"}
+
+            <div className="catalogo-filter-icon">
+              <Sort />
             </div>
-            <div className="catalogo-cell">
-              {Array.isArray(school.externalSupport)
-                ? school.externalSupport.join(", ")
-                : school.externalSupport || "No especificado"}
-            </div>
+
           </div>
-        ))}
-    </div>
-    </div>
-    </div>
+
+          {loading && <p>Cargando escuelas...</p>}
+          {error && <p className="error">{error}</p>}
+
+          <div className="catalogo-grid">
+            {/* Encabezados */}
+            <div className="catalogo-cell header">Nombre</div>
+            <div className="catalogo-cell header">Dirección</div>
+            <div className="catalogo-cell header">Sector</div>
+            <div className="catalogo-cell header">Nivel Educativo</div>
+            <div className="catalogo-cell header">Necesidades</div>
+          
+            {schools.map((school) => (
+              <div
+                className="catalogo-row hover-effect"
+                key={school.schoolID}
+                onClick={() => handleCardClick(school)}
+              >
+                <div className="catalogo-cell">{school.schoolName}</div>
+                <div className="catalogo-cell">
+                  {[school.street, school.colony, school.municipality, school.zip].filter(Boolean).join(", ")}
+                </div>
+                <div className="catalogo-cell">{school.schoolSector}</div>
+                <div className="catalogo-cell">
+                  {Array.isArray(school.educationLevel)
+                    ? school.educationLevel.join(", ")
+                    : school.educationLevel || "No especificado"}
+                </div>
+                <div className="catalogo-cell">
+                  {Array.isArray(school.externalSupport)
+                    ? school.externalSupport.join(", ")
+                    : school.externalSupport || "No especificado"}
+                </div>
+              </div>
+            ))}
+          </div>
+
+            {selectedSchool && (
+              <div className="modal-overlay" onClick={closeModal}>
+                <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+                  <img
+                    src={selectedSchool.profileImage || "https://www.w3schools.com/howto/img_avatar.png"}
+                    alt="perfil"
+                    className="modal-avatar"
+                  />
+                  <h3>{selectedSchool.schoolName}</h3>
+                  <p><strong>Director:</strong> {selectedSchool.principalName}</p>
+                  <p><strong>Correo:</strong> {selectedSchool.principalEmail}</p>
+                  <p><strong>Nivel educativo:</strong> {Array.isArray(selectedSchool.educationLevel) ? selectedSchool.educationLevel.join(", ") : selectedSchool.educationLevel}</p>
+                  <p><strong>Dirección:</strong> {[selectedSchool.street, selectedSchool.colony, selectedSchool.municipality, selectedSchool.zip].filter(Boolean).join(", ")}</p>
+                  <p><strong>Sector:</strong> {selectedSchool.schoolSector}</p>
+                  <p><strong>Necesidades:</strong> {Array.isArray(selectedSchool.externalSupport) ? selectedSchool.externalSupport.join(", ") : selectedSchool.externalSupport}</p>
+                  <button onClick={closeModal}>Cerrar</button>
+                </div>
+              </div>
+            )}
+          </div>
+  </div>
   );
 };
