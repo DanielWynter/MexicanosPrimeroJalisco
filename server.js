@@ -19,6 +19,8 @@ import iniciarSesion from './endpoints/iniciarSesion.js'; // 👈 IMPORTAR tu en
 import verificarSesion from './endpoints/verificarSesion.js'; // Ajusta el path si es necesario
 import getCatalogoEscuelas from './endpoints/getCatalogoEscuelas.js';
 import getCatalogoAliados from './endpoints/getCatalogoAliados.js';
+import createProject from './endpoints/createProject.js';
+import getCatalogoProyectos from './endpoints/getCatalogoProyectos.js';
 
 
 const app = express();
@@ -62,6 +64,12 @@ app.get('/catalogo/escuelas', getCatalogoEscuelas);
 
 // Catalogo de aliados, administrador
 app.get('/catalogo/aliados', getCatalogoAliados);
+
+// Catalogo de proyectos, administrador
+app.get('/catalogo/proyectos', getCatalogoProyectos);
+
+// Crear proyecto, administrador
+app.post('/projects', createProject);
 
 // Ruta para obtener la información de una escuela por ID
 app.get('/escuelas/:schoolID', async (req, res) => {
