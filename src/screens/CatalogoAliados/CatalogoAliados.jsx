@@ -16,7 +16,7 @@ export const CatalogoAliados = () => {
   const handleDeleteClick = (usuarioAEliminar) => {
     setUsuarioAEliminar(usuarioAEliminar);
     setMostrarConfirmacion(true);
-    console.log(usuarioAEliminar.schoolID);
+    console.log(usuarioAEliminar.allyID);
   };
 
   const confirmarEliminacion = async () => {
@@ -158,7 +158,7 @@ export const CatalogoAliados = () => {
           <div className="modal-overlay">
             <div className="modal-content">
               <h2>Eliminar usuario</h2>
-              <p>¿Seguro que quieres eliminar a {usuarioAEliminar.schoolName}?</p>
+              <p>¿Seguro que quieres eliminar al aliado?</p>
               <div className="modal-actions">
                 <button onClick={confirmarEliminacion} className="btn-confirmar">Sí</button>
                 <button onClick={() => setMostrarConfirmacion(false)} className="btn-cancelar">No</button>

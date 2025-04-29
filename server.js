@@ -110,6 +110,80 @@ app.delete('/escuelas/:schoolID', async (req, res) => {
   }
 });
 
+// Ruta para obtener la información de un aliado por ID
+app.get('/aliados/:allyID', async (req, res) => {
+  const { allyID } = req.params;
+
+  try {
+    if (!allyID) {
+      return res.status(400).json({ message: "allyID es requerido" });
+    }
+
+    const ally = await db('ally')
+      .leftJoin('moral_person', 'ally.allyID', 'moral_person.allyID')
+      .leftJoin('natural_person', 'ally.allyID', 'natural_person.allyID')
+      .leftJoin('representative', 'ally.allyID', 'representative.allyID')
+      .leftJoin('tax_certificate', 'ally.allyID', 'tax_certificate.allyID')
+      .leftJoin('public_scripture', 'ally.allyID', 'public_scripture.allyID')
+      .select(
+        'ally.*',
+        'moral_person.*',
+        'natural_person.*',
+        'representative.*',
+        'tax_certificate.*',
+        'public_scripture.*'
+      )
+      .where('ally.allyID', allyID)
+      .first();
+
+    if (!ally) {
+      return res.status(404).json({ message: "Aliado no encontrado" });
+    }
+
+    res.status(200).json(ally);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al obtener el aliado", error: error.message });
+  }
+});
+
+// Ruta para eliminar a un aliado por su ID
+app.delete("/aliados/:id", async (req, res) => {
+  const { id } = req.params;
+  const allyID = parseInt(id, 10);
+
+  if (isNaN(allyID)) {
+    return res.status(400).json({ message: "ID inválido" });
+  }
+
+  try {
+    console.log("Eliminando aliado con ID:", allyID);
+
+    const moralPerson = await db('moral_person').where({ allyID }).first();
+
+    if (moralPerson) {
+      const moralPersonID = moralPerson.moralPersonID;
+
+      // Eliminar dependencias de ally_format primero
+      await db('ally_format').where({ moralPersonID }).del();
+    }
+
+    // Continuar eliminando otras dependencias
+    await db('moral_person').where({ allyID }).del();
+    await db('natural_person').where({ allyID }).del();
+    await db('public_scripture').where({ allyID }).del();
+    await db('representative').where({ allyID }).del();
+    await db('tax_certificate').where({ allyID }).del();
+
+    await db('users').where({ allyID }).del();
+    await db('ally').where({ allyID }).del();
+
+    res.status(200).json({ message: "Aliado eliminado exitosamente" });
+  } catch (error) {
+    console.error("Error eliminando aliado:", error);
+    res.status(500).json({ message: "Error eliminando aliado", error: error.message });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
