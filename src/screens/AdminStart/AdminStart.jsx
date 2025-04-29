@@ -145,31 +145,21 @@ export const AdminStart = () => {
 
                   <div className="logo">
                     <div className="mexicanos-primero">
-                      Mexicanos Primero
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jalisco
+                      Mexicanos Primero<br />Jalisco
                     </div>
                   </div>
 
                   <div className="nav-menu">
-                    <div className="text-wrapper-4">Solicitudes</div>
-
-                    <div className="text-wrapper-5">Proyectos</div>
-
-                    <div className="text-wrapper-6" onClick={() => navigate("admin/catalogo/escuelas")} style={{cursor:"pointer"}}>Escuelas</div>
-
-                    <div className="text-wrapper-7" onClick={() => navigate("formulario-aliado-1")} style={{ cursor: "pointer" }}>Mapa</div>
-
-                    <div className="group-4">
-                      <div className="text-wrapper-8">Aliados</div>
-                    </div>
+                    <div className="nav-link" onClick={() => navigate("/")}>Solicitudes</div>
+                    <div className="nav-link">Proyectos</div>
+                    <div className="nav-link" onClick={() => navigate("/admin/catalogo/aliados")}>Aliados</div>
+                    <div className="nav-link" onClick={() => navigate("/admin/catalogo/escuelas")}>Escuelas</div>
+                    <div className="nav-link" onClick={() => navigate("/mapado")}>Mapa</div>
                   </div>
 
-        
-
-
-                  <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
-
+                  <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}>
+                    <div className="text-wrapper-10">Perfil</div>
+                  </button>
                 </div>
 
                 <img className="line" alt="Line" src="/img/line-44.svg" />

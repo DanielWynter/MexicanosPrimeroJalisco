@@ -14,11 +14,15 @@ const iniciarSesion = async (req, res) => {
   try {
     const usuario = await db('users')
       .where({ userEmail })
-      .select('userID', 'userEmail', 'userPassword', 'userRol', 'schoolID', 'allyID') // 🔥 select explícito
+      .select('userID', 'userEmail', 'userPassword', 'userRol', 'schoolID', 'allyID', 'adminID', 'userStatus')
       .first();
 
     if (!usuario) {
       return res.status(401).json({ message: 'Credenciales incorrectas' });
+    }
+
+    if (usuario.userStatus?.toLowerCase().trim() !== 'activo') {
+      return res.status(403).json({ message: 'Tu cuenta aún no ha sido activada.' });
     }
 
     const contrasenaValida = await bcrypt.compare(userPassword, usuario.userPassword);
@@ -27,10 +31,10 @@ const iniciarSesion = async (req, res) => {
       return res.status(401).json({ message: 'Credenciales incorrectas' });
     }
 
-    const { userID, userEmail: email, userRol, schoolID, allyID } = usuario;
+    const { userID, userEmail: email, userRol, schoolID, allyID, adminID } = usuario;
 
     const token = jwt.sign(
-      { userID, userEmail: email, userRol, schoolID, allyID },
+      { userID, userEmail: email, userRol, schoolID, allyID, adminID },
       JWT_SECRET,
       { expiresIn: '2h' }
     );
@@ -43,7 +47,8 @@ const iniciarSesion = async (req, res) => {
         userEmail: email,
         userRol,
         schoolID,
-        allyID
+        allyID,
+        adminID
       },
       token
     });

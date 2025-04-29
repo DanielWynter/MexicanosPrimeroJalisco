@@ -42,11 +42,18 @@ export const CatalogoAliados = () => {
   useEffect(() => {
     const fetchAllies = async () => {
       try {
+        const token = localStorage.getItem("token");
         const url = supportFilter
           ? `http://localhost:3000/catalogo/aliados?apoyo=${encodeURIComponent(supportFilter)}`
           : "http://localhost:3000/catalogo/aliados";
-
-        const res = await fetch(url);
+    
+        const res = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+    
         if (!res.ok) throw new Error("Error al cargar aliados");
         const data = await res.json();
         setAllies(data.users);
@@ -56,7 +63,7 @@ export const CatalogoAliados = () => {
       } finally {
         setLoading(false);
       }
-    };
+    };    
 
     fetchAllies();
   }, [supportFilter]);
@@ -64,31 +71,26 @@ export const CatalogoAliados = () => {
   return (
     <div>
       <div className="centered-menu">
-                  <img className="image" alt="Image" src="/img/image-12.png" />
+        <img className="image" alt="Image" src="/img/image-12.png" />
 
-                  <div className="logo">
-                    <div className="mexicanos-primero">
-                      Mexicanos Primero
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jalisco
-                    </div>
-                  </div>
+        <div className="logo">
+          <div className="mexicanos-primero">
+            Mexicanos Primero<br />Jalisco
+          </div>
+        </div>
 
-                  <div className="nav-menu">
-                    <div className="text-wrapper-4" onClick={() => navigate("/")} style={{cursor:"pointer"}}>Inicio</div>
-                    <div className="text-wrapper-5">Proyectos</div>
+        <div className="nav-menu">
+          <div className="nav-link" onClick={() => navigate("/")}>Inicio</div>
+          <div className="nav-link">Proyectos</div>
+          <div className="nav-link" onClick={() => navigate("/admin/catalogo/escuelas")}>Escuelas</div>
+          <div className="nav-link" onClick={() => navigate("/mapado")}>Mapa</div>
+          <div className="nav-link" onClick={() => navigate("/admin/solicitudes/aliados")}>Solicitudes</div>
+        </div>
 
-                    <div className="text-wrapper-6" onClick={() => navigate("/admin/catalogo/escuelas")} style={{cursor:"pointer"}}>Escuelas</div>
-
-                    <div className="text-wrapper-7" onClick={() => navigate("/mapado")} style={{cursor:"pointer"}}>Mapa</div>
-
-                    <div className="group-4">
-                      <div className="text-wrapper-8" onClick={() => navigate("/admin/catalogo/escuelas")} style={{cursor:"pointer"}}>Solicitudes</div>
-                    </div>
-                  </div>
-                  
-                  <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
-                </div>
+        <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}>
+          <div className="text-wrapper-10">Perfil</div>
+        </button>
+      </div>
       <div className="catalogo-container">
       
       <h2 className="catalogo-title">Catálogo de Aliados</h2>
@@ -136,7 +138,7 @@ export const CatalogoAliados = () => {
           const nombre = ally.organizationName || ally.npInstitution || "No especificado";
           const direccion = ally.organizationAddress || "No especificado";
           const paginaWeb = ally.organizationWeb || "-";
-          const telefono = ally.npPhone || user.userPhone;
+          const telefono = ally.npPhone || "-";
           
           return (
             <div className="catalogo-row" key={ally.moralPersonID || ally.naturalPersonID}>

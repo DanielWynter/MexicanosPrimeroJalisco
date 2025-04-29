@@ -43,11 +43,18 @@ export const CatalogoEscuelas = () => {
   useEffect(() => {
     const fetchSchools = async () => {
       try {
+        const token = localStorage.getItem("token");
         const url = supportFilter
           ? `http://localhost:3000/catalogo/escuelas?apoyo=${encodeURIComponent(supportFilter)}`
-          : "http://localhost:3/catalogo/escuelas";
-
-        const res = await fetch(url);
+          : "http://localhost:3000/catalogo/escuelas";
+    
+        const res = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+    
         if (!res.ok) throw new Error("Error al cargar escuelas");
         const data = await res.json();
         setSchools(data.users);
@@ -58,6 +65,7 @@ export const CatalogoEscuelas = () => {
         setLoading(false);
       }
     };
+    
 
     fetchSchools();
   }, [supportFilter]);
@@ -65,31 +73,26 @@ export const CatalogoEscuelas = () => {
   return (
     <div>
       <div className="centered-menu">
-                  <img className="image" alt="Image" src="/img/image-12.png" />
+        <img className="image" alt="Image" src="/img/image-12.png" />
 
-                  <div className="logo">
-                    <div className="mexicanos-primero">
-                      Mexicanos Primero
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jalisco
-                    </div>
-                  </div>
-
-                  <div className="nav-menu">
-                    <div className="text-wrapper-4" onClick={() => navigate("/")} style={{cursor:"pointer"}}>Inicio</div>
-                    <div className="text-wrapper-5">Solicitudes</div>
-
-                    <div className="text-wrapper-6">Proyectos</div>
-
-                    <div className="text-wrapper-7" onClick={() => navigate("/mapado")} style={{cursor:"pointer"}}>Mapa</div>
-
-                    <div className="group-4">
-                      <div className="text-wrapper-8" onClick={() => navigate("/admin/catalogo/aliados")} style={{cursor:"pointer"}}>Aliados</div>
-                    </div>
-                  </div>
-    
-                  <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
+        <div className="logo">
+          <div className="mexicanos-primero">
+            Mexicanos Primero<br />Jalisco
           </div>
+        </div>
+
+        <div className="nav-menu">
+          <div className="nav-link" onClick={() => navigate("/")}>Inicio</div>
+          <div className="nav-link">Proyectos</div>
+          <div className="nav-link" onClick={() => navigate("/admin/catalogo/aliados")}>Aliados</div>
+          <div className="nav-link" onClick={() => navigate("/mapado")}>Mapa</div>
+          <div className="nav-link" onClick={() => navigate("/admin/solicitudes/escuelas")}>Solicitudes</div>
+        </div>
+
+        <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}>
+          <div className="text-wrapper-10">Perfil</div>
+        </button>
+      </div>
         <div className="catalogo-container">
         
         <h2 className="catalogo-title">Catálogo de Escuelas</h2>

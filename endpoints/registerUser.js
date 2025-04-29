@@ -4,7 +4,6 @@ import bcrypt from 'bcrypt';
 const registerUser = async (req, res) => {
   const { userEmail, userPassword, userRol, workCenterKey } = req.body;
 
-  // Validación básica
   if (!userEmail || !userPassword || !userRol) {
     return res.status(400).json({ message: 'Faltan campos requeridos' });
   }
@@ -30,7 +29,8 @@ const registerUser = async (req, res) => {
           userPassword: hashedPassword,
           userRol,
           schoolID: null,
-          allyID: null
+          allyID: null,
+          userStatus: 'pendiente'  // 👈🔥 Aquí lo agregamos directamente
         })
         .returning('*');
 
@@ -44,16 +44,16 @@ const registerUser = async (req, res) => {
           await trx.rollback();
           return res.status(400).json({ message: 'El CCT ya está registrado' });
         }
-      
+
         school = await trx('schools')
           .insert({ workCenterKey })
           .returning(['schoolID']);
-      
+
         if (!school || school.length === 0) {
           await trx.rollback();
           return res.status(500).json({ message: 'Error al crear la escuela' });
         }
-      
+
         await trx('users')
           .where('userID', userID)
           .update({ schoolID: school[0].schoolID });
@@ -62,9 +62,9 @@ const registerUser = async (req, res) => {
       if (userRol === 'ally') {
         ally = await trx('ally').insert({}).returning(['allyID']);
 
-        await trx('users').where('userID', userID).update({
-          allyID: ally[0].allyID
-        });
+        await trx('users')
+          .where('userID', userID)
+          .update({ allyID: ally[0].allyID });
       }
 
       await trx.commit();

@@ -41,10 +41,13 @@ export const IniciarSesion = () => {
             navigate("/schoolStart");
           } else if (usuario.userRol === "ally") {
             navigate("/allyStart");
+          } else if (usuario.userRol === "admin") {
+            navigate("/admin/inicio");
           } else {
             navigate("/");
           }
         }, 100);
+        
       } else {
         setError(data.message || "Error en el inicio de sesión.");
       }
