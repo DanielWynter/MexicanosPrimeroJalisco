@@ -43,11 +43,18 @@ export const CatalogoEscuelas = () => {
   useEffect(() => {
     const fetchSchools = async () => {
       try {
+        const token = localStorage.getItem("token");
         const url = supportFilter
           ? `http://localhost:3000/catalogo/escuelas?apoyo=${encodeURIComponent(supportFilter)}`
-          : "http://localhost:3/catalogo/escuelas";
-
-        const res = await fetch(url);
+          : "http://localhost:3000/catalogo/escuelas";
+    
+        const res = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+    
         if (!res.ok) throw new Error("Error al cargar escuelas");
         const data = await res.json();
         setSchools(data.users);
@@ -58,6 +65,7 @@ export const CatalogoEscuelas = () => {
         setLoading(false);
       }
     };
+    
 
     fetchSchools();
   }, [supportFilter]);

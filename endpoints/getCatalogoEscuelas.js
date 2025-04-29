@@ -17,15 +17,16 @@ try {
   return res.status(401).json({ message: "Token inválido" });
 }
 
-const allyID = decoded.allyID;
+const userID = decoded.userID;
 
-if (!allyID) {
-  return res.status(403).json({ message: "No autorizado: no es un aliado" });
+if (!userID) {
+  return res.status(403).json({ message: "No autorizado" });
 }
 
+
     let query = db("schools as s")
-      .join("format_school as fs", "s.schoolID", "fs.schoolID")  
-      .join("principal as p", "s.schoolID", "p.schoolID")  
+      .leftJoin("format_school as fs", "s.schoolID", "fs.schoolID")  
+      .leftJoin("principal as p", "s.schoolID", "p.schoolID")  
       //.join("school_data as sd", "s.schoolID", "sd.schoolID")    
       .select(
         "s.schoolID",

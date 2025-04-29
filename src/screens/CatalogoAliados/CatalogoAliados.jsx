@@ -42,11 +42,18 @@ export const CatalogoAliados = () => {
   useEffect(() => {
     const fetchAllies = async () => {
       try {
+        const token = localStorage.getItem("token");
         const url = supportFilter
           ? `http://localhost:3000/catalogo/aliados?apoyo=${encodeURIComponent(supportFilter)}`
           : "http://localhost:3000/catalogo/aliados";
-
-        const res = await fetch(url);
+    
+        const res = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+    
         if (!res.ok) throw new Error("Error al cargar aliados");
         const data = await res.json();
         setAllies(data.users);
@@ -56,7 +63,7 @@ export const CatalogoAliados = () => {
       } finally {
         setLoading(false);
       }
-    };
+    };    
 
     fetchAllies();
   }, [supportFilter]);
@@ -131,7 +138,7 @@ export const CatalogoAliados = () => {
           const nombre = ally.organizationName || ally.npInstitution || "No especificado";
           const direccion = ally.organizationAddress || "No especificado";
           const paginaWeb = ally.organizationWeb || "-";
-          const telefono = ally.npPhone || user.userPhone;
+          const telefono = ally.npPhone || "-";
           
           return (
             <div className="catalogo-row" key={ally.moralPersonID || ally.naturalPersonID}>

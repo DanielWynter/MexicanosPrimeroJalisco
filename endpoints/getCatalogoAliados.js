@@ -17,16 +17,17 @@ const getCatalogoAliados = async (req, res) => {
       return res.status(401).json({ message: "Token inválido" });
     }
 
-    const schoolID = decoded.schoolID;
+    const userID = decoded.userID;
 
-    if (!schoolID) {
-      return res.status(403).json({ message: "No autorizado: no es una escuela" });
-    }
+if (!userID) {
+  return res.status(403).json({ message: "No autorizado" });
+}
+
 
     // Ahora sí hacemos el query
     let query = db("users as user")
-      .join("moral_person as mp", "user.allyID", "mp.allyID")
-      .join("natural_person as np", "user.allyID", "np.allyID")
+      .leftJoin("moral_person as mp", "user.allyID", "mp.allyID")
+      .leftJoin("natural_person as np", "user.allyID", "np.allyID")
       .select(
         "mp.moralPersonID as moralPersonID",
         "np.naturalPersonID as naturalPersonID",
