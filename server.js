@@ -1,4 +1,7 @@
 import express from 'express';
+
+import db from "../db/knex.js"; //CHEQUEN COMO TIENEN SU DIRECTORIO PARA QUE NO SALGA ERROR, probablemente necesiten "../ALGO/db/knex.js" si estan dentro de una carpeta
+
 import cors from 'cors';
 import registerUser from './endpoints/registerUser.js';
 import registerSchoolFormat from './endpoints/registerSchoolFormat.js';
@@ -71,6 +74,42 @@ app.get('/catalogo/escuelas', getCatalogoEscuelas);
 
 // Catalogo de aliados, administrador
 app.get('/catalogo/aliados', getCatalogoAliados);
+
+// Ruta para obtener la información de una escuela por ID
+app.get('/escuelas/:schoolID', async (req, res) => {
+  const { schoolID } = req.params;
+  
+  try {
+    const school = await db('schools').where({ schoolID }).first();
+    
+    if (!school) {
+      return res.status(404).json({ message: "Escuela no encontrada" });
+    }
+    
+    res.status(200).json(school);
+  } catch (error) {
+    res.status(500).json({ message: "Error al obtener la escuela", error: error.message });
+  }
+});
+
+// Ruta para eliminar la escuela (DELETE)
+app.delete('/escuelas/:schoolID', async (req, res) => {
+  const { schoolID } = req.params;
+  
+  try {
+    // Realiza la eliminación de la escuela en las tablas correspondientes
+    await db('schools').where({ schoolID }).del();
+    
+    // Elimina de las tablas relacionadas si es necesario
+    await db('groups').where({ schoolID }).del();
+    await db('school_data').where({ schoolID }).del();
+    
+    res.status(200).json({ message: "Escuela eliminada exitosamente" });
+  } catch (error) {
+    res.status(500).json({ message: "Error al eliminar la escuela", error: error.message });
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
