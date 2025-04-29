@@ -1,10 +1,12 @@
 .mapado {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column; /* CAMBIAR de row a column */
+  width: 100%;
+  height: 100vh; /* que todo mida el alto de la pantalla */
+  overflow: hidden;
+}
+
   
   .mapado .group-wrapper-8 {
     background-color: #ffffff;
@@ -23,13 +25,12 @@
     width: 1920px;
   }
   
+
   .mapado .mapa {
-    background-color: #ffffff;
-    height: 1227px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 1920px;
+    flex: 1;
+    width: 100%;
+    position: relative;
+    z-index: 1; /* el mapa debajo de la barra */
   }
   
   .mapado .overlap-57 {
@@ -308,12 +309,13 @@
   }
   
   .mapado .overlap-59 {
-    height: 147px;
-    left: 0;
-    position: absolute;
-    top: 2px;
-    width: 1920px;
+    height: 150px; /* Altura de tu barra de navegación */
+    width: 100%;
+    position: relative;
+    background-color: #ffffff;
+    z-index: 2; /* que quede arriba del mapa */
   }
+  
   
   .mapado .mexicanos-primero-wrapper {
     height: 58px;
