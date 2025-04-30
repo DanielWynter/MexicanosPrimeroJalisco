@@ -35,16 +35,18 @@ if (!userID) {
    .leftJoin("natural_person as np","user.allyID","np.allyID")
    // 3️⃣ Seleccionar también el campo necessityType
    .select(
-     "mp.moralPersonID      as moralPersonID",
-     "np.naturalPersonID    as naturalPersonID",
-     "mp.orgName            as organizationName",
-     "mp.orgAddress         as organizationAddress",
-     "mp.orgWeb             as organizationWeb",
-     "np.npInstitution      as npInstitution",
-     "np.npPhone            as npPhone",
-     "user.userEmail        as userEmail",
-     "n.necessityType       as necessityType"
-   )
+    "user.allyID            as allyID",        // ✅ <---- ESTA LÍNEA ES LA CLAVE
+    "mp.moralPersonID       as moralPersonID",
+    "np.naturalPersonID     as naturalPersonID",
+    "mp.orgName             as organizationName",
+    "mp.orgAddress          as organizationAddress",
+    "mp.orgWeb              as organizationWeb",
+    "np.npInstitution       as npInstitution",
+    "np.npPhone             as npPhone",
+    "user.userEmail         as userEmail",
+    "n.necessityType        as necessityType"
+  )
+  
    .whereNotNull("user.allyID")
    .modify(qb => {
      if (apoyo) {

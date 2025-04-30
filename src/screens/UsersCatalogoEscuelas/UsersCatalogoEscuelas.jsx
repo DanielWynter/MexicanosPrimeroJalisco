@@ -3,7 +3,6 @@ import "./style.css";
 import { Sort } from "../../icons/Sort";
 import { useNavigate } from "react-router-dom";
 
-
 export const UsersCatalogoEscuelas = () => {
   const navigate = useNavigate();
   const [schools, setSchools] = useState([]);
@@ -12,7 +11,6 @@ export const UsersCatalogoEscuelas = () => {
   const [supportFilter, setSupportFilter] = useState("");
   const [selectedSchool, setSelectedSchool] = useState(null);
 
-
   useEffect(() => {
     const fetchSchools = async () => {
       try {
@@ -20,13 +18,13 @@ export const UsersCatalogoEscuelas = () => {
           ? `http://localhost:3000/catalogo/escuelas?apoyo=${encodeURIComponent(supportFilter)}`
           : "http://localhost:3000/catalogo/escuelas";
 
-          const token = localStorage.getItem("token");
-          const res = await fetch(url, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          
+        const token = localStorage.getItem("token");
+        const res = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
         if (!res.ok) throw new Error("Error al cargar escuelas");
         const data = await res.json();
         setSchools(data.users);
@@ -43,119 +41,155 @@ export const UsersCatalogoEscuelas = () => {
 
   const handleCardClick = (school) => {
     setSelectedSchool(school);
-    };
-    
+  };
+
   const closeModal = () => {
     setSelectedSchool(null);
-    };
+  };
 
   return (
     <div>
       <div className="centered-menu">
-
-                  <div className="logo">
-                    <div className="mexicanos-primero">
-                      Mexicanos Primero
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jalisco
-                    </div>
-                  </div>
-
-                  <div className="nav-menu">
-                    <div className="text-wrapper-4" onClick={() => navigate("/aliado/inicio")} style={{cursor:"pointer"}}>Inicio</div>
-
-                    <div className="text-wrapper-6">Proyectos</div>
-
-                    <div className="text-wrapper-7" onClick={() => navigate("/mapado")} style={{cursor:"pointer"}}>Mapa</div>
-
-                  </div>
-    
-                  <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
+        <div className="logo">
+          <div className="mexicanos-primero">
+            Mexicanos Primero
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jalisco
           </div>
-        <div className="catalogo-container">
-        
+        </div>
+
+        <div className="nav-menu">
+          <div className="text-wrapper-4" onClick={() => navigate("/allyStart")} style={{ cursor: "pointer" }}>Inicio</div>
+          <div className="text-wrapper-6">Proyectos</div>
+          <div className="text-wrapper-7" onClick={() => navigate("/mapado")} style={{ cursor: "pointer" }}>Mapa</div>
+        </div>
+
+        <button className="button-2" onClick={() => navigate("register")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
+      </div>
+
+      <div className="catalogo-container">
         <h2 className="catalogo-title">Catálogo de Escuelas</h2>
 
-          <div className="catalogo-filter-container">
-            <div className="catalogo-filter-box">
-              <select
-                value={supportFilter}
-                onChange={(e) => setSupportFilter(e.target.value)}
-                className="catalogo-filter"
-              >
-                <option value="">Filtro</option>
-                <option value="Material didáctico">Material didáctico</option>
-                <option value="Infraestructura">Infraestructura</option>
-                <option value="Tecnológico">Tecnológico</option>
-                <option value="Mobiliario">Mobiliario</option>
-                <option value="Educación física">Educación física</option>
-                <option value="Literarios">Literarios</option>
-                <option value="Psicólogo">Psicólogo</option>
-                <option value="Formación docente">Formación docente</option>
-                <option value="Sexualidad">Sexualidad</option>
-              </select>
+        <div className="catalogo-filter-container">
+          <div className="catalogo-filter-box">
+            <select
+              value={supportFilter}
+              onChange={(e) => setSupportFilter(e.target.value)}
+              className="catalogo-filter"
+            >
+              <option value="">Filtro</option>
+              <option value="Material didáctico">Material didáctico</option>
+              <option value="Infraestructura">Infraestructura</option>
+              <option value="Tecnológico">Tecnológico</option>
+              <option value="Mobiliario">Mobiliario</option>
+              <option value="Educación física">Educación física</option>
+              <option value="Literarios">Literarios</option>
+              <option value="Psicólogo">Psicólogo</option>
+              <option value="Formación docente">Formación docente</option>
+              <option value="Sexualidad">Sexualidad</option>
+            </select>
+          </div>
+
+          <div className="catalogo-filter-icon">
+            <Sort />
+          </div>
+        </div>
+
+        {loading && <p>Cargando escuelas...</p>}
+        {error && <p className="error">{error}</p>}
+
+        <div className="catalogo-grid">
+          {/* Encabezados */}
+          <div className="catalogo-cell header">Nombre</div>
+          <div className="catalogo-cell header">Dirección</div>
+          <div className="catalogo-cell header">Sector</div>
+          <div className="catalogo-cell header">Nivel Educativo</div>
+          <div className="catalogo-cell header">Necesidades</div>
+
+          {schools.map((school) => (
+            <div
+              className="catalogo-row hover-effect"
+              key={school.schoolID}
+              onClick={() => handleCardClick(school)}
+            >
+              <div className="catalogo-cell">{school.schoolName}</div>
+              <div className="catalogo-cell">{[school.street, school.colony, school.municipality, school.zip].filter(Boolean).join(", ")}</div>
+              <div className="catalogo-cell">{school.schoolSector}</div>
+              <div className="catalogo-cell">{Array.isArray(school.educationLevel) ? school.educationLevel.join(", ") : school.educationLevel || "No especificado"}</div>
+              <div className="catalogo-cell">{school.necessityType || "-"}</div>
             </div>
+          ))}
+        </div>
 
-            <div className="catalogo-filter-icon">
-              <Sort />
-            </div>
+        {selectedSchool && (
+          <div className="modal-overlay" onClick={closeModal}>
+            <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={selectedSchool.profileImage || "https://www.w3schools.com/howto/img_avatar.png"}
+                alt="perfil"
+                className="modal-avatar"
+              />
+              <h3>{selectedSchool.schoolName}</h3>
+              <p><strong>Director:</strong> {selectedSchool.principalName}</p>
+              <p><strong>Correo:</strong> {selectedSchool.principalEmail}</p>
+              <p><strong>Nivel educativo:</strong> {Array.isArray(selectedSchool.educationLevel) ? selectedSchool.educationLevel.join(", ") : selectedSchool.educationLevel}</p>
+              <p><strong>Dirección:</strong> {[selectedSchool.street, selectedSchool.colony, selectedSchool.municipality, selectedSchool.zip].filter(Boolean).join(", ")}</p>
+              <p><strong>Sector:</strong> {selectedSchool.schoolSector}</p>
+              <p><strong>Necesidades:</strong> {selectedSchool.necessityType || "No especificado"}</p>
+              <button onClick={closeModal}>Cerrar</button>
 
-          </div>
+              <button
+                onClick={async () => {
+                  try {
+                    const token = localStorage.getItem("token");
+                    const needsRes = await fetch(`http://localhost:3000/needs/${selectedSchool.schoolID}`, {
+                      headers: { Authorization: `Bearer ${token}` },
+                    });
 
-          {loading && <p>Cargando escuelas...</p>}
-          {error && <p className="error">{error}</p>}
+                    const needs = await needsRes.json();
 
-          <div className="catalogo-grid">
-            {/* Encabezados */}
-            <div className="catalogo-cell header">Nombre</div>
-            <div className="catalogo-cell header">Dirección</div>
-            <div className="catalogo-cell header">Sector</div>
-            <div className="catalogo-cell header">Nivel Educativo</div>
-            <div className="catalogo-cell header">Necesidades</div>
-          
-            {schools.map((school) => (
-              <div
-                className="catalogo-row hover-effect"
-                key={school.schoolID}
-                onClick={() => handleCardClick(school)}
+                    if (!Array.isArray(needs) || needs.length === 0) {
+                      alert("Esta escuela no tiene necesidades registradas.");
+                      return;
+                    }
+
+                    const needID = needs[0]?.needID;
+                    if (!needID) {
+                      alert("No se pudo identificar una necesidad válida.");
+                      return;
+                    }
+
+                    const response = await fetch("http://localhost:3000/matchNeed", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                      },
+                      body: JSON.stringify({
+                        schoolID: selectedSchool.schoolID,
+                        needID,
+                      }),
+                    });
+
+                    const result = await response.json();
+                    if (response.ok) {
+                      alert("¡Solicitud de match enviada correctamente!");
+                      setSelectedSchool(null);
+                    } else {
+                      alert(result.message || "No se pudo solicitar el match.");
+                    }
+                  } catch (err) {
+                    console.error("Error al solicitar match:", err);
+                    alert("Error al hacer match.");
+                  }
+                }}
               >
-                <div className="catalogo-cell">{school.schoolName}</div>
-                <div className="catalogo-cell">
-                  {[school.street, school.colony, school.municipality, school.zip].filter(Boolean).join(", ")}
-                </div>
-                <div className="catalogo-cell">{school.schoolSector}</div>
-                <div className="catalogo-cell">
-                  {Array.isArray(school.educationLevel)
-                    ? school.educationLevel.join(", ")
-                    : school.educationLevel || "No especificado"}
-                </div>
-                <div className="catalogo-cell">
-+                 {school.necessityType || "-"}
-+               </div>
-              </div>
-            ))}
+                Solicitar Match
+              </button>
+            </div>
           </div>
-
-            {selectedSchool && (
-              <div className="modal-overlay" onClick={closeModal}>
-                <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-                  <img
-                    src={selectedSchool.profileImage || "https://www.w3schools.com/howto/img_avatar.png"}
-                    alt="perfil"
-                    className="modal-avatar"
-                  />
-                  <h3>{selectedSchool.schoolName}</h3>
-                  <p><strong>Director:</strong> {selectedSchool.principalName}</p>
-                  <p><strong>Correo:</strong> {selectedSchool.principalEmail}</p>
-                  <p><strong>Nivel educativo:</strong> {Array.isArray(selectedSchool.educationLevel) ? selectedSchool.educationLevel.join(", ") : selectedSchool.educationLevel}</p>
-                  <p><strong>Dirección:</strong> {[selectedSchool.street, selectedSchool.colony, selectedSchool.municipality, selectedSchool.zip].filter(Boolean).join(", ")}</p>
-                  <p><strong>Sector:</strong> {selectedSchool.schoolSector}</p>
-                  <p><strong>Necesidades:</strong> {selectedSchool.necessityType || "No especificado"}</p>
-                  <button onClick={closeModal}>Cerrar</button>
-                </div>
-              </div>
-            )}
-          </div>
-  </div>
+        )}
+      </div>
+    </div>
   );
 };

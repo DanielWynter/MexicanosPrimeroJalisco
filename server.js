@@ -27,7 +27,6 @@ import getSchoolProfile from "./endpoints/getSchoolProfile.js";
 import updateSchoolProfile from "./endpoints/updateSchoolProfile.js";
 import updateAllyProfile from "./endpoints/updateAllyProfile.js";
 import getAllyProfile from './endpoints/getAllyProfile.js';
-import matchNeed from './endpoints/matchNeed.js';
 
 // NUEVOS IMPORTS
 import getSolicitudesAliados from './endpoints/getSolicitudesAliados.js';
@@ -37,6 +36,8 @@ import aceptarEscuela from './endpoints/aceptarEscuela.js';
 import createProject from './endpoints/createProject.js';
 import getCatalogoProyectos from './endpoints/getCatalogoProyectos.js';
 import getMisProyectos from './endpoints/getMisProyectos.js';
+import getSolicitudesMatch from "./endpoints/getSolicitudesMatch.js";
+import updateEstadoProyecto from "./endpoints/updateEstadoProyecto.js";
 
 
 const app = express();
@@ -76,6 +77,13 @@ app.get('/solicitudes/escuelas', getSolicitudesEscuelas);
 app.put('/admin/aceptar-escuela/:userID', aceptarEscuela);
 app.put("/actualizar-perfil-escuela", updateSchoolProfile);
 app.put("/actualizar-perfil-aliado", updateAllyProfile);
+app.post('/matchHelp', matchHelp);
+app.post('/matchNeed', matchNeed);
+app.get('/needs/:schoolID', getNeedsBySchool);
+app.get("/needs/ally/:allyID", getNeedsByAlly);
+app.get("/proyectos/solicitudes", getSolicitudesMatch);
+app.put("/proyectos/actualizar-estado/:projectID", updateEstadoProyecto);
+
 
 
 // Rutas de consulta
