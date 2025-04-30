@@ -5,17 +5,17 @@ const createProject = async (req, res) => {
     schoolID,
     allyID,
     projectName,
-    description,
-    needs,
+    description = null,
+    needs = [],
     status = "pendiente",
     authorization = "autorizado",
     deliveryDates = []
   } = req.body;
 
-  // Validación básica
-  if (!schoolID || !allyID || !projectName) {
+  // Validación básica (solo los obligatorios)
+  if (!schoolID || !allyID || !projectName || needs.length === 0) {
     return res.status(400).json({
-      message: "Faltan campos requeridos (schoolID, allyID o projectName)."
+      message: "Faltan campos requeridos (schoolID, allyID, projectName o necesidades)."
     });
   }
 
@@ -23,7 +23,7 @@ const createProject = async (req, res) => {
 
   try {
     const [newProject] = await db("projects")
-    .insert({
+      .insert({
         schoolid: schoolID,
         allyid: allyID,
         projectname: projectName,
@@ -31,7 +31,7 @@ const createProject = async (req, res) => {
         needs,
         status,
         project_authorization: authorization,
-        deliverydates: deliveryDatesJson,
+        deliverydates: deliveryDatesJson
       })
       .returning("*");
 
