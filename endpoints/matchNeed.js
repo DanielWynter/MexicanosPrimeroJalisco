@@ -4,43 +4,57 @@ import jwt from 'jsonwebtoken';
 const JWT_SECRET = '93nd29jdjADJ3i2@@!aSDh3ndakllw';
 
 const matchNeed = async (req, res) => {
-  // 1) Extraer y validar token
+  // 1) Validar token
   const auth = req.headers.authorization;
   if (!auth?.startsWith("Bearer ")) {
     return res.status(401).json({ success: false, message: "Token no proporcionado." });
   }
+
   const token = auth.split(' ')[1];
 
+  let allyID;
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    schoolID = decoded.schoolID;
-    if (!schoolID) throw new Error('schoolID faltante en JWT');
+    const { userID, userRol } = decoded;
+
+    if (userRol !== "ally") {
+      return res.status(403).json({ success: false, message: "Solo aliados pueden hacer match." });
+    }
+
+    const [user] = await db("users").where({ userID });
+    allyID = user.allyID;
+
+    if (!allyID) {
+      return res.status(403).json({ success: false, message: "No se encontró tu aliadoID." });
+    }
   } catch (err) {
     return res.status(401).json({ success: false, message: "Token inválido." });
   }
 
-  // 2) Leer parámetros de la petición
-  const { needID, allyID } = req.body;
-  if (!needID || !allyID) {
-    return res.status(400).json({ success: false, message: 'Faltan needID o allyID.' });
+  // 2) Leer parámetros del body
+  const { needID, schoolID } = req.body;
+  if (!needID || !schoolID) {
+    return res.status(400).json({ success: false, message: 'Faltan needID o schoolID.' });
   }
 
   try {
-    // 3) Verificar que la necesidad existe y pertenece a esta escuela
+    // 3) Verificar que la necesidad existe y pertenece a la escuela
     const need = await db('needs')
-      .where({ id: needID, schoolID })
-      .first();
+  .where({ needID, schoolID }) // ✅ usa needID como en tu base de datos
+  .first();
+
+
     if (!need) {
       return res.status(404).json({ success: false, message: 'Need no encontrado o sin permiso.' });
     }
 
-    // 4) Hacer el “match” asignando allyID
+    // 4) Actualizar la necesidad con el allyID
     const [updated] = await db('needs')
-      .where({ id: needID })
+      .where({ needID })
       .update({ allyID })
       .returning('*');
 
-    // 5) Responder con el registro actualizado
+    // 5) Respuesta
     return res.status(200).json({
       success: true,
       message: 'Match realizado correctamente.',
