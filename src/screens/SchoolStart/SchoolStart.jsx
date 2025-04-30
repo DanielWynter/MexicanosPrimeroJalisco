@@ -196,7 +196,7 @@ export const SchoolStart = () => {
 
                   </div>
 
-                  <button className="button-2" onClick={() => navigate("/formulario-escuela-1")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
+                  <button className="button-2" onClick={() => navigate("/perfilScreen")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
                   <button 
   className="logout-button" 
   onClick={() => {

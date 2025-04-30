@@ -19,13 +19,15 @@ import iniciarSesion from './endpoints/iniciarSesion.js'; // 👈 IMPORTAR tu en
 import verificarSesion from './endpoints/verificarSesion.js'; // Ajusta el path si es necesario
 import getCatalogoEscuelas from './endpoints/getCatalogoEscuelas.js';
 import getCatalogoAliados from './endpoints/getCatalogoAliados.js';
-<<<<<<< HEAD
 import registerNeed from './endpoints/registerNeed.js';
 import registerAllyOffering from './endpoints/registerAllyOffering.js';
 import forgotPasswordController from './endpoints/forgotPassword.js';
 import changePasswordController from './endpoints/changePassword.js';
+import getSchoolProfile from "./endpoints/getSchoolProfile.js";
+import updateSchoolProfile from "./endpoints/updateSchoolProfile.js";
+import updateAllyProfile from "./endpoints/updateAllyProfile.js";
+import getAllyProfile from './endpoints/getAllyProfile.js';
 
-=======
 // NUEVOS IMPORTS
 import getSolicitudesAliados from './endpoints/getSolicitudesAliados.js';
 import aceptarAliado from './endpoints/aceptarAliado.js';
@@ -33,7 +35,6 @@ import getSolicitudesEscuelas from './endpoints/getSolicitudesEscuelas.js';
 import aceptarEscuela from './endpoints/aceptarEscuela.js';
 import createProject from './endpoints/createProject.js';
 import getCatalogoProyectos from './endpoints/getCatalogoProyectos.js';
->>>>>>> 4b2a415c3f23103dc6c755ee8ef133877d3198b5
 
 const app = express();
 const port = 3000;
@@ -50,6 +51,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rutas de registro
+
 app.post('/users', registerUser); 
 app.post('/format_school', registerSchoolFormat);
 app.post('/principal', registerPrincipal); 
@@ -63,15 +65,14 @@ app.post('/representative', registerRepresentative);
 app.post('/natural_person', registerNaturalPerson);
 app.post('/ally_format', registerAllyFormat);
 app.post('/school_registrations', registerSchoolComplete);
-<<<<<<< HEAD
 app.post('/needs', registerNeed);
 app.post('/ally-offerings', registerAllyOffering);
-=======
 app.get('/solicitudes/aliados', getSolicitudesAliados); // ✅ Obtener aliados pendientes
 app.put('/admin/aceptar-aliado/:userID', aceptarAliado); // ✅ Aceptar aliado (cambia estado a "activo")
 app.get('/solicitudes/escuelas', getSolicitudesEscuelas);
 app.put('/admin/aceptar-escuela/:userID', aceptarEscuela);
->>>>>>> 4b2a415c3f23103dc6c755ee8ef133877d3198b5
+app.put("/actualizar-perfil-escuela", updateSchoolProfile);
+app.put("/actualizar-perfil-aliado", updateAllyProfile);
 
 
 // Rutas de consulta
@@ -98,6 +99,10 @@ app.get('/catalogo/proyectos', getCatalogoProyectos);
 
 // Crear proyecto, administrador
 app.post('/projects', createProject);
+
+// Get school profile
+app.get("/perfil/escuela", getSchoolProfile);
+app.get("/perfil/aliado", getAllyProfile);
 
 // Ruta para obtener la información de una escuela por ID
 app.get('/escuelas/:schoolID', async (req, res) => {

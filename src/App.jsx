@@ -7,7 +7,7 @@ import { IniciarSesion } from "./screens/IniciarSesion";
 import { Chat } from "./screens/Chat";
 import { ChatScreen } from "./screens/ChatScreen";
 import { Escuela } from "./screens/Escuela";
-import { EscuelaScreen } from "./screens/EscuelaScreen";
+import { PerfilScreen } from "./screens/PerfilScreen";
 import { Escuelita } from "./screens/Escuelita";
 import { EscuelitaAliada } from "./screens/EscuelitaAliada";
 import { Mapado } from "./screens/Mapado";
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
   { path: "/chat",                  element: <Chat /> },
   { path: "/chatScreen",            element: <ChatScreen /> },
   { path: "/escuela",               element: <Escuela /> },
-  { path: "/escuelaScreen",         element: <EscuelaScreen /> },
+  { path: "/perfilScreen",          element: <PerfilScreen /> },
   { path: "/escuelita",             element: <Escuelita /> },
   { path: "/escuelitaAliada",       element: <EscuelitaAliada /> },
   { path: "/mapado",                element: <Mapado /> },
