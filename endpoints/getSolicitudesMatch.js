@@ -22,9 +22,6 @@ const getSolicitudesMatch = async (req, res) => {
     // 🔍 Obtener allyID o schoolID desde la tabla users
     const [userData] = await db('users').where({ userID });
 
-    // 🧪 Logs de depuración
-    console.log("🧪 userID decodificado:", userID);
-    console.log("🧪 userData de tabla users:", userData);
 
     const foreignKey = userRol === 'school' ? userData.schoolID : userData.allyID;
     const field = userRol === 'school' ? 'schoolid' : 'allyid';
