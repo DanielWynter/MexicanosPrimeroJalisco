@@ -27,6 +27,11 @@ import getSchoolProfile from "./endpoints/getSchoolProfile.js";
 import updateSchoolProfile from "./endpoints/updateSchoolProfile.js";
 import updateAllyProfile from "./endpoints/updateAllyProfile.js";
 import getAllyProfile from './endpoints/getAllyProfile.js';
+import matchHelp from './endpoints/matchHelp.js';
+import matchNeed from './endpoints/matchNeed.js';
+import getNeedsBySchool from './endpoints/getNeedsBySchool.js';
+import getNeedsByAlly from './endpoints/getNeedsByAlly.js';
+
 
 // NUEVOS IMPORTS
 import getSolicitudesAliados from './endpoints/getSolicitudesAliados.js';
@@ -85,7 +90,6 @@ app.get("/proyectos/solicitudes", getSolicitudesMatch);
 app.put("/proyectos/actualizar-estado/:projectID", updateEstadoProyecto);
 
 
-
 // Rutas de consulta
 app.get('/schools', getSchools);
 app.get('/verificar-sesion', verificarSesion);
@@ -109,7 +113,7 @@ app.get('/catalogo/aliados', getCatalogoAliados);
 app.get('/catalogo/proyectos', getCatalogoProyectos);
 
 //Catalogo proyectos school y ally
-app.get('/misProyectos', getMisProyectos);
+app.get('/misProyectos', getMisProyectos); // 🔥 Esto debe estar definido
 
 
 // Crear proyecto, administrador
