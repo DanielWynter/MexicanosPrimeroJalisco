@@ -197,15 +197,17 @@ export const SchoolStart = () => {
 
                   <button className="button-2" onClick={() => navigate("/perfilScreen")} style={{ cursor: "pointer" }}> <div className="text-wrapper-10">Perfil</div> </button>
                   <button 
-  className="logout-button" 
+  className="button-2" 
   onClick={() => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     navigate("/iniciarSesion");
-  }} 
-  style={{ cursor: "pointer", marginTop: "10px" }}
+  }}
+  style={{ cursor: "pointer" }}
 >
-  Cerrar sesión
+  <div className="text-wrapper-10">Cerrar sesión</div>
 </button>
+
 
                 </div>
 

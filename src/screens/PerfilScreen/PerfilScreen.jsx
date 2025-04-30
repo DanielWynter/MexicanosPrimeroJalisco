@@ -101,7 +101,6 @@ export const PerfilScreen = () => {
       alert("Hubo un error al guardar los cambios");
     }
   };
-  
 
   if (loading) return <div className="catalogo-container">Cargando...</div>;
   if (error) return <div className="catalogo-container">{error}</div>;
@@ -162,6 +161,16 @@ export const PerfilScreen = () => {
             Guardar Cambios
           </button>
         )}
+
+        <button
+          className="perfil-escuela-btn"
+          style={{ marginTop: "1rem", backgroundColor: "#10b981" }}
+          onClick={() =>
+            navigate(rol === "school" ? "/formulario-escuela-1" : "/formulario-aliado-1")
+          }
+        >
+          Llenar Formulario
+        </button>
       </div>
     </div>
   );
