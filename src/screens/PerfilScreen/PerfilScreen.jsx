@@ -3,13 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./Style.css";
 
 export const PerfilScreen = () => {
-  const [form, setForm] = useState({
-    userName: "",
-    userEmail: "",
-    userPassword: "",
-    cct: "" // Solo para escuelas
-  });
-  const [imagenURL, setImagenURL] = useState("https://via.placeholder.com/120");
+  const [form, setForm] = useState({ userName: "", userEmail: "", userPassword: "", cct: "" });
+  const [imagenURL, setImagenURL] = useState("/img/image-12.png");
   const [editando, setEditando] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -20,35 +15,31 @@ export const PerfilScreen = () => {
     const fetchPerfil = async () => {
       const user = JSON.parse(localStorage.getItem("user"));
       const token = localStorage.getItem("token");
-
       if (!user || !token || !["school", "ally"].includes(user.userRol)) {
         localStorage.clear();
         navigate("/iniciarSesion");
         return;
       }
-
       setRol(user.userRol);
-
       try {
         const session = await fetch("http://localhost:3000/verificar-sesion", {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
         if (!session.ok) throw new Error("Sesión inválida");
 
         const endpoint = user.userRol === "school" ? "escuela" : "aliado";
         const res = await fetch(`http://localhost:3000/perfil/${endpoint}`, {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
-
         if (!res.ok) throw new Error("Error al obtener perfil");
 
         const data = await res.json();
-        setImagenURL(data.profileImage || "https://via.placeholder.com/120");
+        setImagenURL(data.profileImage || "/img/image-12.png");
         setForm({
           userName: data.userName || "",
           userEmail: data.userEmail || "",
           userPassword: "",
-          cct: data.cct || ""
+          cct: data.cct || "",
         });
       } catch (err) {
         console.error(err);
@@ -57,7 +48,6 @@ export const PerfilScreen = () => {
         setLoading(false);
       }
     };
-
     fetchPerfil();
   }, [navigate]);
 
@@ -75,7 +65,7 @@ export const PerfilScreen = () => {
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user"));
     const userRol = user?.userRol;
-  
+
     try {
       const res = await fetch(
         `http://localhost:3000/actualizar-perfil-${userRol === "school" ? "escuela" : "aliado"}`,
@@ -83,17 +73,15 @@ export const PerfilScreen = () => {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(form)
+          body: JSON.stringify(form),
         }
       );
-  
       if (!res.ok) throw new Error("Error al actualizar");
-  
+
       const updatedUser = { ...user, userName: form.userName, userEmail: form.userEmail };
       localStorage.setItem("user", JSON.stringify(updatedUser));
-  
       alert("Perfil actualizado correctamente");
       setEditando(false);
     } catch (error) {
@@ -102,75 +90,71 @@ export const PerfilScreen = () => {
     }
   };
 
-  if (loading) return <div className="catalogo-container">Cargando...</div>;
-  if (error) return <div className="catalogo-container">{error}</div>;
+  const handleLlenarFormulario = () => {
+    if (rol === "school") navigate("/formulario-escuela-1");
+    else if (rol === "ally") navigate("/formulario-aliado-1");
+  };
+
+  if (loading) return <div className="perfil-container">Cargando...</div>;
+  if (error) return <div className="perfil-container">{error}</div>;
 
   return (
-    <div className="catalogo-container perfil-vertical">
-      <h2 className="catalogo-title">Perfil de {rol === "school" ? "la Escuela" : "Aliado"}</h2>
+    <div className="perfil-container">
+      <div className="perfil-card">
+        <h2 className="perfil-title">Perfil de {rol === "school" ? "la Escuela" : "Aliado"}</h2>
 
-      <div className="perfil-header">
-        <img className="perfil-image" src={imagenURL} alt="Foto de perfil" />
-        {editando && (
-          <label className="perfil-upload">
-            Cambiar
-            <input type="file" onChange={handleImageChange} hidden />
-          </label>
-        )}
-      </div>
+        <div className="perfil-imagen">
+          <img src={imagenURL} alt="Foto de perfil" className="foto-perfil" />
+          {editando && (
+            <label className="subir-foto">
+              Cambiar
+              <input type="file" onChange={handleImageChange} hidden />
+            </label>
+          )}
+        </div>
 
-      <div className="perfil-form">
-        <label>Nombre de Usuario</label>
-        {editando ? (
-          <input type="text" name="userName" value={form.userName} onChange={handleChange} />
-        ) : (
-          <p>{form.userName}</p>
-        )}
+        <div className="perfil-info">
+          <label>Nombre de Usuario</label>
+          {editando ? (
+            <input type="text" name="userName" value={form.userName} onChange={handleChange} />
+          ) : (
+            <p>{form.userName}</p>
+          )}
 
-        <label>Correo Electrónico</label>
-        {editando ? (
-          <input type="email" name="userEmail" value={form.userEmail} onChange={handleChange} />
-        ) : (
-          <p>{form.userEmail}</p>
-        )}
+          <label>Correo Electrónico</label>
+          {editando ? (
+            <input type="email" name="userEmail" value={form.userEmail} onChange={handleChange} />
+          ) : (
+            <p>{form.userEmail}</p>
+          )}
 
-        <label>Contraseña</label>
-        {editando ? (
-          <input type="password" name="userPassword" value={form.userPassword} onChange={handleChange} />
-        ) : (
-          <p>********</p>
-        )}
+          <label>Contraseña</label>
+          {editando ? (
+            <input type="password" name="userPassword" value={form.userPassword} onChange={handleChange} />
+          ) : (
+            <p>********</p>
+          )}
 
-        {rol === "school" && (
-          <>
-            <label>CCT</label>
-            {editando ? (
-              <input type="text" name="cct" value={form.cct} onChange={handleChange} />
-            ) : (
-              <p>{form.cct}</p>
-            )}
-          </>
-        )}
+          {rol === "school" && (
+            <>
+              <label>CCT</label>
+              {editando ? (
+                <input type="text" name="cct" value={form.cct} onChange={handleChange} />
+              ) : (
+                <p>{form.cct}</p>
+              )}
+            </>
+          )}
+        </div>
 
-        {!editando ? (
-          <button onClick={() => setEditando(true)} className="perfil-escuela-btn">
-            Editar Perfil
+        <div className="perfil-botones">
+          <button onClick={() => (editando ? handleSave() : setEditando(true))} className="btn-perfil">
+            {editando ? "Guardar Cambios" : "Editar Perfil"}
           </button>
-        ) : (
-          <button onClick={handleSave} className="perfil-escuela-btn">
-            Guardar Cambios
+          <button onClick={handleLlenarFormulario} className="btn-perfil secundaria">
+            Llenar Formulario
           </button>
-        )}
-
-        <button
-          className="perfil-escuela-btn"
-          style={{ marginTop: "1rem", backgroundColor: "#10b981" }}
-          onClick={() =>
-            navigate(rol === "school" ? "/formulario-escuela-1" : "/formulario-aliado-1")
-          }
-        >
-          Llenar Formulario
-        </button>
+        </div>
       </div>
     </div>
   );
