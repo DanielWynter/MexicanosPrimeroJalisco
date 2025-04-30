@@ -138,13 +138,14 @@ export const CatalogoAliados = () => {
           const direccion = ally.organizationAddress || "No especificado";
           const paginaWeb = ally.organizationWeb || "-";
           const telefono = ally.npPhone || "-";
+          const need = ally.necessityType || "-";
           
           return (
             <div className="catalogo-row" key={ally.moralPersonID || ally.naturalPersonID}>
               <div className="catalogo-cell">{nombre}</div>
               <div className="catalogo-cell">{direccion}</div>
               <div className="catalogo-cell">{telefono}</div>
-              <div className="catalogo-cell">{"Aquí pondrás el apoyo si lo recuperas después"}</div>
+              <div className="catalogo-cell">{need}</div>
               <div className="catalogo-cell">
                 <button onClick={() => handleDeleteClick(ally)}>
                   <Sort />
