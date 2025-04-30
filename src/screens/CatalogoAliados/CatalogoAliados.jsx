@@ -147,10 +147,46 @@ export const CatalogoAliados = () => {
               <div className="catalogo-cell">{telefono}</div>
               <div className="catalogo-cell">{need}</div>
               <div className="catalogo-cell">
-                <button onClick={() => handleDeleteClick(ally)}>
-                  <Sort />
-                </button>
-              </div>
+  <button onClick={() => handleDeleteClick(ally)}>
+    <Sort />
+  </button>
+  <button
+    className="btn-match"
+    onClick={async () => {
+      const token = localStorage.getItem("token");
+      const user = JSON.parse(localStorage.getItem("user"));
+      const schoolID = user?.schoolID;
+      const allyID = ally.allyID || ally.moralPersonID || ally.naturalPersonID;
+
+      console.log("Intentando hacer match:");
+      console.log("schoolID:", schoolID);
+      console.log("allyID:", allyID);
+
+      try {
+        const res = await fetch(`http://localhost:3000/projects/match/${schoolID}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({ allyID }),
+        });
+
+        const data = await res.json();
+        console.log("Respuesta del backend:", data);
+
+        if (!res.ok) throw new Error("No se pudo hacer match");
+        alert("Solicitud de match enviada con éxito");
+      } catch (err) {
+        console.error("Error en el match:", err);
+        alert("Error al hacer match");
+      }
+    }}
+  >
+    Match request
+  </button>
+</div>
+
             </div>
           );
         })}
