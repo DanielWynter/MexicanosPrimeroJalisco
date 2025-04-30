@@ -40,6 +40,9 @@ import getSolicitudesEscuelas from './endpoints/getSolicitudesEscuelas.js';
 import aceptarEscuela from './endpoints/aceptarEscuela.js';
 import createProject from './endpoints/createProject.js';
 import getCatalogoProyectos from './endpoints/getCatalogoProyectos.js';
+import getSolicitudesMatch from "./endpoints/getSolicitudesMatch.js";
+import updateEstadoProyecto from "./endpoints/updateEstadoProyecto.js";
+
 
 const app = express();
 const port = 3000;
@@ -82,6 +85,9 @@ app.post('/matchHelp', matchHelp);
 app.post('/matchNeed', matchNeed);
 app.get('/needs/:schoolID', getNeedsBySchool);
 app.get("/needs/ally/:allyID", getNeedsByAlly);
+app.get("/proyectos/solicitudes", getSolicitudesMatch);
+app.put("/proyectos/actualizar-estado/:projectID", updateEstadoProyecto);
+
 
 
 // Rutas de consulta

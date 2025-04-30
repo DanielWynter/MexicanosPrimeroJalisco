@@ -9,18 +9,22 @@ export const PerfilScreen = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [rol, setRol] = useState("");
+  const [solicitudes, setSolicitudes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
     const fetchPerfil = async () => {
       const user = JSON.parse(localStorage.getItem("user"));
-      const token = localStorage.getItem("token");
       if (!user || !token || !["school", "ally"].includes(user.userRol)) {
         localStorage.clear();
         navigate("/iniciarSesion");
         return;
       }
+
       setRol(user.userRol);
+
       try {
         const session = await fetch("http://localhost:3000/verificar-sesion", {
           headers: { Authorization: `Bearer ${token}` },
@@ -41,6 +45,19 @@ export const PerfilScreen = () => {
           userPassword: "",
           cct: data.cct || "",
         });
+
+        const solicitudesRes = await fetch("http://localhost:3000/proyectos/solicitudes", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const solicitudesData = await solicitudesRes.json();
+
+        if (!Array.isArray(solicitudesData)) {
+          console.error("❌ No es un array:", solicitudesData);
+          setSolicitudes([]);
+          return;
+        }
+
+        setSolicitudes(solicitudesData);
       } catch (err) {
         console.error(err);
         setError("No se pudo cargar el perfil.");
@@ -48,6 +65,7 @@ export const PerfilScreen = () => {
         setLoading(false);
       }
     };
+
     fetchPerfil();
   }, [navigate]);
 
@@ -93,6 +111,30 @@ export const PerfilScreen = () => {
   const handleLlenarFormulario = () => {
     if (rol === "school") navigate("/formulario-escuela-1");
     else if (rol === "ally") navigate("/formulario-aliado-1");
+  };
+
+  const actualizarEstadoProyecto = async (projectid, estado) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`http://localhost:3000/proyectos/actualizar-estado/${projectid}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ estado }),
+      });
+
+      if (!res.ok) throw new Error("Error al actualizar proyecto");
+
+      const nuevasSolicitudes = solicitudes.map((s) =>
+        s.projectid === projectid ? { ...s, project_authorization: estado } : s
+      );
+      setSolicitudes(nuevasSolicitudes);
+    } catch (err) {
+      console.error("Error al actualizar estado del proyecto:", err);
+      alert("Error al actualizar estado del proyecto");
+    }
   };
 
   if (loading) return <div className="perfil-container">Cargando...</div>;
@@ -155,6 +197,29 @@ export const PerfilScreen = () => {
             Llenar Formulario
           </button>
         </div>
+
+        {solicitudes.length > 0 && (
+          <div className="perfil-solicitudes">
+            <h3>Solicitudes de Match</h3>
+            <ul>
+              {solicitudes.map((s) => (
+                <li key={s.projectid}>
+                  Proyecto: {s.projectname} | Estado: {s.project_authorization}
+                  {s.project_authorization === "pendiente" && (
+                    <>
+                      <button onClick={() => actualizarEstadoProyecto(s.projectid, "autorizado")}>
+                        Aceptar
+                      </button>
+                      <button onClick={() => actualizarEstadoProyecto(s.projectid, "rechazado")}>
+                        Rechazar
+                      </button>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
