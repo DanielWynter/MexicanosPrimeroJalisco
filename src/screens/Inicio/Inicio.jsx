@@ -48,7 +48,7 @@ export const Inicio = () => {
                     </div>
 
                     <button className="div-wrapper">
-                      <div className="text">¡DONA YA!</div>
+                      <div className="text" onClick={() => navigate("perfilScreen")} style={{ cursor: "pointer" }}>¡DONA YA!</div>
                     </button>
                   </div>
 
