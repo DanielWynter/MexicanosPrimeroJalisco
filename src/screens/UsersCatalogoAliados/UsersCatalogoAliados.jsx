@@ -61,7 +61,7 @@ export const UsersCatalogoAliados = () => {
                   </div>
 
                   <div className="nav-menu">
-                    <div className="text-wrapper-4" onClick={() => navigate("/escuela")} style={{cursor:"pointer"}}>Inicio</div>
+                    <div className="text-wrapper-4" onClick={() => navigate("/schoolStart")} style={{cursor:"pointer"}}>Inicio</div>
                     <div className="text-wrapper-5">Proyectos</div>
 
                     <div className="text-wrapper-7" onClick={() => navigate("/mapado")} style={{cursor:"pointer"}}>Mapa</div>

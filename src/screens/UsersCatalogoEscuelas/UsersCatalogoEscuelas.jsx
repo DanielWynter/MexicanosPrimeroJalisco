@@ -62,7 +62,7 @@ export const UsersCatalogoEscuelas = () => {
                   </div>
 
                   <div className="nav-menu">
-                    <div className="text-wrapper-4" onClick={() => navigate("/aliado/inicio")} style={{cursor:"pointer"}}>Inicio</div>
+                    <div className="text-wrapper-4" onClick={() => navigate("/allyStart")} style={{cursor:"pointer"}}>Inicio</div>
 
                     <div className="text-wrapper-6">Proyectos</div>
 
