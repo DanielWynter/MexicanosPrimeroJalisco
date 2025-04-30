@@ -1,33 +1,27 @@
-import db from "../db/knex.js"; 
-import jwt from 'jsonwebtoken';
+import db from "../db/knex.js";
+import jwt from "jsonwebtoken";
 const JWT_SECRET = '93nd29jdjADJ3i2@@!aSDh3ndakllw';
-
 
 const getCatalogoEscuelas = async (req, res) => {
   const { apoyo } = req.query;
-
   try {
+    // Autenticación idéntica a tu código...
     const token = req.headers.authorization?.split(" ")[1];
-if (!token) return res.status(401).json({ message: "Token no proporcionado" });
+    if (!token) return res.status(401).json({ message: "Token no proporcionado" });
+    let decoded;
+    try { decoded = jwt.verify(token, JWT_SECRET); }
+    catch  { return res.status(401).json({ message: "Token inválido" }); }
+    const userID = decoded.userID;
+    if (!userID) return res.status(403).json({ message: "No autorizado" });
 
-let decoded;
-try {
-  decoded = jwt.verify(token, JWT_SECRET);
-} catch (err) {
-  return res.status(401).json({ message: "Token inválido" });
-}
-
-const userID = decoded.userID;
-
-if (!userID) {
-  return res.status(403).json({ message: "No autorizado" });
-}
-
-
+    // — Aquí viene el bloque que **DEBES** reemplazar en tu código —
     let query = db("schools as s")
-      .leftJoin("format_school as fs", "s.schoolID", "fs.schoolID")  
-      .leftJoin("principal as p", "s.schoolID", "p.schoolID")  
-      //.join("school_data as sd", "s.schoolID", "sd.schoolID")    
+      // 1️⃣ Trae las necesidades de esta escuela
+      .leftJoin("needs         as n", "s.schoolID", "n.schoolID")
+      // 2️⃣ Tus joins habituales
+      .leftJoin("format_school as fs", "s.schoolID", "fs.schoolID")
+      .leftJoin("principal     as p",  "s.schoolID", "p.schoolID")
+      // 3️⃣ Selecciona TODO lo que necesitas + n.necessityType
       .select(
         "s.schoolID",
         "fs.schoolName",
@@ -39,23 +33,23 @@ if (!userID) {
         "fs.educationLevel",
         "p.principalName",
         "p.principalEmail",
-        //"sd.externalSupport"
+        "n.necessityType as necessityType"
       )
-      .whereNotNull("s.schoolID");  // Ahora directamente en la tabla 'schools'
+      .whereNotNull("s.schoolID");
 
+    // 4️⃣ Si quieres filtro dinámico, hazlo sobre n.necessityType:
     if (apoyo) {
-      query = query.whereRaw("LOWER(sd.externalSupport::text) LIKE ?", [`%${apoyo.toLowerCase()}%`]);
+      query = query.whereRaw(
+        "LOWER(n.necessityType) LIKE ?",
+        [`%${apoyo.toLowerCase()}%`]
+      );
     }
 
     const schools = await query;
-
-    res.status(200).json({
-      users: schools
-    });
-
+    return res.status(200).json({ users: schools });
   } catch (error) {
     console.error(error);
-    res.status(400).json({ message: "Error al cargar escuelas", error: error.message });
+    return res.status(400).json({ message: "Error al cargar escuelas", error: error.message });
   }
 };
 

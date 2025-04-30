@@ -130,10 +130,8 @@ export const UsersCatalogoEscuelas = () => {
                     : school.educationLevel || "No especificado"}
                 </div>
                 <div className="catalogo-cell">
-                  {Array.isArray(school.externalSupport)
-                    ? school.externalSupport.join(", ")
-                    : school.externalSupport || "No especificado"}
-                </div>
++                 {school.necessityType || "-"}
++               </div>
               </div>
             ))}
           </div>
@@ -152,7 +150,7 @@ export const UsersCatalogoEscuelas = () => {
                   <p><strong>Nivel educativo:</strong> {Array.isArray(selectedSchool.educationLevel) ? selectedSchool.educationLevel.join(", ") : selectedSchool.educationLevel}</p>
                   <p><strong>Dirección:</strong> {[selectedSchool.street, selectedSchool.colony, selectedSchool.municipality, selectedSchool.zip].filter(Boolean).join(", ")}</p>
                   <p><strong>Sector:</strong> {selectedSchool.schoolSector}</p>
-                  <p><strong>Necesidades:</strong> {Array.isArray(selectedSchool.externalSupport) ? selectedSchool.externalSupport.join(", ") : selectedSchool.externalSupport}</p>
+                  <p><strong>Necesidades:</strong> {selectedSchool.necessityType || "No especificado"}</p>
                   <button onClick={closeModal}>Cerrar</button>
                 </div>
               </div>

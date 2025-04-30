@@ -148,10 +148,8 @@ export const CatalogoEscuelas = () => {
               : school.educationLevel || "No especificado"}
           </div>
           <div className="catalogo-cell">
-            {Array.isArray(school.externalSupport)
-              ? school.externalSupport.join(", ")
-              : school.externalSupport || "No especificado"}
-          </div>
++                 {school.necessityType || "-"}
++               </div>
           <div className="catalogo-cell">
             <button onClick={() => handleDeleteClick(school)} className="delete-button">
               <Sort />

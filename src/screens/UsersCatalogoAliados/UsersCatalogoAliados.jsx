@@ -118,7 +118,7 @@ export const UsersCatalogoAliados = () => {
               const direccion = ally.organizationAddress || "No especificado";
               const paginaWeb = ally.organizationWeb || "-";
               const telefono = ally.npPhone || "-";
-              
+              const need = ally.necessityType || "-";
               return (
                 <div
                   className="catalogo-row hover-effect"
@@ -129,7 +129,7 @@ export const UsersCatalogoAliados = () => {
                   <div className="catalogo-cell">{direccion}</div>
                   <div className="catalogo-cellWebPage">{paginaWeb}</div>
                   <div className="catalogo-cell">{telefono}</div>
-                  <div className="catalogo-cell">{"Apoyo 1"}</div>
+                  <div className="catalogo-cell">{need}</div>
                 </div>
               );
             })}
@@ -147,7 +147,7 @@ export const UsersCatalogoAliados = () => {
               <p><strong>Dirección:</strong> {selectedAlly.organizationAddress || "No especificada"}</p>
               <p><strong>Página Web:</strong> {selectedAlly.organizationWeb || "-"}</p>
               <p><strong>Teléfono:</strong> {selectedAlly.npPhone || selectedAlly.userPhone || "-"}</p>
-              <p><strong>Apoyos Ofrecidos:</strong> {"Apoyo 1"}</p>
+              <p><strong>Apoyos Ofrecidos:</strong> {selectedAlly.necessityType || "-"}</p>
               <button onClick={closeModal}>Cerrar</button>
             </div>
           </div>
