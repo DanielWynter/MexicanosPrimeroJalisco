@@ -187,7 +187,7 @@ export const SchoolStart = () => {
                   </div>
 
                   <div className="nav-menu">
-                    <div className="text-wrapper-4">Proyectos</div>
+                    <div className="text-wrapper-4" onClick={() => navigate("/MiProyecto")}>Proyectos</div>
 
                     <div className="text-wrapper-5" onClick={() => navigate("/mapado")} style={{ cursor: "pointer" }}>Mapa</div>
 

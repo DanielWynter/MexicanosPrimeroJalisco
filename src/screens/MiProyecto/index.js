@@ -1,0 +1,1 @@
+export { MiProyecto } from "./MiProyecto";

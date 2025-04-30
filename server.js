@@ -27,6 +27,7 @@ import getSchoolProfile from "./endpoints/getSchoolProfile.js";
 import updateSchoolProfile from "./endpoints/updateSchoolProfile.js";
 import updateAllyProfile from "./endpoints/updateAllyProfile.js";
 import getAllyProfile from './endpoints/getAllyProfile.js';
+import matchNeed from './endpoints/matchNeed.js';
 
 // NUEVOS IMPORTS
 import getSolicitudesAliados from './endpoints/getSolicitudesAliados.js';
@@ -35,6 +36,8 @@ import getSolicitudesEscuelas from './endpoints/getSolicitudesEscuelas.js';
 import aceptarEscuela from './endpoints/aceptarEscuela.js';
 import createProject from './endpoints/createProject.js';
 import getCatalogoProyectos from './endpoints/getCatalogoProyectos.js';
+import getMisProyectos from './endpoints/getMisProyectos.js';
+
 
 const app = express();
 const port = 3000;
@@ -97,6 +100,10 @@ app.get('/catalogo/aliados', getCatalogoAliados);
 // Catalogo de proyectos, administrador
 app.get('/catalogo/proyectos', getCatalogoProyectos);
 
+//Catalogo proyectos school y ally
+app.get('/misProyectos', getMisProyectos);
+
+
 // Crear proyecto, administrador
 app.post('/projects', createProject);
 
@@ -107,7 +114,9 @@ app.get("/perfil/aliado", getAllyProfile);
 // Ruta para obtener la información de una escuela por ID
 app.get('/escuelas/:schoolID', async (req, res) => {
   const { schoolID } = req.params;
-  
+
+// Match 
+app.post('/needs/match', matchNeed);
   try {
     const school = await db('schools').where({ schoolID }).first();
     

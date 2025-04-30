@@ -40,6 +40,7 @@ import { SolicitudesAliados }  from "./screens/SolicitudesAliados";
 import { SolicitudesEscuelas } from "./screens/SolicitudesEscuelas";
 import { CatalogoProyectos }   from "./screens/CatalogoProyectos/CatalogoProyectos";
 import { AdminCreateProject }  from "./screens/AdminCreateProject/AdminCreateProject";
+import { MiProyecto } from "./screens/MiProyecto";
 
 const router = createBrowserRouter([
   { path: "/",                      element: <Inicio /> },
@@ -81,6 +82,8 @@ const router = createBrowserRouter([
 
   { path: "/forgot-password",        element: <ForgotPasswordPage /> },
   { path: "/reset-password",         element: <ResetPassword /> },
+
+  {path: "/miProyecto",             element: <MiProyecto /> }
 ]);
 
 export const App = () => (
