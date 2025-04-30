@@ -599,14 +599,14 @@
     width: 147px;
   }
   
-  .inicio .image-2 {
+  /*.inicio .image-2 {
     height: 126px;
     left: 32px;
     object-fit: cover;
     position: absolute;
     top: 11px;
     width: 122px;
-  }
+  }*/
   
   .inicio .plano {
     background-color: #ffffff;

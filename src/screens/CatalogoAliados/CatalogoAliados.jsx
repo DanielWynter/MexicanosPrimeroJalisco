@@ -71,7 +71,6 @@ export const CatalogoAliados = () => {
   return (
     <div>
       <div className="centered-menu">
-        <img className="image" alt="Image" src="/img/image-12.png" />
 
         <div className="logo">
           <div className="mexicanos-primero">

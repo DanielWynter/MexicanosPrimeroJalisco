@@ -530,18 +530,19 @@
   width: 67px;
 }
 
-.inicio .text-wrapper-9 {
+.text-wrapper-9 {
   color: #000000;
   font-family: "Montserrat", Helvetica;
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0.24px;
   line-height: 24px;
-  position: relative;
   text-align: center;
   white-space: nowrap;
-  width: fit-content;
+  cursor: pointer;
+  margin-right: 20px; /* 👈 agrega esta línea */
 }
+
 
 .inicio .button-2 {
   all: unset;

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 export const IniciarSesion = () => {
-  const [userEmail, setEmail]       = useState("");
+  const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
-  const [error, setError]           = useState("");
-  const [message, setMessage]       = useState("");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,6 +25,7 @@ export const IniciarSesion = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userEmail, userPassword }),
       });
+
       const data = await response.json();
 
       if (response.ok && data.usuario && data.token) {
@@ -37,17 +38,11 @@ export const IniciarSesion = () => {
         localStorage.setItem("token", token);
         setMessage("¡Inicio de sesión exitoso!");
         setTimeout(() => {
-          if (usuario.userRol === "school") {
-            navigate("/schoolStart");
-          } else if (usuario.userRol === "ally") {
-            navigate("/allyStart");
-          } else if (usuario.userRol === "admin") {
-            navigate("/admin/inicio");
-          } else {
-            navigate("/");
-          }
+          if (usuario.userRol === "school") navigate("/schoolStart");
+          else if (usuario.userRol === "ally") navigate("/allyStart");
+          else if (usuario.userRol === "admin") navigate("/admin/inicio");
+          else navigate("/");
         }, 100);
-        
       } else {
         setError(data.message || "Error en el inicio de sesión.");
       }
@@ -58,52 +53,30 @@ export const IniciarSesion = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-header">
-        <h2 className="login-title">INICIAR SESIÓN</h2>
-        <span 
-          className="login-icon" 
-          onClick={() => navigate("/")} 
-          style={{ cursor: "pointer" }}
-        >
-          ✖
-        </span>
-      </div>
+    <div className="register-wrapper">
+      <form className="register-box" onSubmit={handleSubmit}>
+        <h2 className="register-title">Iniciar Sesión</h2>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-section">
-          <label className="section-label">Correo Electrónico</label>
-          <div className="input-group">
-            <span>📧</span>
-            <input
-              type="email"
-              placeholder="ejemplo@correo.com"
-              value={userEmail}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <span>➡️</span>
-          </div>
-        </div>
+        <input
+          className="register-input"
+          type="email"
+          placeholder="Email"
+          value={userEmail}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-        <div className="form-section">
-          <label className="section-label">Contraseña</label>
-          <div className="input-group">
-            <input
-              type="password"
-              placeholder="••••••••"
-              value={userPassword}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-        </div>
+        <input
+          className="register-input"
+          type="password"
+          placeholder="Contraseña"
+          value={userPassword}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-        <button type="submit" className="login-button">
-          Iniciar sesión
-        </button>
+        <button type="submit" className="register-submit">Iniciar Sesión</button>
 
-        {/* Nuevo botón de 'Se te olvidó tu contraseña?' */}
         <div className="forgot-password-container">
           <button
             type="button"
@@ -113,10 +86,10 @@ export const IniciarSesion = () => {
             ¿Se te olvidó tu contraseña?
           </button>
         </div>
-      </form>
 
-      {error   && <p className="error-message">{error}</p>}
-      {message && <p className="success-message">{message}</p>}
+        {error && <p className="error-message">{error}</p>}
+        {message && <p className="success-message">{message}</p>}
+      </form>
     </div>
   );
 };
