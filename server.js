@@ -27,6 +27,11 @@ import getSchoolProfile from "./endpoints/getSchoolProfile.js";
 import updateSchoolProfile from "./endpoints/updateSchoolProfile.js";
 import updateAllyProfile from "./endpoints/updateAllyProfile.js";
 import getAllyProfile from './endpoints/getAllyProfile.js';
+import matchHelp from './endpoints/matchHelp.js';
+import matchNeed from './endpoints/matchNeed.js';
+import getNeedsBySchool from './endpoints/getNeedsBySchool.js';
+import getNeedsByAlly from "./endpoints/getNeedsByAlly.js";
+
 
 // NUEVOS IMPORTS
 import getSolicitudesAliados from './endpoints/getSolicitudesAliados.js';
@@ -73,6 +78,10 @@ app.get('/solicitudes/escuelas', getSolicitudesEscuelas);
 app.put('/admin/aceptar-escuela/:userID', aceptarEscuela);
 app.put("/actualizar-perfil-escuela", updateSchoolProfile);
 app.put("/actualizar-perfil-aliado", updateAllyProfile);
+app.post('/matchHelp', matchHelp);
+app.post('/matchNeed', matchNeed);
+app.get('/needs/:schoolID', getNeedsBySchool);
+app.get("/needs/ally/:allyID", getNeedsByAlly);
 
 
 // Rutas de consulta

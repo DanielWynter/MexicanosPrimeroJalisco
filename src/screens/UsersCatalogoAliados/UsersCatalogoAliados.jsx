@@ -149,6 +149,68 @@ export const UsersCatalogoAliados = () => {
               <p><strong>Teléfono:</strong> {selectedAlly.npPhone || selectedAlly.userPhone || "-"}</p>
               <p><strong>Apoyos Ofrecidos:</strong> {selectedAlly.necessityType || "-"}</p>
               <button onClick={closeModal}>Cerrar</button>
+
+<button
+  onClick={async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const schoolUser = JSON.parse(localStorage.getItem("user"));
+      const schoolID = schoolUser?.schoolID;
+
+      console.log("🔎 schoolID desde localStorage:", schoolID);
+
+      const needsRes = await fetch(`http://localhost:3000/needs/${schoolID}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const needs = await needsRes.json();
+      console.log("🧾 Necesidades encontradas:", needs);
+
+      if (!Array.isArray(needs) || needs.length === 0) {
+        alert("Tu escuela no tiene necesidades registradas.");
+        return;
+      }
+
+      const needID = needs[0]?.needID;
+      if (!needID) {
+        alert("No se pudo identificar una necesidad válida.");
+        return;
+      }
+
+      console.log("🪙 token desde localStorage:", token);
+      const response = await fetch("http://localhost:3000/matchHelp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          needID,
+          allyID: selectedAlly.allyID,
+        }),
+      });
+      
+      const result = await response.json();
+      console.log("🎯 Resultado del match:", result);
+      
+      if (response.ok) {
+        alert("¡Solicitud de match enviada correctamente!");
+        setSelectedAlly(null);
+      } else {
+        alert(result.message || "No se pudo solicitar el match.");
+      }
+      
+    } catch (err) {
+      console.error("Error al solicitar match:", err);
+      alert("Error al hacer match.");
+    }
+  }}
+>
+  Solicitar Match
+</button>
+
+
+
             </div>
           </div>
         )}
