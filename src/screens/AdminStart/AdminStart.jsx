@@ -150,12 +150,8 @@ export const AdminStart = () => {
                   </div>
 
                   <div className="nav-menu">
-<<<<<<< HEAD
 
                     <div className="nav-link">Proyectos</div>
-=======
-                    <div className="nav-link" onClick={() => navigate("/admin/catalogo/proyectos")}>Proyectos</div>
->>>>>>> cdf526f8fc1c533b915de0f002bdcb0a417198af
                     <div className="nav-link" onClick={() => navigate("/admin/catalogo/aliados")}>Aliados</div>
                     <div className="nav-link" onClick={() => navigate("/admin/catalogo/escuelas")}>Escuelas</div>
                     <div className="nav-link" onClick={() => navigate("/mapado")}>Mapa</div>
