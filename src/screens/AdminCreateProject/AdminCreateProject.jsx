@@ -16,11 +16,11 @@ export const AdminCreateProject = () => {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/catalogo/escuelas")
+    fetch("http://localhost:3000/catalogo/escuelas")
       .then((res) => res.json())
       .then((data) => setSchools(data.users || []));
 
-    fetch("http://localhost:5000/catalogo/aliados")
+    fetch("http://localhost:3000/catalogo/aliados")
       .then((res) => res.json())
       .then((data) => setAllies(data.users || []));
   }, []);
@@ -51,7 +51,7 @@ export const AdminCreateProject = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/projects", {
+    const res = await fetch("http://localhost:3000/projects", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
