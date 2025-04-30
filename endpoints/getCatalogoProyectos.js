@@ -20,7 +20,8 @@ const getCatalogoProyectos = async (req, res) => {
         "fs.schoolName",
         "p.projectname",
         "p.needs",
-        "p.project_authorization"
+        "p.project_authorization",
+        "p.projectid"
       )
       .where("p.project_authorization","autorizado")
     /*if (apoyo) {
